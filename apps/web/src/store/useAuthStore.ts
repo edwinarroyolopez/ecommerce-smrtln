@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { AuthState, User } from "@src/types/auth";
+import { AuthState, User, UserCredentials } from "@src/types/auth";
 
 export const useAuthStore = create<AuthState>((set) => ({
     user: (() => {
@@ -8,8 +8,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     })(),
     isAuthenticated: !!localStorage.getItem("user"),
 
-    login: (username) => {
-
+    login: (credentials: UserCredentials) => {
+        const { username } = credentials;
         const user: User = {
             username,
             role: username === "admin" ? "admin" : "client", 
