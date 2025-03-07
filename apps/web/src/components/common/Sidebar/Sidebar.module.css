@@ -1,31 +1,58 @@
 .sidebar {
-    width: 250px;
-    height: 100vh;
-    background-color: #111827;
-    color: white;
-    padding: 20px;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Oculto por defecto */
+  width: 250px;
+  height: 100vh;
+  background-color: #1f2937;
+  color: white;
+  padding: 20px;
+  transition: left 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.open {
+  left: 0; /* Aparece al abrirse */
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+}
+
+.navItem {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s ease-in-out;
+}
+
+.navItem:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
   }
-  
-  .sidebar .title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
-  
-  .sidebar .navList {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar .navItem {
-    padding: 12px;
-    border-radius: 4px;
-    text-decoration: none;
-    display: block;
-    color: white;
-  }
-  
-  .sidebar .navItem:hover {
-    background-color: #374151;
-  }
-  
+}

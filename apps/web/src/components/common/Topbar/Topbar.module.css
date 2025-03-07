@@ -1,23 +1,81 @@
 .topbar {
-    background-color: #1f2937;
-    color: white;
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupa todo el ancho */
+  background-color: #1f2937;
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Asegura que esté sobre otros elementos */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.menuButton svg {
+  width: 28px;
+  height: 28px;
+}
+
+.menuButton:hover {
+  color: #facc15;
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoutButton {
+  background-color: #ef4444;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.logoutButton:hover {
+  background-color: #dc2626;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 12px;
   }
-  
+
+  .title {
+    font-size: 16px;
+  }
+
   .logoutButton {
-    background-color: #ef4444;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    border: none;
-    color: white;
-    font-weight: bold;
+    padding: 6px 12px;
+    font-size: 14px;
   }
-  
-  .logoutButton:hover {
-    background-color: #dc2626;
+
+  .menuButton svg {
+    width: 24px;
+    height: 24px;
   }
-  
+}
