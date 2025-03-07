@@ -35,6 +35,8 @@ const Login = () => {
         onChange={(e) => setUsername(e.target.value)}
       />
       <Button onClick={handleLogin}>Login</Button>
+      <Button variant="primary">Ingresar</Button>
+      <Button variant="secondary">Cancelar</Button>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import "@ecommerce-smrtln/ui/styles.css"; 
 import ProtectedRoute from "@components/routes/ProtectedRoute";
 
 import { useAuthStore } from "./store/useAuthStore";
