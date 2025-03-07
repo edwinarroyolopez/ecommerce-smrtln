@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/store/useAuthStore";
 
-const Dashboard = () => {
+const ClientApp = () => {
   const logout = useAuthStore((state) => state.logout);
 
   const handleLogout = () => {
@@ -9,10 +9,10 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Bienvenido a Dashboard</h1>
+      <h1>Facturas</h1>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
 
-export default Dashboard;
+export default ClientApp;

@@ -11,14 +11,12 @@ const Login = () => {
     if (!username.trim()) return;
 
     login(username);
-
-    // Obtener el usuario actualizado después del login
     const user = useAuthStore.getState().user;
 
     if (user?.role === "admin") {
       navigate("/admin");
     } else {
-      navigate("/client");
+      navigate("/");
     }
   };
 

@@ -1,12 +1,17 @@
+import { ReactNode } from "react";
 import { useAuthStore } from "@/store/useAuthStore";
 import styles from "./Topbar.module.css";
 
-const Topbar = () => {
+interface TopbarProps {
+  children?: ReactNode;
+}
+
+const Topbar = ({ children }: TopbarProps) => {
   const logout = useAuthStore((state) => state.logout);
 
   return (
     <div className={styles.topbar}>
-      <h1>Admin Dashboard</h1>
+      {children}
       <button onClick={logout} className={styles.logoutButton}>
         Logout
       </button>

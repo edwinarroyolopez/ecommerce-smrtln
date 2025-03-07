@@ -1,27 +1,26 @@
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { Route } from "@src/types/routes";
 import styles from "./Sidebar.module.css";
 
-const Sidebar = () => {
+interface SidebarProps {
+  children?: ReactNode;
+  routes: Route[];
+}
+
+const Sidebar = ({ children, routes }: SidebarProps) => {
   return (
     <div className={styles.sidebar}>
-      <h2 className={styles.title}>Admin Panel</h2>
+      {children}
       <nav>
         <ul className={styles.navList}>
-          <li>
-            <Link to="/admin/dashboard" className={styles.navItem}>
-              Dashboard
-            </Link>
-          </li>
-          <li>
-            <Link to="/admin/users" className={styles.navItem}>
-              Usuarios
-            </Link>
-          </li>
-          <li>
-            <Link to="/admin/settings" className={styles.navItem}>
-              Configuración
-            </Link>
-          </li>
+          {routes.map((route) => (
+            <li key={route.path}>
+              <Link to={route.path} className={styles.navItem}>
+                {route.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>
