@@ -12,8 +12,6 @@ const StyledButton = styled.button<ButtonProps>`
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s, color 0.3s, border 0.3s;
-  
-  /* Usa variables CSS para colores */
   background-color: ${(props) =>
     props.variant === "secondary" ? "var(--secondary-color)" : "var(--primary-color)"};
   color: ${(props) =>
