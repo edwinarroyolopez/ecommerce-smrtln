@@ -1,18 +1,27 @@
 import { Routes, Route } from "react-router-dom";
+import { lazy } from "react";
 import RoleProtectedRoute from "./RoleProtectedRoute";
 import AdminLayout from "@components/admin/layouts/AdminLayout/AdminLayout";
-import Dashboard from "@/pages/admin/dashboard";
-import Users from "@/pages/admin/users";
-import Settings from "@/pages/admin/settings";
+import { RouteConfig } from "@src/types/routes";
+
+const Dashboard = lazy(() => import("@/pages/admin/dashboard"));
+const Users = lazy(() => import("@/pages/admin/users"));
+const Settings = lazy(() => import("@/pages/admin/settings"));
+
+const adminRoutes: RouteConfig[] = [
+  { path: "dashboard", element: <Dashboard /> },
+  { path: "users", element: <Users /> },
+  { path: "settings", element: <Settings /> },
+];
 
 const AdminRoutes = () => {
   return (
     <Routes>
       <Route element={<RoleProtectedRoute allowedRole="admin" redirectTo="/" />}>
         <Route path="/" element={<AdminLayout />}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="users" element={<Users />} />
-          <Route path="settings" element={<Settings />} />
+          {adminRoutes.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
+          ))}
         </Route>
       </Route>
     </Routes>
