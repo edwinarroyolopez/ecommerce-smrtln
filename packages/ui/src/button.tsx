@@ -1,20 +1,35 @@
-"use client";
+import styled from "styled-components";
+import { ButtonHTMLAttributes } from "react";
 
-import { ReactNode } from "react";
-
-interface ButtonProps {
-  children: ReactNode;
-  className?: string;
-  appName: string;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary";
 }
 
-export const Button = ({ children, className, appName }: ButtonProps) => {
+const StyledButton = styled.button<ButtonProps>`
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+  background-color: ${(props) =>
+    props.variant === "secondary" ? "var(--secondary-color)" : "var(--primary-color)"};
+  color: ${(props) =>
+    props.variant === "secondary" ? "var(--secondary-text-color)" : "var(--primary-text-color)"};
+  border: 2px solid ${(props) =>
+    props.variant === "secondary" ? "var(--secondary-border-color)" : "var(--primary-border-color)"};
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const Button = ({ variant = "primary", children, ...props }: ButtonProps) => {
   return (
-    <button
-      className={className}
-      onClick={() => alert(`Hello from your ${appName} app!`)}
-    >
+    <StyledButton variant={variant} {...props}>
       {children}
-    </button>
+    </StyledButton>
   );
 };
+
+export default Button;
