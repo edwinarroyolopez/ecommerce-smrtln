@@ -1,0 +1,23 @@
+.topbar {
+    background-color: #1f2937;
+    color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logoutButton {
+    background-color: #ef4444;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .logoutButton:hover {
+    background-color: #dc2626;
+  }
+  

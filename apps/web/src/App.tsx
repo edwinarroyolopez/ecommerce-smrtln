@@ -4,10 +4,11 @@ import ProtectedRoute from "@components/routes/ProtectedRoute";
 import RoleProtectedRoute from "@components/routes/RoleProtectedRoute";
 
 import { useAuthStore } from "./store/useAuthStore";
-// import Layout from "./components/layouts/Layout";
+import AdminRoutes from "@/components/routes/AdminRoutes";
+
 const ClientApp = lazy(() => import("./pages/ClientApp"));
-const AdminApp = lazy(() => import("./pages/AdminApp"));
 const Login = lazy(() => import("./pages/Login"));
+
 
 const App = () => {
   const { isAuthenticated } = useAuthStore();
@@ -18,9 +19,7 @@ const App = () => {
       <Routes>
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoute isAllowed={isAuthenticated} />}>
-            <Route element={<RoleProtectedRoute allowedRole="admin" redirectTo="/client" />}>
-              <Route path="/admin" element={<AdminApp />} />
-            </Route>
+            <Route path="/*" element={<AdminRoutes />} />
             <Route element={<RoleProtectedRoute allowedRole="client" redirectTo="/admin" />}>
               <Route path="/client" element={<ClientApp />} />
             </Route>
