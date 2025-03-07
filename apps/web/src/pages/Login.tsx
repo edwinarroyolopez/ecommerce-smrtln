@@ -1,44 +1,46 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { useAuthStore } from "@/store/useAuthStore";
-
-import { Button } from "@ecommerce-smrtln/ui/button";
-
+import { Button, Input } from "@ecommerce-smrtln/ui/index";
+import useField from "@/hooks/useField";
+import styles from "./Login.module.css";
 const Login = () => {
-  console.log("Login");
-
-  const [username, setUsername] = useState("");
   const navigate = useNavigate();
   const { login } = useAuthStore();
 
-  const handleLogin = () => {
-    if (!username.trim()) return;
+  const username = useField({ type: "text", required: true });
+  const password = useField({ type: "password", required: true });
 
-    login(username);
+  const handleLogin = () => {
+    const isValid = username.validate() && password.validate();
+    if (!isValid) return;
+
+    login({ username: username.value, password: password.value });
     const user = useAuthStore.getState().user;
 
-    if (user?.role === "admin") {
-      navigate("/admin");
-    } else {
-      navigate("/");
-    }
+    navigate(user?.role === "admin" ? "/admin" : "/");
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="Enter username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <Button onClick={handleLogin}>Login</Button>
-      <Button variant="primary">Ingresar</Button>
-      <Button variant="secondary">Cancelar</Button>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Iniciar Sesión</h2>
+        <Input 
+          label="Usuario" 
+          {...username} 
+          placeholder="Ingresa tu usuario" 
+          className={styles.input} 
+        />
+        <Input 
+          label="Contraseña" 
+          {...password} 
+          placeholder="••••••" 
+          className={styles.input} 
+        />
+        <Button onClick={handleLogin} className={styles.button}>Login</Button>
+      </div>
     </div>
   );
 };
+
 
 export default Login;

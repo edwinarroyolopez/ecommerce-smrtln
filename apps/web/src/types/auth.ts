@@ -3,10 +3,16 @@ export type User = {
     role: string;
 }
 
+export type UserCredentials = {
+    username: string;
+    password: string;
+}
+
+
 export interface AuthState {
     user: User | null;
     isAuthenticated: boolean;
-    login: (user: string) => void;
+    login: (credentials: UserCredentials) => void;
     logout: () => void;
 }
 
