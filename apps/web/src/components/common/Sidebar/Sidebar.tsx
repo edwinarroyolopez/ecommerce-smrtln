@@ -5,12 +5,14 @@ import styles from "./Sidebar.module.css";
 
 interface SidebarProps {
   children?: ReactNode;
+  title?: string;
   routes: Route[];
 }
 
-const Sidebar = ({ children, routes }: SidebarProps) => {
+const Sidebar = ({ children, title, routes }: SidebarProps) => {
   return (
     <div className={styles.sidebar}>
+      <h2>{title}</h2>
       {children}
       <nav>
         <ul className={styles.navList}>

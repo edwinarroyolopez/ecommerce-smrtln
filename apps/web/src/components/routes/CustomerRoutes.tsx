@@ -1,18 +1,27 @@
 import { Routes, Route } from "react-router-dom";
+import { lazy } from "react";
 import RoleProtectedRoute from "./RoleProtectedRoute";
 import CustomerLayout from "@components/customer/layouts/CustomerLayout/CustomerLayout";
-import Checkout from "@/pages/customer/checkout";
-import Invoices from "@/pages/customer/invoices";
-import Products from "@/pages/customer/products";
+import { RouteConfig } from "@src/types/routes";
+
+const Checkout = lazy(() => import("@/pages/customer/checkout"));
+const Invoices = lazy(() => import("@/pages/customer/invoices"));
+const Products = lazy(() => import("@/pages/customer/products"));
+
+const customerRoutes: RouteConfig[] = [
+  { path: "checkout", element: <Checkout /> },
+  { path: "invoices", element: <Invoices /> },
+  { path: "products", element: <Products /> },
+];
 
 const CustomerRoutes = () => {
   return (
     <Routes>
       <Route element={<RoleProtectedRoute allowedRole="client" redirectTo="/admin/dashboard" />}>
         <Route path="/" element={<CustomerLayout />}>
-          <Route path="checkout" element={<Checkout />} />
-          <Route path="invoices" element={<Invoices />} />
-          <Route path="products" element={<Products />} />
+          {customerRoutes.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
+          ))}
         </Route>
       </Route>
     </Routes>

@@ -14,18 +14,14 @@ const customerRoutes: Route[] = [
 const CustomerLayout = () => {
   return (
     <div className={styles.container}>
-      <Sidebar routes={customerRoutes}>
-        <h2 className={styles.title}>Customer Panel</h2>
-      </Sidebar>
-      <div className={styles.content}>
-        <Topbar>
-          <h1>Customer Dashboard</h1>
-        </Topbar>
-        <div className={styles.mainContent}>
-          <Outlet />
-        </div>
+    <Sidebar routes={customerRoutes} title={"Customer Panel"} />
+    <div className={styles.content}>
+      <Topbar title={"Custromer Dashboard"}/>
+      <div className={styles.mainContent}>
+        <Outlet />
       </div>
     </div>
+  </div>
   );
 };
 
