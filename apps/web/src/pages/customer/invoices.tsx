@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/store/useAuthStore";
 
-const AdminApp = () => {
+const ClientApp = () => {
   const logout = useAuthStore((state) => state.logout);
 
   const handleLogout = () => {
@@ -9,10 +9,10 @@ const AdminApp = () => {
 
   return (
     <div>
-      <h1>Bienvenido a la app de Admin</h1>
+      <h1>Facturas</h1>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
 
-export default AdminApp;
+export default ClientApp;

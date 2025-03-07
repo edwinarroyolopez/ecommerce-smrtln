@@ -1,7 +1,8 @@
 import { useAuthStore } from "@/store/useAuthStore";
 
-const AdminApp = () => {
+const Dashboard = () => {
   const logout = useAuthStore((state) => state.logout);
+  console.log("Dashboard");
 
   const handleLogout = () => {
     logout();
@@ -9,10 +10,10 @@ const AdminApp = () => {
 
   return (
     <div>
-      <h1>Bienvenido a la app de Admin</h1>
+      <h1>Bienvenido a Dashboard</h1>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
 
-export default AdminApp;
+export default Dashboard;

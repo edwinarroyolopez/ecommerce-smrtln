@@ -9,7 +9,7 @@ const AdminApp = () => {
 
   return (
     <div>
-      <h1>Bienvenido a la app de Admin</h1>
+      <h1>Productos</h1>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
