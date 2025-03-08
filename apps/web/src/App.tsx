@@ -6,6 +6,7 @@ import "./App.css";
 
 import { SENTRY_DNS } from "@/utils/constants";
 import { Loading } from "@ecommerce-smrtln/ui/index";
+import ToastContainer from "@components/common/ToastContainer";
 import ProtectedRoute from "@components/routes/ProtectedRoute";
 
 import { useAuthStore } from "./store/useAuthStore";
@@ -37,6 +38,7 @@ const App = () => {
             </Routes>
           </Suspense>
         </Router>
+        <ToastContainer />
       </Sentry.ErrorBoundary>
     </div>
   );
