@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getLocalStorageItem } from "@/utils/localStorageUtil";
 import { Product } from "@/types/product";
 import ProductCard from "@/components/customer/ProductCard/ProductCard";
-import ProductCart from "@components/customer/ProductCart/ProductCart";
+import ProductCart from "@components/customer/FloatCart/FloatCart";
 import styles from "./products.module.css";
 
 const Products = () => {
