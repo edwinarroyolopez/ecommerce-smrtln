@@ -6,6 +6,7 @@ import styles from "./FloatCart.module.css";
 const FloatCart = () => {
   const [isOpen, setIsOpen] = useState(false);
   const cart = useCartStore((state) => state.cart);
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cart
@@ -29,10 +30,23 @@ const FloatCart = () => {
           {cart.length > 0 ? (
             cart.map((item) => (
               <div key={item.id} className={styles.item}>
-                <span>
-                  {item.name} x{item.quantity}
-                </span>
-                <span>${(item.price * item.quantity).toFixed(2)}</span>
+                <img
+                  src={item.thumbnail || item.image}
+                  alt={item.name}
+                  className={styles.thumbnail}
+                />
+                <div className={styles.itemDetails}>
+                  <span>
+                    {item.name} x <b>{item.quantity}</b>
+                  </span>
+                  <span className={styles.priceItem}>${(item.price * item.quantity).toFixed(0)}</span>
+                </div>
+                <button
+                  className={styles.removeButton}
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  ✖
+                </button>
               </div>
             ))
           ) : (
