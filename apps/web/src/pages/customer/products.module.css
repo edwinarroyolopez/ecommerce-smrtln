@@ -17,5 +17,7 @@
     flex-wrap: wrap;
     gap: 15px;
     flex-grow: 1;
+    justify-content: center;
     width: 100%;
+    padding-left: 10px;
   }
