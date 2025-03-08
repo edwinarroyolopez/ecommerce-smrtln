@@ -1,18 +1,35 @@
-import { useAuthStore } from "@/store/useAuthStore";
+import { useEffect, useState } from "react";
+import { getLocalStorageItem } from "@/utils/localStorageUtil";
+import { Product } from "@/types/product";
+import ProductCard from "@/components/customer/ProductCard/ProductCard";
+import styles from "./products.module.css";
 
-const AdminApp = () => {
-  const logout = useAuthStore((state) => state.logout);
+const Products = () => {
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const handleLogout = () => {
-    logout();
-  };
+  useEffect(() => {
+    const storedProducts = getLocalStorageItem<Product[]>("products", []);
+    setProducts(storedProducts);
+  }, []);
+
+  
 
   return (
-    <div>
-      <h1>Productos</h1>
-      <button onClick={handleLogout}>Logout</button>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h1>Productos</h1>
+      </header>
+      <div className={styles.productsGrid}>
+        {products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        ) : (
+          <p>No hay productos disponibles</p>
+        )}
+      </div>
     </div>
   );
 };
 
-export default AdminApp;
+export default Products;

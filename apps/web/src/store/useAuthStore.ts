@@ -1,12 +1,11 @@
 import { create } from "zustand";
 import { AuthState, User, UserCredentials } from "@src/types/auth";
+import { mockData } from "@/data/products";
+import { getLocalStorageItem, setLocalStorageItem, removeLocalStorageItem } from "@/utils/localStorageUtil";
 
 export const useAuthStore = create<AuthState>((set) => ({
-    user: (() => {
-        const storedUser = localStorage.getItem("user");
-        return storedUser ? JSON.parse(storedUser) : null;
-    })(),
-    isAuthenticated: !!localStorage.getItem("user"),
+    user: getLocalStorageItem("user", null),
+    isAuthenticated: !!getLocalStorageItem("user",null),
 
     login: (credentials: UserCredentials) => {
         const { username } = credentials;
@@ -15,12 +14,17 @@ export const useAuthStore = create<AuthState>((set) => ({
             role: username === "admin" ? "admin" : "client", 
         };
 
-        localStorage.setItem("user", JSON.stringify(user));
+        setLocalStorageItem("user", user);
+
+        if (!getLocalStorageItem("products", null)) {
+            setLocalStorageItem("products", mockData);
+        }
+
         set({ user, isAuthenticated: true });
     },
 
     logout: () => {
-        localStorage.removeItem("user");
+        removeLocalStorageItem("user");
         set({ user: null, isAuthenticated: false });
     }
 }));
