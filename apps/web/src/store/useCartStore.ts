@@ -1,30 +1,17 @@
 import { create } from "zustand";
 import { getLocalStorageItem, setLocalStorageItem } from "@/utils/localStorageUtil";
-import { mockData } from "@/data/products";
-
-interface CartItem {
-    id: number;
-    name: string;
-    price: number;
-    quantity: number;
-}
-
-interface CartState {
-    cart: CartItem[];
-    addToCart: (productId: number) => void;
-    removeFromCart: (productId: number) => void;
-    clearCart: () => void;
-}
+import { CartItem, CartState } from "@src/types/cart";
 
 export const useCartStore = create<CartState>((set, get) => {
     const storedCart = getLocalStorageItem<CartItem[]>("cart", []);
+    const products = getLocalStorageItem<CartItem[]>("products", []);
 
     return {
         cart: storedCart,
 
         addToCart: (productId: number) => {
             const { cart } = get();
-            const product = mockData.find((p) => p.id === productId);
+            const product = products.find((p) => p.id === productId);
             if (!product) return;
 
             const existingItem = cart.find((item) => item.id === productId);

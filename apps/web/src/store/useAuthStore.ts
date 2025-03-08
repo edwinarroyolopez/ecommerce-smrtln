@@ -16,7 +16,6 @@ export const useAuthStore = create<AuthState>((set) => ({
 
         setLocalStorageItem("user", user);
 
-        // Inicializar productos en localStorage si no existen
         if (!getLocalStorageItem("products", null)) {
             setLocalStorageItem("products", mockData);
         }

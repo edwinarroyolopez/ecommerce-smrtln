@@ -14,6 +14,7 @@ const App = () => {
   const { isAuthenticated } = useAuthStore();
 
   return (
+    <div className="app">
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
@@ -27,6 +28,7 @@ const App = () => {
         </Routes>
       </Suspense>
     </Router>
+    </div>
   );
 };
 
