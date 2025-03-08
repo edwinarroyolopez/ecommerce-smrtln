@@ -19,6 +19,7 @@ const CustomerRoutes = () => {
     <Routes>
       <Route element={<RoleProtectedRoute allowedRole="client" redirectTo="/admin/dashboard" />}>
         <Route path="/" element={<CustomerLayout />}>
+          <Route index element={<Products />} />
           {customerRoutes.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
           ))}
