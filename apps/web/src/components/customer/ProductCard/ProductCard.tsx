@@ -4,7 +4,6 @@ import { Product } from "@/types/product";
 import { useCartStore } from "@/store/useCartStore";
 import { useToastStore } from "@/store/useToastStore";
 import { MinusIcon, PlusIcon } from "@ecommerce-smrtln/ui/index";
-import { ToastType } from "@src/types/toast";
 
 type ProductCardProps = {
   product: Product;
