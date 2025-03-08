@@ -1,13 +1,12 @@
-const getLocalStorageItem = <T>(key: string, initialValue: T | null): T | null => {
-  try {
+const getLocalStorageItem = <T,>(key: string, initialValue: T): T => {
+    try {
       const item = localStorage.getItem(key);
       return item ? (JSON.parse(item) as T) : initialValue;
-  } catch (error) {
+    } catch (error) {
       console.error("Error reading localStorage", error);
       return initialValue;
-  }
-};
-
+    }
+  };
   
   const setLocalStorageItem = <T,>(key: string, value: T): void => {
     try {
