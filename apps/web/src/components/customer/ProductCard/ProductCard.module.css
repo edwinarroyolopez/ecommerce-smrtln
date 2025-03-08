@@ -62,3 +62,30 @@
   color: #fff;
   border-color: #fff;
 }
+
+
+.cartControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.changeButton {
+  background: #009f7f;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.changeButton:hover {
+  background: #007a63;
+}
+
+.quantity {
+  font-size: 16px;
+  font-weight: bold;
+}

@@ -25,6 +25,18 @@ export const useCartStore = create<CartState>((set, get) => {
             set({ cart: updatedCart });
         },
 
+        removeOneToCart: (productId: number) => {
+            const { cart } = get();
+            const updatedCart = cart.map((item) =>
+                item.id === productId
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            ).filter(item => item.quantity > 0); // Elimina productos con cantidad 0
+        
+            setLocalStorageItem("cart", updatedCart);
+            set({ cart: updatedCart });
+        },
+
         removeFromCart: (productId: number) => {
             const { cart } = get();
             const updatedCart = cart.filter((item) => item.id !== productId);

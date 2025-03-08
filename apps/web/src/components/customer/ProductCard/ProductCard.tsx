@@ -1,11 +1,20 @@
+import { memo } from "react";
 import styles from "./ProductCard.module.css"
 import { Product } from "@/types/product";
+import { useCartStore } from "@/store/useCartStore";
 
 type ProductCardProps = {
   product: Product;
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+
+  const addToCart = useCartStore((state) => state.addToCart);
+  const removeOneToCart = useCartStore((state) => state.removeOneToCart);
+  const quantity = useCartStore((state) => 
+    state.cart.find((item) => item.id === product.id)?.quantity || 0
+  );
+
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
@@ -16,11 +25,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <p className={styles.category}>{product.category}</p>
         <div className={styles.bottomContainer}>
           <span className={styles.price}>${product.price}</span>
-          <button className={styles.cartButton}>🛒 Cart</button>
+          {quantity > 0 ? (
+            <div className={styles.cartControls}>
+              <button className={styles.changeButton} onClick={() => removeOneToCart(product.id)}>
+                ➖
+              </button>
+              <span className={styles.quantity}>{quantity}</span>
+              <button className={styles.changeButton} onClick={() => addToCart(product.id)}>
+                ➕
+              </button>
+            </div>
+          ) : (
+            <button className={styles.cartButton} onClick={() => addToCart(product.id)}>
+              🛒 Cart
+            </button>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default ProductCard;
+export default memo(ProductCard);
