@@ -7,4 +7,4 @@ export { default as Toast } from "./toast";
 
 export { default as NavbarIdcon } from "./icons/navbar-icon";
 export { default as MinusIcon } from "./icons/minus-icon";
-export { default as PlusIdcon } from "./icons/plus-icon";
+export { default as PlusIcon } from "./icons/plus-icon";
