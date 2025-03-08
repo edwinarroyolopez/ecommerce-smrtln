@@ -1,8 +1,8 @@
 .card {
   background: white;
-  border-radius: 12px;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease-in-out;
   width: 280px;
   display: flex;
@@ -11,7 +11,7 @@
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .imageContainer {
@@ -52,13 +52,14 @@
 .price {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #28a745;
+  color: #009f7f;
 }
 
 .cartButton {
-  background: #28a745;
-  color: white;
-  border: none;
+  background: #fff;
+  border: solid 1px #009f7f;
+  color: #009f7f;
+  /* border: none; */
   padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
@@ -68,5 +69,7 @@
 }
 
 .cartButton:hover {
-  background: #218838;
+  background: #019376;
+  color: #fff;
+  border-color: #fff;
 }
