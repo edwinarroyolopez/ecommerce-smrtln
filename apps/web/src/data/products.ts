@@ -48,8 +48,8 @@ export const mockData = [
       id: 6,
       name: "Uva Morada",
       category: "Frutas Frescas",
-      stock: 6000,
-      price: 5.0,
+      stock: 50,
+      price: 6000,
       tax: 0,
       image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/uva_morada_gambit.jpg"
     },

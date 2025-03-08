@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import "@ecommerce-smrtln/ui/styles.css"; 
 import "./App.css"; 
+
+import { Loading } from "@ecommerce-smrtln/ui/index";
 import ProtectedRoute from "@components/routes/ProtectedRoute";
 
 import { useAuthStore } from "./store/useAuthStore";
@@ -16,7 +18,7 @@ const App = () => {
   return (
     <div className="app">
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoute isAllowed={isAuthenticated} />}>
