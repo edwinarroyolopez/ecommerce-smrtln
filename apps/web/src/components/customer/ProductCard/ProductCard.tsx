@@ -14,10 +14,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className={styles.content}>
         <h3 className={styles.title}>{product.name}</h3>
         <p className={styles.category}>{product.category}</p>
-        <div className={styles.priceContainer}>
+        <div className={styles.bottomContainer}>
           <span className={styles.price}>${product.price}</span>
+          <button className={styles.cartButton}>🛒 Cart</button>
         </div>
-        <button className={styles.cartButton}>🛒 Cart</button>
       </div>
     </div>
   );
