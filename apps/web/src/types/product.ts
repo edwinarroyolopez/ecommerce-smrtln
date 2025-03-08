@@ -6,5 +6,6 @@ export type Product = {
     price: number;
     tax: number;
     image: string;
+    thumbnail: string;
   };
   

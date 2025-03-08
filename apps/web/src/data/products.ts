@@ -6,7 +6,8 @@ export const mockData = [
       stock: 50,
       price: 2000,
       tax: 0.19,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396979/manzana-roja_wjq3ek.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396979/manzana-roja_wjq3ek.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741396979/manzana-roja_wjq3ek.jpg"
     },
     {
       id: 2,
@@ -15,7 +16,8 @@ export const mockData = [
       stock: 30,
       price: 3000,
       tax: 0,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396978/manzana-verde_te8hnr.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396978/manzana-verde_te8hnr.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741396978/manzana-verde_te8hnr.jpg"
     },
     {
       id: 3,
@@ -24,7 +26,8 @@ export const mockData = [
       stock: 100,
       price: 1000,
       tax: 0,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/banano_ox2hfr.webp"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/banano_ox2hfr.webp",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741396976/banano_ox2hfr.webp"
     },
     {
       id: 4,
@@ -33,7 +36,8 @@ export const mockData = [
       stock: 25,
       price: 3000,
       tax: 0.19,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/pera_f0bttf.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/pera_f0bttf.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741396976/pera_f0bttf.jpg"
     },
     {
       id: 5,
@@ -42,7 +46,8 @@ export const mockData = [
       stock: 40,
       price: 4000,
       tax: 0.19,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/fresas_liwksx.webp"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/fresas_liwksx.webp",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/fresas_liwksx.webp"
     },
     {
       id: 6,
@@ -51,7 +56,8 @@ export const mockData = [
       stock: 50,
       price: 6000,
       tax: 0,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/uva_morada_gambit.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396976/uva_morada_gambit.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741396976/uva_morada_gambit.jpg"
     },
     {
       id: 7,
@@ -60,7 +66,8 @@ export const mockData = [
       stock: 55,
       price: 5000,
       tax: 0.19,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396975/uva-verde_xtypho.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396975/uva-verde_xtypho.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741396975/uva-verde_xtypho.jpg"
     },
     {
       id: 8,
@@ -69,7 +76,8 @@ export const mockData = [
       stock: 70,
       price: 2000,
       tax: 0,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396979/naranja_u0unhp.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741396979/naranja_u0unhp.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741396979/naranja_u0unhp.jpg"
     },
     {
       id: 9,
@@ -78,7 +86,8 @@ export const mockData = [
       stock: 90,
       price: 1000,
       tax: 0.19,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397511/limon_ffddz0.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397511/limon_ffddz0.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741397511/limon_ffddz0.jpg"
     },
     {
       id: 10,
@@ -87,7 +96,8 @@ export const mockData = [
       stock: 45,
       price: 3000,
       tax: 0,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/mandarina_p2jmy4.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/mandarina_p2jmy4.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741397510/mandarina_p2jmy4.jpg"
     },
     {
       id: 11,
@@ -96,7 +106,8 @@ export const mockData = [
       stock: 20,
       price: 7000,
       tax: 0.19,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397511/pina_dw5eqt.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397511/pina_dw5eqt.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741397511/pina_dw5eqt.jpg"
     },
     {
       id: 12,
@@ -105,7 +116,8 @@ export const mockData = [
       stock: 35,
       price: 3000,
       tax: 0,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/mango_nldv6t.jpg"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/mango_nldv6t.jpg",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741397510/mango_nldv6t.jpg"
     },
     {
       id: 13,
@@ -114,7 +126,8 @@ export const mockData = [
       stock: 30,
       price: 5000,
       tax: 0.19,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/papaya_rmdo4g.webp"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/papaya_rmdo4g.webp",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741397510/papaya_rmdo4g.webp"
     },
     {
       id: 14,
@@ -123,7 +136,8 @@ export const mockData = [
       stock: 15,
       price: 8000,
       tax: 0,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/coco_w28rhp.webp"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/coco_w28rhp.webp",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741397510/coco_w28rhp.webp"
     },
     {
       id: 15,
@@ -132,6 +146,7 @@ export const mockData = [
       stock: 10,
       price: 9000,
       tax: 0.19,
-      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/sandia_klifi6.webp"
+      image: "https://res.cloudinary.com/db3x4vzj0/image/upload/v1741397510/sandia_klifi6.webp",
+      thumbnail: "https://res.cloudinary.com/db3x4vzj0/image/upload/c_thumb,w_200,g_face/v1741397510/sandia_klifi6.webp"
     },
 ]

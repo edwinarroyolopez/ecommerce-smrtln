@@ -19,7 +19,7 @@ export const useCartStore = create<CartState>((set, get) => {
                 ? cart.map((item) =>
                     item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
                 )
-                : [...cart, { id: product.id, name: product.name, price: product.price, quantity: 1 }];
+                : [...cart, { id: product.id, name: product.name, price: product.price, thumbnail: product.thumbnail, quantity: 1 }];
 
             setLocalStorageItem("cart", updatedCart);
             set({ cart: updatedCart });
