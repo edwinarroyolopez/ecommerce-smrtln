@@ -1,21 +1,17 @@
 import { useState } from "react";
 import { Drawer } from "@ecommerce-smrtln/ui/index";
-import styles from "./FloatCart.module.css";
+import styles from "./Cart.module.css";
 
-const FloatCart = () => {
+const Cart = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      {/* Botón flotante del carrito */}
-      <div className={styles.container} onClick={() => setIsOpen(true)}>
-        <div className={styles.cart}>
-          🛒 <span className={styles.count}>3</span>
-        </div>
-      </div>
+      <button className={styles.cartButton} onClick={() => setIsOpen(true)}>
+        🛒 Cart (3)
+      </button>
 
-      {/* Drawer del carrito */}
-      <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} title="Carrito">
+      <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} title="Cart Items">
         <div className={styles.items}>
           <div className={styles.item}>
             <span>🍇 Blueberries</span>
@@ -32,4 +28,4 @@ const FloatCart = () => {
   );
 };
 
-export default FloatCart;
+export default Cart;

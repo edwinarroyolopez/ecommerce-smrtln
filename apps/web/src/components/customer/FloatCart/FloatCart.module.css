@@ -35,6 +35,40 @@
     font-weight: bold;
   }
   
-/* 
-  009f7f
-019376 */
+  
+/* Estilos para el Drawer */
+.items {
+  padding: 15px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.checkoutButton {
+  background: #2c7ef8;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.checkoutButton:hover {
+  background: #1e5bbd;
+}
+
+.total {
+  font-size: 18px;
+  font-weight: bold;
+}
