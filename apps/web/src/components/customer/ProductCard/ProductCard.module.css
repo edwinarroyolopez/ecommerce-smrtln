@@ -7,7 +7,6 @@
   width: 280px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .card:hover {
@@ -20,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .image {
@@ -34,19 +33,11 @@
   text-align: center;
 }
 
-.title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.category {
-  font-size: 0.9rem;
-  color: #777;
-}
-
-.priceContainer {
-  margin: 10px 0;
+.bottomContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .price {
@@ -59,12 +50,10 @@
   background: #fff;
   border: solid 1px #009f7f;
   color: #009f7f;
-  /* border: none; */
   padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
-  width: 100%;
   transition: background 0.3s;
 }
 
