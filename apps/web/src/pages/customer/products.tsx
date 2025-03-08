@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getLocalStorageItem } from "@/utils/localStorageUtil";
 import { Product } from "@/types/product";
 import ProductCard from "@/components/customer/ProductCard/ProductCard";
+import ProductCart from "@components/customer/ProductCart/ProductCart";
 import styles from "./products.module.css";
 
 const Products = () => {
@@ -16,6 +17,7 @@ const Products = () => {
 
   return (
     <div className={styles.container}>
+      <ProductCart />
       <header className={styles.header}>
         <h1>Productos</h1>
       </header>
