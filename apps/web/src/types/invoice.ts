@@ -11,6 +11,7 @@ export type InvoiceItem = {
     date: string;
     items: InvoiceItem[];
     total: number;
+    username: string;
     customer: {
       name: string;
       email: string;

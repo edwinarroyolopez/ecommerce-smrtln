@@ -7,6 +7,7 @@ import { useCartStore } from "@/store/useCartStore";
 import CartSummary from "@components/customer/CartSummary/CartSummary";
 import styles from "./checkout.module.css";
 import CustomerData from "@components/customer/CustomerData/CustomerData";
+import { useAuthStore } from "@/store/useAuthStore";
 import { useInvoiceStore } from "@/store/useInvoiceStore";
 import { Invoice } from "@src/types/invoice";
 import {
@@ -20,6 +21,7 @@ const Checkout = () => {
   const cart = useCartStore((state) => state.cart);
   const { addInvoice } = useInvoiceStore();
   const { clearCart } = useCartStore();
+  const user = useAuthStore((state) => state.user);
 
   const form = useFormFields({
     name: { type: "text", required: true },
@@ -61,12 +63,12 @@ const Checkout = () => {
     });
     setLocalStorageItem("products", updatedProducts);
 
-
     const newInvoice: Invoice = {
       id: Date.now(),
       date: new Date().toISOString(),
       items: cart,
       total: totalAmount,
+      username: user?.username || "",
       customer: {
         name: form.values.name,
         email: form.values.email,
