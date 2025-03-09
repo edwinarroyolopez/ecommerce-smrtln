@@ -1,5 +1,5 @@
 .cartSummary {
-    background: #f9f9f9;
+    border: solid 4px #f9f9f9;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -20,11 +20,13 @@
   
   .itemDetails {
     flex-grow: 1;
+    text-align: left;
   }
   
   .priceItem {
     font-weight: bold;
     color: var(--primary-color);
+    padding-left: 5px;
   }
   
   .total {
