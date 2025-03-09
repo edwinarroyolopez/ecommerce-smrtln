@@ -3,7 +3,7 @@ import styles from "./ProductCard.module.css"
 import { Product } from "@/types/product";
 import { useCartStore } from "@/store/useCartStore";
 import { useToastStore } from "@/store/useToastStore";
-import { MinusIcon, PlusIcon } from "@ecommerce-smrtln/ui/index";
+import { MinusIcon, PlusIcon, Button } from "@ecommerce-smrtln/ui/index";
 
 type ProductCardProps = {
   product: Product;
@@ -30,21 +30,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <span className={styles.price}>${product.price}</span>
           {quantity > 0 ? (
             <div className={styles.cartControls}>
-              <button className={styles.changeButton} onClick={() => removeOneToCart(product.id)}>
+              <Button className={styles.changeButton} onClick={() => removeOneToCart(product.id)}>
                 <MinusIcon />
-              </button>
+              </Button>
               <span className={styles.quantity}>{quantity}</span>
-              <button
+              <Button
                 className={styles.changeButton}
                 onClick={() => addToCart(product.id, showToast)}
               >
                 <PlusIcon />
-              </button>
+              </Button>
             </div>
           ) : (
-            <button className={styles.cartButton} onClick={() => addToCart(product.id, showToast)}>
+            <Button className={styles.cartButton} onClick={() => addToCart(product.id, showToast)}>
               🛒 Cart
-            </button>
+            </Button>
           )}
         </div>
       </div>

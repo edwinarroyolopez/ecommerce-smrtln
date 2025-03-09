@@ -1,5 +1,5 @@
 .card {
-  background: white;
+  background: var(--primary-text-color);
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
@@ -43,13 +43,13 @@
 .price {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #009f7f;
+  color: var(--primary-color);
 }
 
 .cartButton {
-  background: #fff;
-  border: solid 1px #009f7f;
-  color: #009f7f;
+  background: var(--primary-text-color);
+  border: solid 1px var(--primary-color);
+  color: var(--primary-color);
   padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
@@ -58,11 +58,10 @@
 }
 
 .cartButton:hover {
-  background: #019376;
-  color: #fff;
-  border-color: #fff;
+  background: var(--primary-color-hover);
+  color: var(--primary-text-color);
+  border-color: var(--primary-text-color);
 }
-
 
 .cartControls {
   display: flex;
@@ -71,8 +70,8 @@
 }
 
 .changeButton {
-  background: #009f7f;
-  color: white;
+  background: var(--primary-color);
+  color: var(--primary-text-color);
   border: none;
   padding: 4px 3px 0px 4px;
   border-radius: 5px;
@@ -82,7 +81,9 @@
 }
 
 .changeButton:hover {
-  background: #007a63;
+  background: var(--primary-color-hover);
+  color: var(--primary-text-color);
+  border: none;
 }
 
 .quantity {

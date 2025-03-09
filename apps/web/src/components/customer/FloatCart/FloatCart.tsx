@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Drawer } from "@ecommerce-smrtln/ui/index";
 import { useCartStore } from "@/store/useCartStore";
+import { Button,CloseButton } from "@ecommerce-smrtln/ui/index";
 import styles from "./FloatCart.module.css";
 
 const FloatCart = () => {
@@ -41,12 +42,12 @@ const FloatCart = () => {
                   </span>
                   <span className={styles.priceItem}>${(item.price * item.quantity).toFixed(0)}</span>
                 </div>
-                <button
+                <CloseButton
                   className={styles.removeButton}
                   onClick={() => removeFromCart(item.id)}
                 >
                   ✖
-                </button>
+                </CloseButton>
               </div>
             ))
           ) : (
@@ -54,7 +55,7 @@ const FloatCart = () => {
           )}
         </div>
         <div className={styles.footer}>
-          <button className={styles.checkoutButton}>Checkout</button>
+          <Button className={styles.checkoutButton}>Checkout</Button>
           <span className={styles.total}>${totalPrice}</span>
         </div>
       </Drawer>
