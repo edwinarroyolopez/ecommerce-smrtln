@@ -1,4 +1,5 @@
 export { default as Button } from "./button";
+export { default as CloseButton } from "./close-button";
 export { default as Input } from "./input";
 export { default as Drawer } from "./drawer";
 export { default as Loading } from "./loading";

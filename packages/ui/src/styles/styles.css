@@ -1,7 +1,8 @@
 :root {
-    --primary-color: #326ba7;
+    --primary-color: #009f7f;
+    --primary-color-hover: #019376;
     --primary-text-color: #ffffff;
-    --primary-border-color: #0056b3;
+    --primary-border-color: #007a63;
   
     --secondary-color: #6c757d;
     --secondary-text-color: #ffffff;
@@ -17,3 +18,4 @@
     color: var(--text-color);
   }
   
+  /* #1f2937 */

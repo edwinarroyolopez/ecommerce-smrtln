@@ -6,29 +6,27 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const StyledButton = styled.button<ButtonProps>`
-  padding: 12px 24px;
   font-size: 16px;
   font-weight: 500;
   border-radius: 8px;
   cursor: pointer;
-  width: 100%;
   transition: all 0.1s ease-in-out;
   background: ${(props) =>
     props.variant === "secondary" ? "transparent" : "var(--primary-color)"};
   color: ${(props) =>
     props.variant === "secondary" ? "var(--primary-color)" : "white"};
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--primary-text-color);
   outline: none;
 
   &:hover {
     background: ${(props) =>
-      props.variant === "secondary" ? "var(--primary-color)" : "var(--primary-hover)"};
-    color: var(--text-color);
+      props.variant === "secondary" ? "var(--primary-color)" : "var(--primary-text-color)"};
+    color: ${(props) =>
+      props.variant === "secondary" ? "var(--primary-color)" : "var(--primary-color)"};
+    border: 1px solid var(--primary-color);
   }
 
-  &:active {
-    transform: scale(0.98);
-  }
+
 `;
 
 
