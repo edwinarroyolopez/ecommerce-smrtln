@@ -8,7 +8,6 @@ const Checkout = () => {
   const navigate = useNavigate();
 
   const contact = useField({ type: "text", required: true });
-  const billingAddress = useField({ type: "text" });
   const shippingAddress = useField({ type: "text", required: true });
   const name = useField({ type: "text", required: true });
   const email = useField({ type: "email", required: true });
@@ -55,30 +54,24 @@ const Checkout = () => {
           className={styles.modalContent}
           onClick={(e) => e.stopPropagation()}
         >
-          <h2>Hola, este es un modal</h2>
-          {/* Número de Contacto */}
           <div className={styles.section}>
-            <h2>1️⃣ Número de Contacto</h2>
+            <h2>1️⃣ Datos Personales</h2>
+            <Input label="Nombre completo" {...name} className={styles.input} />
+            <Input
+              label="Correo electrónico"
+              {...email}
+              className={styles.input}
+            />
             <Input
               label="Número de Contacto"
               {...contact}
               className={styles.input}
             />
+            <Input label="País" {...country} className={styles.input} />
           </div>
 
-          {/* Dirección de Facturación */}
           <div className={styles.section}>
-            <h2>2️⃣ Dirección de Facturación</h2>
-            <Input
-              label="Dirección de Facturación"
-              {...billingAddress}
-              className={styles.input}
-            />
-          </div>
-
-          {/* Dirección de Envío */}
-          <div className={styles.section}>
-            <h2>3️⃣ Dirección de Envío</h2>
+            <h2>2️⃣ Dirección de Envío</h2>
             <Input
               label="Dirección de Envío"
               {...shippingAddress}
@@ -86,9 +79,8 @@ const Checkout = () => {
             />
           </div>
 
-          {/* Horario de Entrega */}
           <div className={styles.section}>
-            <h2>4️⃣ Horario de Entrega</h2>
+            <h2>3️⃣ Horario de Entrega</h2>
             <div className={styles.deliveryTimes}>
               {["Mañana", "Mediodía", "Tarde", "Noche"].map((time) => (
                 <Button
@@ -102,17 +94,6 @@ const Checkout = () => {
             </div>
           </div>
 
-          {/* Datos Personales */}
-          <div className={styles.section}>
-            <h2>5️⃣ Datos Personales</h2>
-            <Input label="Nombre completo" {...name} className={styles.input} />
-            <Input
-              label="Correo electrónico"
-              {...email}
-              className={styles.input}
-            />
-            <Input label="País" {...country} className={styles.input} />
-          </div>
 
           <Button onClick={() => setOpen(false)}>Cerrar</Button>
         </div>
