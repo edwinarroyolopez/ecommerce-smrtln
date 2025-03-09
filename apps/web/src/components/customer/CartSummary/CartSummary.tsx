@@ -22,10 +22,10 @@ const CartSummary: React.FC<CartSummaryProps> = ({ cart, totalAmount }) => {
           />
           <div className={styles.itemDetails}>
             <span>
-              {item.name} x <b>{item.quantity}</b>
+              {item.name} x <b>{item.quantity}</b> 
             </span>
             <span className={styles.priceItem}>
-              ${(item.price * item.quantity).toFixed(0)}
+            ${(item.price * item.quantity).toFixed(0)}
             </span>
           </div>
         </div>
