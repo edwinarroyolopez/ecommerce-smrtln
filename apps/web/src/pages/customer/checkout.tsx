@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect,useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Input } from "@ecommerce-smrtln/ui/index";
 import useFormFields from "@/hooks/useFormFields";
@@ -22,6 +22,7 @@ const Checkout = () => {
   const { addInvoice } = useInvoiceStore();
   const { clearCart } = useCartStore();
   const user = useAuthStore((state) => state.user);
+  const customerData = useAuthStore((state) => state.customerData);
 
   const form = useFormFields({
     name: { type: "text", required: true },
@@ -34,6 +35,12 @@ const Checkout = () => {
   });
 
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (customerData && Object.keys(customerData).length > 0) {
+      form.setValues(customerData); 
+    }
+  }, [customerData]);
 
   const totalAmount = useMemo(
     () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),

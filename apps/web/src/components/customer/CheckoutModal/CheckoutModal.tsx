@@ -2,6 +2,7 @@ import { Button, Input, Backdrop } from "@ecommerce-smrtln/ui/index";
 import styles from "./CheckoutModal.module.css";
 import { DELIVERY_TIMES } from "@/utils/constants";
 import { useState } from "react";
+import { useAuthStore } from "@/store/useAuthStore";
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
   onClose,
   form,
 }) => {
+  const setCustomerData = useAuthStore((state) => state.setCustomerData);
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
   const getError = (field: string) =>
@@ -28,6 +30,16 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
     setAttemptedSubmit(true);
     if (form.validate()) {
       setAttemptedSubmit(false);
+
+      const customerData = {
+        name: form.values.name,
+        email: form.values.email,
+        contact: form.values.contact,
+        country: form.values.country,
+        shippingAddress: form.values.shippingAddress,
+        deliveryTime: form.values.deliveryTime,
+      };
+      setCustomerData(customerData);
       onClose();
     }
   };
