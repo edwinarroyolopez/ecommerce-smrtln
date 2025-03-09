@@ -6,17 +6,9 @@ interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   form: any;
-  deliveryTime: string;
-  setDeliveryTime: (time: string) => void;
 }
 
-const CheckoutModal: React.FC<CheckoutModalProps> = ({
-  isOpen,
-  onClose,
-  form,
-  deliveryTime,
-  setDeliveryTime,
-}) => {
+const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, form }) => {
   return (
     <Backdrop visible={isOpen} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -37,7 +29,11 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
           <h2>3️⃣ Horario de Entrega</h2>
           <div className={styles.deliveryTimes}>
             {DELIVERY_TIMES.map((time) => (
-              <Button key={time} className={`${styles.deliveryButton} ${deliveryTime === time ? styles.active : ""}`} onClick={() => setDeliveryTime(time)}>
+              <Button
+                key={time}
+                className={`${styles.deliveryButton} ${form.values.deliveryTime === time ? styles.active : ""}`}
+                onClick={() => form.onChange({ target: { name: "deliveryTime", value: time } } as any)}
+              >
                 {time}
               </Button>
             ))}
