@@ -1,28 +1,61 @@
 import { Button, Input, Backdrop } from "@ecommerce-smrtln/ui/index";
 import styles from "./CheckoutModal.module.css";
 import { DELIVERY_TIMES } from "@/utils/constants";
+import { useState } from "react";
 
 interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
-  form: any;
+  form: {
+    values: Record<string, string>;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    errors: Record<string, string>;
+    validate: () => boolean;
+  };
 }
 
-const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, form }) => {
+const CheckoutModal: React.FC<CheckoutModalProps> = ({
+  isOpen,
+  onClose,
+  form,
+}) => {
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
+
+  const getError = (field: string) =>
+    attemptedSubmit && form.errors[field] ? form.errors[field] : undefined;
+
+  const handleClose = () => {
+    setAttemptedSubmit(true);
+    if (form.validate()) {
+      setAttemptedSubmit(false);
+      onClose();
+    }
+  };
+
+  const renderInput = (label: string, name: string) => (
+    <Input
+      label={label}
+      name={name}
+      value={form.values[name]}
+      onChange={form.onChange}
+      error={getError(name)}
+    />
+  );
+
   return (
-    <Backdrop visible={isOpen} onClick={onClose}>
+    <Backdrop visible={isOpen} onClick={() => handleClose()}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.section}>
           <h2>1️⃣ Datos Personales</h2>
-          <Input label="Nombre completo" name="name" value={form.values.name} onChange={form.onChange} />
-          <Input label="Correo electrónico" name="email" value={form.values.email} onChange={form.onChange} />
-          <Input label="Número de Contacto" name="contact" value={form.values.contact} onChange={form.onChange} />
-          <Input label="País" name="country" value={form.values.country} onChange={form.onChange} />
+          {renderInput("Nombre completo", "name")}
+          {renderInput("Correo electrónico", "email")}
+          {renderInput("Número de Contacto", "contact")}
+          {renderInput("País", "country")}
         </div>
 
         <div className={styles.section}>
           <h2>2️⃣ Dirección de Envío</h2>
-          <Input label="Dirección de Envío" name="shippingAddress" value={form.values.shippingAddress} onChange={form.onChange} />
+          {renderInput("Dirección de Envío", "shippingAddress")}
         </div>
 
         <div className={styles.section}>
@@ -32,7 +65,11 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, form }) 
               <Button
                 key={time}
                 className={`${styles.deliveryButton} ${form.values.deliveryTime === time ? styles.active : ""}`}
-                onClick={() => form.onChange({ target: { name: "deliveryTime", value: time } } as any)}
+                onClick={() =>
+                  form.onChange({
+                    target: { name: "deliveryTime", value: time },
+                  } as any)
+                }
               >
                 {time}
               </Button>
@@ -40,7 +77,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, form }) 
           </div>
         </div>
 
-        <Button onClick={onClose}>Cerrar</Button>
+        <Button className={styles.closeButton} onClick={handleClose}>Cerrar</Button>
       </div>
     </Backdrop>
   );

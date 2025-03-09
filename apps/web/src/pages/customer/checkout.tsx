@@ -4,13 +4,14 @@ import { Button, Input } from "@ecommerce-smrtln/ui/index";
 import useFormFields from "@/hooks/useFormFields";
 import CheckoutModal from "@components/customer/CheckoutModal/CheckoutModal";
 import { useCartStore } from "@/store/useCartStore";
-import CartSummary from "@components/customer/CartSummary/CartSummary"; // Nuevo componente
+import CartSummary from "@components/customer/CartSummary/CartSummary";
 import styles from "./checkout.module.css";
+import CustomerData from "@components/customer/CustomerData/CustomerData";
 
 const Checkout = () => {
   const navigate = useNavigate();
   const cart = useCartStore((state) => state.cart);
-
+  
   const form = useFormFields({
     name: { type: "text", required: true },
     email: { type: "email", required: true },
@@ -18,19 +19,25 @@ const Checkout = () => {
     contact: { type: "text", required: true },
     shippingAddress: { type: "text", required: true },
     orderNote: { type: "text" },
-    deliveryTime: { type: "text", defaultValue: "Mañana" }, // Ahora dentro del form
+    deliveryTime: { type: "text", defaultValue: "Mañana" },
   });
 
   const [open, setOpen] = useState(false);
 
-  const totalAmount = useMemo(
-    () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+  const totalAmount = useMemo(() => 
+    cart.reduce((sum, item) => sum + item.price * item.quantity, 0), 
     [cart]
+  );
+
+  const allFieldsFilled = useMemo(() => 
+    Object.entries(form.values).every(([key, value]) =>
+      key === "orderNote" || value.trim() !== ""
+    ), 
+    [form.values]
   );
 
   const handleCheckout = () => {
     if (!form.validate() || cart.length === 0) return;
-
     alert("Pedido realizado con éxito 🎉");
     navigate("/confirmation");
   };
@@ -39,9 +46,11 @@ const Checkout = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Checkout</h1>
       <CartSummary cart={cart} totalAmount={totalAmount} />
-      
+
+      {allFieldsFilled && <CustomerData formValues={form.values} />}
+
       <Button className={styles.checkoutButton} onClick={() => setOpen(true)}>
-        Cargar datos del cliente
+        {allFieldsFilled ? "Editar datos" : "Cargar datos del cliente"}
       </Button>
 
       <div className={styles.section}>
