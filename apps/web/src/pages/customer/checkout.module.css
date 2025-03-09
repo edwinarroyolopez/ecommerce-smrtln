@@ -36,27 +36,6 @@
     height: 80px;
   }
   
-  .deliveryTimes {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .deliveryButton {
-    flex: 1;
-    padding: 10px;
-    color: var(--primary-color);
-    background: #eee;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .deliveryButton.active {
-    background:  var(--primary-color);
-    color: #fff;
-    border: none;
-  }
-  
   .checkoutButton {
     width: 100%;
     padding: 12px;
@@ -72,11 +51,4 @@
   .checkoutButton:hover {
     background: var(--primary-color-hover);
     color: #fff;
-  }
-  
-  .modalContent {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   }

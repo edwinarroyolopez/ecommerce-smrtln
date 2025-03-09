@@ -1,0 +1,51 @@
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .input,
+  .textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .textarea {
+    resize: none;
+    height: 80px;
+  }
+  
+  .deliveryTimes {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .deliveryButton {
+    flex: 1;
+    padding: 10px;
+    color: var(--primary-color);
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .deliveryButton.active {
+    background:  var(--primary-color);
+    color: #fff;
+    border: none;
+  }
+  
+  .modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
