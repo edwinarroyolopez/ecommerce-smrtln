@@ -1,4 +1,5 @@
 import { ToastType } from "@src/types/toast";
+
 export interface CartItem {
     id: number;
     name: string;

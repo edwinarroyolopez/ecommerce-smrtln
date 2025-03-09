@@ -7,11 +7,20 @@ import { useCartStore } from "@/store/useCartStore";
 import CartSummary from "@components/customer/CartSummary/CartSummary";
 import styles from "./checkout.module.css";
 import CustomerData from "@components/customer/CustomerData/CustomerData";
+import { useInvoiceStore } from "@/store/useInvoiceStore";
+import { Invoice } from "@src/types/invoice";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+} from "@src/utils/localStorageUtil";
+import { Product } from "@src/types/product";
 
 const Checkout = () => {
   const navigate = useNavigate();
   const cart = useCartStore((state) => state.cart);
-  
+  const { addInvoice } = useInvoiceStore();
+  const { clearCart } = useCartStore();
+
   const form = useFormFields({
     name: { type: "text", required: true },
     email: { type: "email", required: true },
@@ -24,20 +33,54 @@ const Checkout = () => {
 
   const [open, setOpen] = useState(false);
 
-  const totalAmount = useMemo(() => 
-    cart.reduce((sum, item) => sum + item.price * item.quantity, 0), 
+  const totalAmount = useMemo(
+    () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
     [cart]
   );
 
-  const allFieldsFilled = useMemo(() => 
-    Object.entries(form.values).every(([key, value]) =>
-      key === "orderNote" || value.trim() !== ""
-    ), 
+  const allFieldsFilled = useMemo(
+    () =>
+      Object.entries(form.values).every(
+        ([key, value]) => key === "orderNote" || value.trim() !== ""
+      ),
     [form.values]
   );
 
   const handleCheckout = () => {
     if (!form.validate() || cart.length === 0) return;
+
+    const products = getLocalStorageItem<Product[]>("products", []);
+    const updatedProducts = products.map((product) => {
+      const itemInCart = cart.find((cartItem) => cartItem.id === product.id);
+      return itemInCart
+        ? {
+            ...product,
+            stock: Math.max(product.stock - itemInCart.quantity, 0),
+          }
+        : product;
+    });
+    setLocalStorageItem("products", updatedProducts);
+
+
+    const newInvoice: Invoice = {
+      id: Date.now(),
+      date: new Date().toISOString(),
+      items: cart,
+      total: totalAmount,
+      customer: {
+        name: form.values.name,
+        email: form.values.email,
+        country: form.values.country,
+        contact: form.values.contact,
+        shippingAddress: form.values.shippingAddress,
+        orderNote: form.values.orderNote || undefined,
+        deliveryTime: form.values.deliveryTime,
+      },
+    };
+
+    addInvoice(newInvoice);
+    clearCart();
+
     alert("Pedido realizado con éxito 🎉");
     navigate("/confirmation");
   };
@@ -64,7 +107,7 @@ const Checkout = () => {
       </div>
 
       <Button className={styles.checkoutButton} onClick={handleCheckout}>
-        Proceder al Pago (${totalAmount.toFixed(2)})
+        Proceder al Pago (${totalAmount.toFixed(0)})
       </Button>
 
       <CheckoutModal isOpen={open} onClose={() => setOpen(false)} form={form} />
