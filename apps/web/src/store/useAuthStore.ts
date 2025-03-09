@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { AuthState, User, UserCredentials } from "@src/types/auth";
+import { AuthState, User, UserCredentials, CustomerData } from "@src/types/auth";
 import { mockData } from "@/data/products";
 import { getLocalStorageItem, setLocalStorageItem, removeLocalStorageItem } from "@/utils/localStorageUtil";
 import logger from "@/utils/logger";
@@ -7,6 +7,7 @@ import logger from "@/utils/logger";
 export const useAuthStore = create<AuthState>((set) => ({
     user: getLocalStorageItem("user", null),
     isAuthenticated: !!getLocalStorageItem<User | null>("user", null),
+    customerData: getLocalStorageItem<CustomerData | null>("customerData", null),
 
     login: (credentials: UserCredentials) => {
         const { username } = credentials;
@@ -27,12 +28,13 @@ export const useAuthStore = create<AuthState>((set) => ({
     },
 
     logout: () => {
-        const currentUser = getLocalStorageItem<User | null>("user", null);
-        if (currentUser) {
-            logger.log(`User logged out: ${currentUser.username}`);
-        }
-
         removeLocalStorageItem("user");
-        set({ user: null, isAuthenticated: false });
+        removeLocalStorageItem("customerData");
+        set({ user: null, isAuthenticated: false, customerData: null });
+    },
+
+    setCustomerData: (customerData: CustomerData) => {
+        setLocalStorageItem("customerData", customerData);
+        set({ customerData });
     }
 }));

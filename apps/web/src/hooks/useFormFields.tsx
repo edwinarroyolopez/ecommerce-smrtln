@@ -28,6 +28,10 @@ const useFormFields = (fieldsConfig: Record<string, FieldConfig>) => {
     }
   };
 
+  const setAllValues = (newValues: Record<string, string>) => {
+    setValues((prev) => ({ ...prev, ...newValues }));
+  };
+
   const validate = () => {
     let isValid = true;
     const newErrors: Record<string, string> = {};
@@ -43,7 +47,7 @@ const useFormFields = (fieldsConfig: Record<string, FieldConfig>) => {
     return isValid;
   };
 
-  return { values, errors, onChange, validate };
+  return { values, errors, onChange, validate, setValues: setAllValues };
 };
 
 export default useFormFields;
