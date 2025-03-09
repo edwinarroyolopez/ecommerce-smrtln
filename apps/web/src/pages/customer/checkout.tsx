@@ -64,13 +64,13 @@ const Checkout = () => {
       items: cart,
       total: totalAmount,
       username: user?.username || "",
+      orderNote: form.values.orderNote || undefined,
       customer: { 
         name: form.values.name,
         email: form.values.email,
         country: form.values.country,
         contact: form.values.contact,
         shippingAddress: form.values.shippingAddress,
-        orderNote: form.values.orderNote || undefined,
         deliveryTime: form.values.deliveryTime,
       },
     };
