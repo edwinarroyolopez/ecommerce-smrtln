@@ -15,7 +15,7 @@ const StyledButton = styled.button<ButtonProps>`
     props.variant === "secondary" ? "transparent" : "var(--primary-color)"};
   color: ${(props) =>
     props.variant === "secondary" ? "var(--primary-color)" : "white"};
-  border: 2px solid var(--primary-text-color);
+  border: 1px solid var(--primary-text-color);
   outline: none;
 
   &:hover {
