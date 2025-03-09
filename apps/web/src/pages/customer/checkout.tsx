@@ -12,8 +12,8 @@ import { Invoice } from "@src/types/invoice";
 import {
   getLocalStorageItem,
   setLocalStorageItem,
-} from "@src/utils/localStorageUtil";
-import { Product } from "@src/types/product";
+} from "@/utils/localStorageUtil";
+import { Product } from "@/types/product";
 
 const Checkout = () => {
   const navigate = useNavigate();
