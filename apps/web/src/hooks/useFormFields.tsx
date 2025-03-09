@@ -3,13 +3,17 @@ import { useState, ChangeEvent } from "react";
 interface FieldConfig {
   type: string;
   required?: boolean;
+  defaultValue?: string;
 }
 
 const useFormFields = (fieldsConfig: Record<string, FieldConfig>) => {
-  const initialState = Object.keys(fieldsConfig).reduce((acc, field) => {
-    acc[field] = "";
-    return acc;
-  }, {} as Record<string, string>);
+  const initialState = Object.keys(fieldsConfig).reduce(
+    (acc, field) => {
+      acc[field] = fieldsConfig[field].defaultValue ?? "";
+      return acc;
+    },
+    {} as Record<string, string>
+  );
 
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState<Record<string, string>>({});
