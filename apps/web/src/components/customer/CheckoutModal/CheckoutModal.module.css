@@ -1,17 +1,3 @@
-.container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .title {
-    text-align: center;
-    color: #333;
-  }
-  
   .section {
     margin-bottom: 20px;
   }
@@ -55,23 +41,6 @@
     background:  var(--primary-color);
     color: #fff;
     border: none;
-  }
-  
-  .checkoutButton {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    color: #fff;
-    background:  var(--primary-color);
-    border: solid 1px transparent;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  .checkoutButton:hover {
-    background: var(--primary-color-hover);
-    color: #fff;
   }
   
   .modalContent {
