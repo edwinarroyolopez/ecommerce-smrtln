@@ -1,6 +1,6 @@
 {
   "name": "ecommerce-smrtln-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -74,5 +74,5 @@
   "bugs": {
     "url": "https://github.com/edwinarroyolopez/ecommerce-smrtln/issues"
   },
-  "homepage": "https://github.com/edwinarroyolopez/ecommerce-smrtln#readme"
+  "homepage": "https://ecommerce-smrtln-ui-library.netlify.app"
 }
