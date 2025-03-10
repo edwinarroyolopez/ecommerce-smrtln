@@ -5,13 +5,10 @@ import AdminLayout from "@components/admin/layouts/AdminLayout/AdminLayout";
 import { RouteConfig } from "@src/types/routes";
 
 const Dashboard = lazy(() => import("@/pages/admin/dashboard"));
-const Users = lazy(() => import("@/pages/admin/users"));
-const Settings = lazy(() => import("@/pages/admin/settings"));
+
 
 const adminRoutes: RouteConfig[] = [
-  { path: "dashboard", element: <Dashboard /> },
-  { path: "users", element: <Users /> },
-  { path: "settings", element: <Settings /> },
+  { path: "dashboard", element: <Dashboard /> }
 ];
 
 const AdminRoutes = () => {
