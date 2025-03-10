@@ -1,4 +1,4 @@
-import { Button, Backdrop } from "ecommerce-smrtln-ui/index";
+import { Button, Backdrop } from "ecommerce-smrtln-ui";
 import styles from "./InvoiceModal.module.css";
 import { Invoice } from "@src/types/invoice";
 

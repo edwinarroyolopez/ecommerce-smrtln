@@ -1,5 +1,5 @@
 import { useToastStore } from "@/store/useToastStore";
-import { Toast } from "ecommerce-smrtln-ui/index";
+import { Toast } from "ecommerce-smrtln-ui";
 import { createPortal } from "react-dom";
 
 const ToastContainer = () => {

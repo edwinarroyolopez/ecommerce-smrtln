@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/useAuthStore";
-import { Button, Input } from "ecommerce-smrtln-ui/index";
+import { Button, Input } from "ecommerce-smrtln-ui";
 import useField from "@/hooks/useField";
 import styles from "./Login.module.css";
 const Login = () => {

@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Drawer } from "ecommerce-smrtln-ui/index";
+import { Drawer } from "ecommerce-smrtln-ui";
 import { useCartStore } from "@/store/useCartStore";
-import { Button, CloseButton } from "ecommerce-smrtln-ui/index";
+import { Button, CloseButton } from "ecommerce-smrtln-ui";
 import styles from "./FloatCart.module.css";
 
 const FloatCart = () => {

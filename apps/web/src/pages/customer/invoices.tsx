@@ -1,4 +1,4 @@
-import { Button } from "ecommerce-smrtln-ui/index";
+import { Button } from "ecommerce-smrtln-ui";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useInvoiceStore } from "@/store/useInvoiceStore";
 import { useState, useEffect } from "react";

@@ -3,7 +3,7 @@ import styles from "./ProductCard.module.css"
 import { Product } from "@/types/product";
 import { useCartStore } from "@/store/useCartStore";
 import { useToastStore } from "@/store/useToastStore";
-import { MinusIcon, PlusIcon, Button } from "ecommerce-smrtln-ui/index";
+import { MinusIcon, PlusIcon, Button } from "ecommerce-smrtln-ui";
 
 type ProductCardProps = {
   product: Product;
