@@ -1,32 +1,13 @@
-import React from "react";
 import styles from "./InvoicesTable.module.css";
-import {
-  TableContainer,
-  Table,
-  Th,
-  Td,
-  EyeIcon,
-  CustomerIcon,
-  CalendarIcon,
-} from "@ecommerce-smrtln/ui/index";
-
-interface Customer {
-  name: string;
-  email: string;
-}
-
-interface Invoice {
-  id: number;
-  date: string;
-  total: number;
-  customer: Customer;
-}
+import { TableContainer, Table, Th, Td, EyeIcon, CustomerIcon, CalendarIcon } from "@ecommerce-smrtln/ui/index";
+import { Invoice } from "@src/types/invoice";
 
 interface InvoicesTableProps {
   invoices: Invoice[];
+  onInvoiceSelect: (invoice: Invoice) => void;
 }
 
-const InvoicesTable: React.FC<InvoicesTableProps> = ({ invoices }) => {
+const InvoicesTable: React.FC<InvoicesTableProps> = ({ invoices, onInvoiceSelect }) => {
   return (
     <TableContainer>
       <Table>
@@ -34,11 +15,7 @@ const InvoicesTable: React.FC<InvoicesTableProps> = ({ invoices }) => {
           <tr>
             <Th width="15%">N°</Th>
             <Th width="25%" align="center" className={styles.hideOnSmallScreen}>
-              <CustomerIcon
-                style={{ width: "32px", height: "32px" }}
-                primary="#555"
-                secondary="#212529"
-              />
+              <CustomerIcon style={{ width: "32px", height: "32px" }} primary="#555" secondary="#212529" />
             </Th>
             <Th align="center">
               <CalendarIcon style={{ width: "32px", height: "32px" }} />
@@ -56,10 +33,7 @@ const InvoicesTable: React.FC<InvoicesTableProps> = ({ invoices }) => {
                 <small>{invoice.customer.email}</small>
               </Td>
               <Td align="center">
-                {new Date(invoice.date)
-                  .toISOString()
-                  .split("T")[0]
-                  .replace(/-/g, "/")}
+                {new Date(invoice.date).toISOString().split("T")[0].replace(/-/g, "/")}
               </Td>
               <Td align="center">{invoice.total}</Td>
               <Td align="center">
@@ -70,12 +44,9 @@ const InvoicesTable: React.FC<InvoicesTableProps> = ({ invoices }) => {
                     cursor: "pointer",
                     transition: "transform 0.2s ease-in-out",
                   }}
-                  onMouseEnter={(e: React.MouseEvent<SVGElement>) =>
-                    (e.currentTarget.style.transform = "scale(1.1)")
-                  }
-                  onMouseLeave={(e: React.MouseEvent<SVGElement>) =>
-                    (e.currentTarget.style.transform = "scale(1)")
-                  }
+                  onMouseEnter={(e: React.MouseEvent<SVGElement>) => (e.currentTarget.style.transform = "scale(1.1)")}
+                  onMouseLeave={(e: React.MouseEvent<SVGElement>) => (e.currentTarget.style.transform = "scale(1)")}
+                  onClick={() => onInvoiceSelect(invoice)}
                 />
               </Td>
             </tr>

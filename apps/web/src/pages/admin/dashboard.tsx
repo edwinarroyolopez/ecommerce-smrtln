@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./dashboard.module.css";
 import {
   StickerCard,
@@ -13,8 +14,13 @@ import {
 } from "@ecommerce-smrtln/ui/index";
 import { useInvoiceStore } from "@/store/useInvoiceStore";
 import InvoicesTable from "@components/admin/InvoicesTable/InvoicesTable";
+import InvoiceModal from "@components/common/InvoiceModal/InvoiceModal";
+import { Invoice } from "@src/types/invoice";
 
 const Dashboard = () => {
+  const [selectedInvoice, setSelectedInvoice] = useState<Invoice | null>(null);
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const { invoices } = useInvoiceStore();
   const uniqueUsers = new Set(invoices.map((invoice) => invoice.username)).size;
   const totalProductsSold = invoices.reduce(
@@ -69,10 +75,21 @@ const Dashboard = () => {
             <Title>Facturas</Title>
           </Header>
           <ContentGrid className={styles.tableContainer}>
-            <InvoicesTable invoices={invoices} />
+            <InvoicesTable
+              invoices={invoices}
+              onInvoiceSelect={(invoice) => {
+                setSelectedInvoice(invoice);
+                setModalOpen(true);
+              }}
+            />
           </ContentGrid>
         </SummaryCard>
       </DashboardWrapper>
+      <InvoiceModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        invoice={selectedInvoice}
+      />
     </div>
   );
 };
