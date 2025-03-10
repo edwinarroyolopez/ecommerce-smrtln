@@ -70,7 +70,7 @@ interface ToastProps {
   onClose?: () => void;
 }
 
-const Toast = ({ message, type = "success", duration = 3000, onClose }: ToastProps) => {
+export const Toast = ({ message, type = "success", duration = 3000, onClose }: ToastProps) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
