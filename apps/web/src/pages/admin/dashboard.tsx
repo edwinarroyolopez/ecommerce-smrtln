@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./dashboard.module.css";
 import {
   StickerCard,
@@ -17,12 +17,27 @@ import InvoicesTable from "@components/admin/InvoicesTable/InvoicesTable";
 import InvoiceModal from "@components/common/InvoiceModal/InvoiceModal";
 import { Invoice } from "@src/types/invoice";
 import ProductsSoldTable from "@components/admin/ProductsSoldTable/ProductsSoldTable";
+import DashboardSkeleton from "@components/admin/DashboardSkeleton/DashboardSkeleton";
 
 const Dashboard = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedInvoice, setSelectedInvoice] = useState<Invoice | null>(null);
   const [isModalOpen, setModalOpen] = useState(false);
 
   const { invoices } = useInvoiceStore();
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (invoices.length > 0) {
+        setIsLoading(false);
+      }
+    }, 2000); // Simula carga de 2 segundos
+  }, [invoices]);
+
+  if (isLoading) {
+    return <DashboardSkeleton />;
+  }
+
   const uniqueUsers = new Set(invoices.map((invoice) => invoice.username)).size;
   const totalProductsSold = invoices.reduce(
     (total, invoice) => total + invoice.items.length,
