@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import IosArrowDown from "./icons/ios-arrow-down";
-import IosArrowUp from "./icons/ios-arrow-up";
+import IosArrowDown from "../icons/ios-arrow-down";
+import IosArrowUp from "../icons/ios-arrow-up";
 import { ReactNode } from "react";
 
 interface StickerCardProps {

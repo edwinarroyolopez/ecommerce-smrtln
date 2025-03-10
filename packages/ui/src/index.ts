@@ -1,12 +1,12 @@
-export { default as Button } from "./button";
-export { default as CloseButton } from "./close-button";
-export { default as Input } from "./input";
+export { default as Button } from "./components/button";
+export { default as CloseButton } from "./components/close-button";
+export { default as Input } from "./components/input";
 export { default as Drawer } from "./drawer";
-export { default as Loading } from "./loading";
-export { default as Toast } from "./toast";
-export { default as Backdrop } from "./backdrop";
+export { default as Loading } from "./components/loading";
+export { default as Toast } from "./components/toast";
+export { default as Backdrop } from "./components/backdrop";
 
-export { default as StickerCard } from "./sticker-card";
+export { default as StickerCard } from "./components/sticker-card";
 
 
 export { default as NavbarIdcon } from "./icons/navbar-icon";
@@ -22,9 +22,9 @@ export { default as ShoppingIcon } from "./icons/shopping-icon";
 export { default as CustomerIcon } from "./icons/customer-icon";
 export { default as OrderProcessedIcon } from "./icons/order-processed-icon";
 
-export { default as Skeleton } from "./skeleton";
+export { default as Skeleton } from "./components/skeleton";
 
 
-export { DashboardWrapper, SummaryCard, Header, Title, ContentGrid } from "./dashboard-wrapper";
+export { DashboardWrapper, SummaryCard, Header, Title, ContentGrid } from "./components/dashboard-wrapper";
 
-export { TableContainer, Table, Th, Td } from "./table";
+export { TableContainer, Table, Th, Td } from "./components/table";
