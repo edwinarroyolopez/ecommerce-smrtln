@@ -1,7 +1,7 @@
 export { default as Button } from "./components/button";
 export { default as CloseButton } from "./components/close-button";
 export { default as Input } from "./components/input";
-export { default as Drawer } from "./drawer";
+export { default as Drawer } from "./components/drawer";
 export { default as Loading } from "./components/loading";
 export { default as Toast } from "./components/toast";
 export { default as Backdrop } from "./components/backdrop";
