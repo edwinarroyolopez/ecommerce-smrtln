@@ -33,7 +33,7 @@ const StyledBackdrop = styled.div<{ visible: boolean }>`
   transition: opacity 0.3s ease-in-out;
 `;
 
-const Backdrop: React.FC<BackdropProps> = ({ visible, onClick, children }) => {
+export const Backdrop: React.FC<BackdropProps> = ({ visible, onClick, children }) => {
   return <StyledBackdrop visible={visible} onClick={onClick}>{children}</StyledBackdrop>;
 };
 
