@@ -12,13 +12,13 @@ export type InvoiceItem = {
     items: InvoiceItem[];
     total: number;
     username: string;
+    orderNote?: string;
     customer: {
       name: string;
       email: string;
       country: string;
       contact: string;
       shippingAddress: string;
-      orderNote?: string;
       deliveryTime: string;
     };
   };

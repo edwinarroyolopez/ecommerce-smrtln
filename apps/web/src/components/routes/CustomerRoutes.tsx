@@ -7,12 +7,15 @@ import { RouteConfig } from "@src/types/routes";
 const Checkout = lazy(() => import("@/pages/customer/checkout"));
 const Invoices = lazy(() => import("@/pages/customer/invoices"));
 const Products = lazy(() => import("@/pages/customer/products"));
+const Confirmation = lazy(() => import("@/pages/customer/confirmation"));
 
 const customerRoutes: RouteConfig[] = [
   { path: "checkout", element: <Checkout /> },
   { path: "invoices", element: <Invoices /> },
   { path: "products", element: <Products /> },
+  { path: "confirmation", element: <Confirmation /> },
 ];
+
 
 const CustomerRoutes = () => {
   return (

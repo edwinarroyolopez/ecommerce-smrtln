@@ -1,14 +1,15 @@
 .cartSummary {
-    border: solid 4px #f9f9f9;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
   }
   
   .item {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
   }
   
   .thumbnail {

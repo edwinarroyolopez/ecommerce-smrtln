@@ -10,7 +10,10 @@ import CustomerData from "@components/customer/CustomerData/CustomerData";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useInvoiceStore } from "@/store/useInvoiceStore";
 import { Invoice } from "@src/types/invoice";
-import { getLocalStorageItem, setLocalStorageItem } from "@/utils/localStorageUtil";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+} from "@/utils/localStorageUtil";
 import { Product } from "@/types/product";
 
 const Checkout = () => {
@@ -33,22 +36,30 @@ const Checkout = () => {
 
   useEffect(() => {
     if (customerData && Object.keys(customerData).length > 0) {
-      form.setValues(customerData); 
+      form.setValues(customerData);
     }
   }, [customerData]);
 
-  const totalAmount = useMemo(() => cart.reduce((sum, item) => sum + item.price * item.quantity, 0), [cart]);
+  const totalAmount = useMemo(
+    () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [cart]
+  );
 
   const allFieldsFilled = useMemo(() => {
     const { orderNote, ...requiredFields } = form.values;
-    return Object.values(requiredFields).every(value => value);
+    return Object.values(requiredFields).every((value) => value);
   }, [form.values]);
 
   const updateProductStock = useCallback(() => {
     const products = getLocalStorageItem<Product[]>("products", []);
-    const updatedProducts = products.map(product => {
-      const itemInCart = cart.find(cartItem => cartItem.id === product.id);
-      return itemInCart ? { ...product, stock: Math.max(product.stock - itemInCart.quantity, 0) } : product;
+    const updatedProducts = products.map((product) => {
+      const itemInCart = cart.find((cartItem) => cartItem.id === product.id);
+      return itemInCart
+        ? {
+            ...product,
+            stock: Math.max(product.stock - itemInCart.quantity, 0),
+          }
+        : product;
     });
     setLocalStorageItem("products", updatedProducts);
   }, [cart]);
@@ -64,45 +75,70 @@ const Checkout = () => {
       items: cart,
       total: totalAmount,
       username: user?.username || "",
-      customer: { 
+      orderNote: form.values.orderNote || undefined,
+      customer: {
         name: form.values.name,
         email: form.values.email,
         country: form.values.country,
         contact: form.values.contact,
         shippingAddress: form.values.shippingAddress,
-        orderNote: form.values.orderNote || undefined,
         deliveryTime: form.values.deliveryTime,
       },
     };
 
     addInvoice(newInvoice);
     clearCart();
-
-    alert("Pedido realizado con éxito 🎉");
     navigate("/confirmation");
-  }, [form, cart, totalAmount, user, updateProductStock, addInvoice, clearCart, navigate]);
+  }, [
+    form,
+    cart,
+    totalAmount,
+    user,
+    updateProductStock,
+    addInvoice,
+    clearCart,
+    navigate,
+  ]);
+
+  if (cart.length === 0){
+    navigate("/");
+  }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.checkoutContainer}>
       <h1 className={styles.title}>Checkout</h1>
-      <CartSummary cart={cart} totalAmount={totalAmount} />
 
-      {allFieldsFilled && <CustomerData formValues={form.values} />}
-
-      <Button className={styles.checkoutButton} onClick={() => setModalOpen(true)}>
-        {allFieldsFilled ? "Editar datos" : "Cargar datos del cliente"}
-      </Button>
-
-      <div className={styles.section}>
-        <h2>📝 Nota de Pedido</h2>
-        <Input label="Nota de Pedido" name="orderNote" value={form.values.orderNote} onChange={form.onChange} />
+      <div className={styles.topCheckout}>
+        <CartSummary cart={cart} totalAmount={totalAmount} />
+        {allFieldsFilled && <CustomerData formValues={form.values} />}
       </div>
+      <div className={styles.bottonCheckout}>
+        <Button
+          className={styles.checkoutButton}
+          onClick={() => setModalOpen(true)}
+        >
+          {allFieldsFilled ? "Editar datos" : "Cargar datos del cliente"}
+        </Button>
 
-      <Button className={styles.checkoutButton} onClick={handleCheckout}>
-        Proceder al Pago (${totalAmount.toFixed(0)})
-      </Button>
+        <div className={styles.section}>
+          <h2>📝 Nota de Pedido</h2>
+          <Input
+            label="Nota de Pedido"
+            name="orderNote"
+            value={form.values.orderNote}
+            onChange={form.onChange}
+          />
+        </div>
 
-      <CheckoutModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} form={form} />
+        <Button className={styles.checkoutButton} onClick={handleCheckout}>
+          Proceder al Pago (${totalAmount.toFixed(0)})
+        </Button>
+      </div>
+      <CheckoutModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        form={form}
+      />
     </div>
   );
 };

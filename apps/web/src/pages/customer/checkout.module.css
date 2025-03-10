@@ -1,54 +1,76 @@
-.container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.checkoutContainer {
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  container-type: inline-size;
+  container-name: checkout;
+}
+
+.title {
+  text-align: center;
+  color: #333;
+}
+
+.section {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.topCheckout{
+  display: flex;
+  flex-direction: row;
+}
+
+.bottonCheckout{
+  width: 320px;
+}
+
+.checkoutButton {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: #fff;
+  background: var(--primary-color);
+  border: solid 1px transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease-in-out;
+}
+
+.checkoutButton:hover {
+  background: var(--primary-color-hover);
+}
+
+
+
+@container checkout (min-width: 0px) and (max-width: 768px){
+  .topCheckout {
+    flex-direction: column;
   }
   
-  .title {
-    text-align: center;
-    color: #333;
+  .cartSummary {
+    border-right: none;
+    border-bottom: solid 4px #f9f9f9; 
   }
-  
-  .section {
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 10px;
-  }
-  
-  .input,
-  .textarea {
+}
+
+
+@container checkout (max-width: 320px){
+  .bottonCheckout{
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
   }
-  
-  .textarea {
-    resize: none;
-    height: 80px;
-  }
-  
-  .checkoutButton {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    color: #fff;
-    background:  var(--primary-color);
-    border: solid 1px transparent;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  .checkoutButton:hover {
-    background: var(--primary-color-hover);
-    color: #fff;
-  }
+}
+
+/* 
+@media (max-width: 768px) {}
+@media (max-width: 480px) {}
+@media (max-width: 320px){}
+ */
