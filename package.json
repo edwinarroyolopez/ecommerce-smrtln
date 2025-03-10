@@ -1,6 +1,10 @@
 {
   "name": "ecommerce-smrtln",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",

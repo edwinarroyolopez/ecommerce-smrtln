@@ -11,7 +11,7 @@ import {
   Header,
   Title,
   ContentGrid,
-} from "@ecommerce-smrtln/ui/index";
+} from "ecommerce-smrtln-ui/index";
 import { useInvoiceStore } from "@/store/useInvoiceStore";
 import InvoicesTable from "@components/admin/InvoicesTable/InvoicesTable";
 import InvoiceModal from "@components/common/InvoiceModal/InvoiceModal";

@@ -1,11 +1,11 @@
 import * as Sentry from "@sentry/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import "@ecommerce-smrtln/ui/styles.css";
+import "ecommerce-smrtln-ui/styles.css";
 import "./App.css";
 
 import { SENTRY_DNS } from "@/utils/constants";
-import { Loading } from "@ecommerce-smrtln/ui/index";
+import { Loading } from "ecommerce-smrtln-ui/index";
 import ToastContainer from "@components/common/ToastContainer";
 import ProtectedRoute from "@components/routes/ProtectedRoute";
 

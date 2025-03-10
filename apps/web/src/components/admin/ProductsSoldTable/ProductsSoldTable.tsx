@@ -1,5 +1,5 @@
 import React from "react";
-import { TableContainer, Table, Th, Td } from "@ecommerce-smrtln/ui/index";
+import { TableContainer, Table, Th, Td } from "ecommerce-smrtln-ui/index";
 
 interface Product {
   name: string;

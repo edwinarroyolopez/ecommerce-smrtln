@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button } from "@ecommerce-smrtln/ui/index";
+import { Button } from "ecommerce-smrtln-ui/index";
 import "./confirmation.module.css";
 
 const Confirmation = () => {

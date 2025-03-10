@@ -1,4 +1,4 @@
-import { Button, Input, Backdrop } from "@ecommerce-smrtln/ui/index";
+import { Button, Input, Backdrop } from "ecommerce-smrtln-ui/index";
 import styles from "./CheckoutModal.module.css";
 import { DELIVERY_TIMES } from "@/utils/constants";
 import { useState } from "react";

@@ -1,5 +1,5 @@
 import styles from "./DashboardSkeleton.module.css";
-import { Skeleton } from "@ecommerce-smrtln/ui/index"; 
+import { Skeleton } from "ecommerce-smrtln-ui/index"; 
 
 const DashboardSkeleton = () => {
   return (

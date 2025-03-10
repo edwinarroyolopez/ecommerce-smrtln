@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Input } from "@ecommerce-smrtln/ui/index";
+import { Button, Input } from "ecommerce-smrtln-ui/index";
 import useFormFields from "@/hooks/useFormFields";
 import CheckoutModal from "@components/customer/CheckoutModal/CheckoutModal";
 import { useCartStore } from "@/store/useCartStore";

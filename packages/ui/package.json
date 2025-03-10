@@ -1,21 +1,26 @@
 {
-  "name": "@ecommerce-smrtln/ui",
-  "version": "0.1.1",
+  "name": "ecommerce-smrtln-ui",
+  "version": "1.0.0",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
   "exports": {
-    "./*": "./src/index.ts",
-    "./styles.css": "./src/styles/styles.css"
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
   },
+  "types": "dist/index.d.ts",
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "check-types": "tsc  ./dist --noEmit",
+    "check-types": "tsc ./dist --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "tsc"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
@@ -36,7 +41,7 @@
     "eslint-plugin-storybook": "^0.11.4",
     "playwright": "^1.51.0",
     "storybook": "^8.6.4",
-    "typescript": "5.8.2",
+    "typescript": "5.7",
     "vitest": "^3.0.8"
   },
   "dependencies": {
@@ -48,5 +53,23 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
-  }
+  },
+  "description": "UI Library for ecommerce-smrtln",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwinarroyolopez/ecommerce-smrtln.git"
+  },
+  "keywords": [
+    "ui",
+    "component-library",
+    "react",
+    "ecommerce"
+  ],
+  "author": "Edwin Arroyo López",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edwinarroyolopez/ecommerce-smrtln/issues"
+  },
+  "homepage": "https://github.com/edwinarroyolopez/ecommerce-smrtln#readme"
 }

@@ -1,5 +1,5 @@
 import styles from "./InvoicesTable.module.css";
-import { TableContainer, Table, Th, Td, EyeIcon, CustomerIcon, CalendarIcon } from "@ecommerce-smrtln/ui/index";
+import { TableContainer, Table, Th, Td, EyeIcon, CustomerIcon, CalendarIcon } from "ecommerce-smrtln-ui/index";
 import { Invoice } from "@src/types/invoice";
 
 interface InvoicesTableProps {

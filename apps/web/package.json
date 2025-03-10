@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ecommerce-smrtln/ui": "*",
+    "ecommerce-smrtln-ui": "*",
     "@sentry/react": "^9.5.0",
     "@sentry/tracing": "^7.120.3",
     "loglevel": "^1.9.2",
