@@ -15,8 +15,11 @@ import {
   setLocalStorageItem,
 } from "@/utils/localStorageUtil";
 import { Product } from "@/types/product";
+import CheckoutSkeleton from "@components/customer/CheckoutSkeleton/CheckoutSkeleton";
 
 const Checkout = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const { cart, clearCart } = useCartStore();
   const { addInvoice } = useInvoiceStore();
@@ -32,13 +35,23 @@ const Checkout = () => {
     deliveryTime: { type: "text", defaultValue: "Mañana" },
   });
 
-  const [isModalOpen, setModalOpen] = useState(false);
-
   useEffect(() => {
     if (customerData && Object.keys(customerData).length > 0) {
       form.setValues(customerData);
     }
   }, [customerData]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      navigate("/");
+    }
+  }, [cart.length, navigate]);
 
   const totalAmount = useMemo(
     () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
@@ -55,10 +68,7 @@ const Checkout = () => {
     const updatedProducts = products.map((product) => {
       const itemInCart = cart.find((cartItem) => cartItem.id === product.id);
       return itemInCart
-        ? {
-            ...product,
-            stock: Math.max(product.stock - itemInCart.quantity, 0),
-          }
+        ? { ...product, stock: Math.max(product.stock - itemInCart.quantity, 0) }
         : product;
     });
     setLocalStorageItem("products", updatedProducts);
@@ -100,8 +110,8 @@ const Checkout = () => {
     navigate,
   ]);
 
-  if (cart.length === 0){
-    navigate("/");
+  if (isLoading) {
+    return <CheckoutSkeleton />;
   }
 
   return (
@@ -112,10 +122,11 @@ const Checkout = () => {
         <CartSummary cart={cart} totalAmount={totalAmount} />
         {allFieldsFilled && <CustomerData formValues={form.values} />}
       </div>
+
       <div className={styles.bottonCheckout}>
         <Button
           className={styles.checkoutButton}
-          onClick={() => setModalOpen(true)}
+          onClick={() => setIsModalOpen(true)}
         >
           {allFieldsFilled ? "Editar datos" : "Cargar datos del cliente"}
         </Button>
@@ -134,11 +145,9 @@ const Checkout = () => {
           Proceder al Pago (${totalAmount.toFixed(0)})
         </Button>
       </div>
-      <CheckoutModal
-        isOpen={isModalOpen}
-        onClose={() => setModalOpen(false)}
-        form={form}
-      />
+
+      <CheckoutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} form={form} />
+
     </div>
   );
 };
