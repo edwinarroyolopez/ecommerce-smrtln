@@ -11,7 +11,7 @@ const shimmer = keyframes`
   100% { background-position: 200px 0; }
 `;
 
-const Skeleton = styled.div<SkeletonProps>`
+export const Skeleton = styled.div<SkeletonProps>`
   display: inline-block;
   height: ${({ height }) => height || "16px"};
   width: ${({ width }) => width || "100%"};

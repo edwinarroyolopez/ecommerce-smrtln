@@ -1,6 +1,7 @@
+import { useState, useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-// Animación más fluida
+
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -12,7 +13,7 @@ const fadeIn = keyframes`
   }
 `;
 
-export const ToastContainer = styled.div<{ type: string }>`
+const ToastContainer = styled.div<{ type: string }>`
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -49,14 +50,46 @@ export const ToastContainer = styled.div<{ type: string }>`
     `}
 `;
 
-export const Message = styled.span`
+const Message = styled.span`
   flex-grow: 1;
 `;
 
-export const CloseButton = styled.button`
+const CloseButton = styled.button`
   background: transparent;
   border: none;
   color: inherit;
   font-size: 18px;
   cursor: pointer;
 `;
+
+
+interface ToastProps {
+  message: string;
+  type?: "success" | "error" | "warning";
+  duration?: number;
+  onClose?: () => void;
+}
+
+export const Toast = ({ message, type = "success", duration = 3000, onClose }: ToastProps) => {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(false);
+      if (onClose) onClose();
+    }, duration);
+
+    return () => clearTimeout(timer);
+  }, [duration, onClose]);
+
+  if (!visible) return null;
+
+  return (
+    <ToastContainer type={type}>
+      <Message>{message}</Message>
+      <CloseButton onClick={() => setVisible(false)}>✖</CloseButton>
+    </ToastContainer>
+  );
+};
+
+export default Toast;

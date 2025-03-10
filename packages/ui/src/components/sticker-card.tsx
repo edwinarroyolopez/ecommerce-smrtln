@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import IosArrowDown from "./icons/ios-arrow-down";
-import IosArrowUp from "./icons/ios-arrow-up";
+import IosArrowDown from "../icons/ios-arrow-down";
+import IosArrowUp from "../icons/ios-arrow-up";
 import { ReactNode } from "react";
 
 interface StickerCardProps {
@@ -90,7 +90,7 @@ const Link = styled.a`
   margin-top: 8px;
 `;
 
-const StickerCard = ({
+export const StickerCard = ({
   titleTransKey,
   icon,
   color,
