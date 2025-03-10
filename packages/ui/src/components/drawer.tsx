@@ -13,7 +13,7 @@ const DrawerContainer = styled.div<{ isOpen: boolean }>`
   right: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
   width: 320px;
   height: 100vh;
-  background: white;
+  background: var(--primary-text-color);
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.15);
   transition: right 0.3s ease-in-out;
   display: flex;
@@ -26,7 +26,9 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--secondary-border-color);
+  background: var(--primary-color);
+  color: var(--primary-text-color);
 `;
 
 const Title = styled.h2`
@@ -40,12 +42,15 @@ const CloseButton = styled.button`
   border: none;
   font-size: 20px;
   cursor: pointer;
+  color: var(--primary-text-color);
 `;
 
 const Content = styled.div`
   flex-grow: 1;
   padding: 15px;
   overflow-y: auto;
+  background: var(--background-color);
+  color: var(--text-color);
 `;
 
 const Overlay = styled.div`
