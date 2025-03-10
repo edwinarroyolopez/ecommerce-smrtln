@@ -3,6 +3,8 @@ import styled from "styled-components";
 const DashboardWrapper = styled.div`
   display: grid;
   gap: 1.75rem; /* 7 */
+  margin-top: 1rem;
+  max-width: 680px;
   
   @media (min-width: 768px) {
     gap: 1.5rem; /* 6 */
