@@ -3,12 +3,16 @@
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "declaration": true,
+    "emitDeclarationOnly": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
     "baseUrl": "./",
     "paths": {
       "@components/*": ["./src/components/*"],
       "@src/*": ["./src/*"],
       "@*": ["./src/*"]
-    },
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
