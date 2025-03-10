@@ -53,7 +53,7 @@ const ErrorText = styled.span`
   text-align: left;
 `;
 
-const Input: React.FC<InputProps> = ({ label, error, ...props }) => {
+export const Input: React.FC<InputProps> = ({ label, error, ...props }) => {
   return (
     <InputWrapper>
       {label && <StyledLabel htmlFor={props.id}>{label}</StyledLabel>}
