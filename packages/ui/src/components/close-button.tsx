@@ -20,7 +20,7 @@ const StyledButton = styled.button<ButtonProps>`
 `;
 
 
-const Close = ({ children, ...props }: ButtonProps) => {
+export const CloseButton = ({ children, ...props }: ButtonProps) => {
   return (
     <StyledButton {...props}>
       {children}
@@ -28,4 +28,4 @@ const Close = ({ children, ...props }: ButtonProps) => {
   );
 };
 
-export default Close;
+export default CloseButton;

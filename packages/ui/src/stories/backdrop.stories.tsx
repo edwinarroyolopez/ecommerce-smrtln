@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Backdrop } from "../components/backdrop"; // Asegúrate de que la ruta de importación sea correcta
+import { Backdrop } from "../components/backdrop";
 
 const meta: Meta<typeof Backdrop> = {
   title: "Components/Backdrop",
