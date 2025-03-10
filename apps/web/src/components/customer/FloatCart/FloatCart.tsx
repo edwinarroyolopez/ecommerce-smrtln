@@ -1,18 +1,35 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Drawer } from "@ecommerce-smrtln/ui/index";
 import { useCartStore } from "@/store/useCartStore";
-import { Button,CloseButton } from "@ecommerce-smrtln/ui/index";
+import { Button, CloseButton } from "@ecommerce-smrtln/ui/index";
 import styles from "./FloatCart.module.css";
 
 const FloatCart = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const cart = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
 
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = cart
-    .reduce((sum, item) => sum + item.price * item.quantity, 0)
-    .toFixed(0);
+  const totalItems = useMemo(
+    () => cart.reduce((sum, item) => sum + item.quantity, 0),
+    [cart]
+  );
+
+  const totalPrice = useMemo(
+    () =>
+      cart
+        .reduce((sum, item) => sum + item.price * item.quantity, 0)
+        .toFixed(0),
+    [cart]
+  );
+
+  const handleCheckout = () => {
+    if (cart.length > 0) {
+      navigate("/checkout");
+      setIsOpen(false);
+    }
+  };
 
   return (
     <>
@@ -40,7 +57,9 @@ const FloatCart = () => {
                   <span>
                     {item.name} x <b>{item.quantity}</b>
                   </span>
-                  <span className={styles.priceItem}>${(item.price * item.quantity).toFixed(0)}</span>
+                  <span className={styles.priceItem}>
+                    ${(item.price * item.quantity).toFixed(0)}
+                  </span>
                 </div>
                 <CloseButton
                   className={styles.removeButton}
@@ -55,7 +74,9 @@ const FloatCart = () => {
           )}
         </div>
         <div className={styles.footer}>
-          <Button className={styles.checkoutButton}>Checkout</Button>
+          <Button className={styles.checkoutButton} onClick={handleCheckout}>
+            Checkout
+          </Button>
           <span className={styles.total}>${totalPrice}</span>
         </div>
       </Drawer>

@@ -28,21 +28,20 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
   const handleClose = () => {
     setAttemptedSubmit(true);
-    if (form.validate()) {
-      setAttemptedSubmit(false);
-
-      const customerData = {
-        name: form.values.name,
-        email: form.values.email,
-        contact: form.values.contact,
-        country: form.values.country,
-        shippingAddress: form.values.shippingAddress,
-        deliveryTime: form.values.deliveryTime,
-      };
-      setCustomerData(customerData);
-      onClose();
-    }
+    if (!form.validate()) return;
+  
+    setAttemptedSubmit(false);
+    const customerData = {
+      name: form.values.name,
+      email: form.values.email,
+      contact: form.values.contact,
+      country: form.values.country,
+      shippingAddress: form.values.shippingAddress,
+      deliveryTime: form.values.deliveryTime,
+    };
+    setCustomerData(customerData);
   };
+  
 
   const renderInput = (label: string, name: string) => (
     <Input
@@ -55,7 +54,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
   );
 
   return (
-    <Backdrop visible={isOpen} onClick={() => handleClose()}>
+    <Backdrop visible={isOpen} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.section}>
           <h2>1️⃣ Datos Personales</h2>

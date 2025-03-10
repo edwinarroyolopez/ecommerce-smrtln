@@ -7,7 +7,6 @@ import { Route } from "@src/types/routes";
 import { useAuthStore } from "@/store/useAuthStore";
 
 const customerRoutes: Route[] = [
-  { path: "/checkout", label: "Checkout" },
   { path: "/invoices", label: "Facturas" },
   { path: "/products", label: "Productos" },
 ];
