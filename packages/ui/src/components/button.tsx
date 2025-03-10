@@ -14,10 +14,13 @@ const StyledButton = styled.button<ButtonProps>`
   transition: all 0.1s ease-in-out;
   background: ${(props) =>
     props.variant === "secondary" ? "transparent" : "var(--primary-color)"};
+
   color: ${(props) =>
     props.variant === "secondary" ? "var(--primary-color)" : "white"};
+  
   border: 1px solid ${(props) =>
     props.variant === "secondary" ? "var(--primary-color)" : "var(--primary-text-color)"};
+  
   outline: none;
 
   &:hover {
