@@ -14,10 +14,10 @@ const InvoicesTable: React.FC<InvoicesTableProps> = ({ invoices, onInvoiceSelect
         <thead>
           <tr>
             <Th width="15%">N°</Th>
-            <Th width="25%" align="center" className={styles.hideOnSmallScreen}>
+            <Th width="25%" align="center" className={styles.hideOnXM}>
               <CustomerIcon style={{ width: "32px", height: "32px" }} primary="#555" secondary="#212529" />
             </Th>
-            <Th align="center">
+            <Th align="center" className={styles.hideOnXS}>
               <CalendarIcon style={{ width: "32px", height: "32px" }} />
             </Th>
             <Th align="center">$</Th>
@@ -28,11 +28,11 @@ const InvoicesTable: React.FC<InvoicesTableProps> = ({ invoices, onInvoiceSelect
           {invoices.map((invoice) => (
             <tr key={invoice.id}>
               <Td width="15%">{invoice.id}</Td>
-              <Td width="25%" className={styles.hideOnSmallScreen}>
+              <Td width="25%" className={styles.hideOnXM}>
                 {invoice.customer.name} <br />
                 <small>{invoice.customer.email}</small>
               </Td>
-              <Td align="center">
+              <Td align="center" className={styles.hideOnXS}>
                 {new Date(invoice.date).toISOString().split("T")[0].replace(/-/g, "/")}
               </Td>
               <Td align="center">{invoice.total}</Td>
