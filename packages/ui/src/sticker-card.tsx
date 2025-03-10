@@ -90,7 +90,6 @@ const Link = styled.a`
 
 const StickerCard = ({
   titleTransKey,
-  subtitleTransKey,
   icon,
   color,
   price,
