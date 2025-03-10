@@ -6,6 +6,10 @@ const DashboardWrapper = styled.div`
   margin-top: 1rem;
   max-width: 680px;
   
+  @media (max-width: 440px) {
+    max-width: 320px;
+  }
+
   @media (min-width: 768px) {
     gap: 1.5rem; /* 6 */
   }
@@ -67,6 +71,7 @@ const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1.25rem;
+  justify-items: center;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);

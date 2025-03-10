@@ -14,38 +14,66 @@ const InvoiceModal: React.FC<InvoiceModalProps> = ({ invoice, isOpen, onClose })
   return (
     <Backdrop visible={isOpen} onClick={onClose}>
       <div className={styles.invoiceModal} onClick={(e) => e.stopPropagation()}>
-        <h2 className={styles.invoiceTitle}>Detalle de la Factura</h2>
-        <p className={styles.invoiceDetail}><strong>ID:</strong> {invoice.id}</p>
-        <p className={styles.invoiceDetail}><strong>Fecha:</strong> {invoice.date.split("T")[0]}</p>
-        <p className={styles.invoiceDetail}><strong>Cliente:</strong> {invoice.customer.name}</p>
-        <p className={styles.invoiceDetail}><strong>Email:</strong> {invoice.customer.email}</p>
-        <p className={styles.invoiceDetail}><strong>Dirección:</strong> {invoice.customer.shippingAddress}</p>
-        <p className={styles.invoiceDetail}><strong>Horario de Entrega:</strong> {invoice.customer.deliveryTime}</p>
+        <header className={styles.header}>
+          <h2>Detalle de la Factura</h2>
+        </header>
 
-        <div className={styles.invoiceProducts}>
-          <h3>Productos</h3>
-          {invoice.items.map((item) => (
-            <div key={item.id} className={styles.invoiceItem}>
-              <img
-                src={item.thumbnail}
-                alt={item.name}
-                className={styles.invoiceThumbnail}
-              />
-              <div className={styles.invoiceItemDetails}>
-                <span>
-                  {item.name} x <b>{item.quantity}</b>
-                </span>
-                <span className={styles.invoicePrice}>
-                  ${(item.price * item.quantity).toFixed(0)}
-                </span>
-              </div>
+        <section className={styles.invoiceDetails}>
+          <dl>
+            <div className={styles.detailRow}>
+              <dt>N°:</dt>
+              <dd>{invoice.id}</dd>
             </div>
-          ))}
-        </div>
+            <div className={styles.detailRow}>
+              <dt>Fecha:</dt>
+              <dd>{invoice.date.split("T")[0]}</dd>
+            </div>
+            <div className={styles.detailRow}>
+              <dt>Cliente:</dt>
+              <dd>{invoice.customer.name}</dd>
+            </div>
+            <div className={styles.detailRow}>
+              <dt>Email:</dt>
+              <dd className={styles.email}>{invoice.customer.email}</dd>
+            </div>
+            <div className={styles.detailRow}>
+              <dt>Dirección:</dt>
+              <dd>{invoice.customer.shippingAddress}</dd>
+            </div>
+            <div className={styles.detailRow}>
+              <dt>Entrega:</dt>
+              <dd>{invoice.customer.deliveryTime}</dd>
+            </div>
+          </dl>
+        </section>
 
-        <p className={styles.invoiceTotal}>Total: $ {invoice.total.toFixed(0)}</p>
+        <section className={styles.invoiceProducts}>
+          <h3>Productos</h3>
+          <ul>
+            {invoice.items.map((item) => (
+              <li key={item.id} className={styles.invoiceItem}>
+                <img
+                  src={item.thumbnail}
+                  alt={item.name}
+                  className={styles.invoiceThumbnail}
+                />
+                <div className={styles.invoiceItemDetails}>
+                  <span>{item.name} <b>x {item.quantity}</b></span>
+                  <span className={styles.invoicePrice}>
+                    ${(item.price * item.quantity).toFixed(0)}
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-        <Button className={styles.closeButton} onClick={onClose}>Cerrar</Button>
+        <footer className={styles.footer}>
+          <div className={styles.invoiceTotal}>
+            <strong>Total:</strong> $ {invoice.total.toFixed(0)}
+          </div>
+          <Button className={styles.closeButton} onClick={onClose}>Cerrar</Button>
+        </footer>
       </div>
     </Backdrop>
   );

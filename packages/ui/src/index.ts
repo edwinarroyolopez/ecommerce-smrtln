@@ -22,7 +22,7 @@ export { default as ShoppingIcon } from "./icons/shopping-icon";
 export { default as CustomerIcon } from "./icons/customer-icon";
 export { default as OrderProcessedIcon } from "./icons/order-processed-icon";
 
-
+export { default as Skeleton } from "./skeleton";
 
 
 export { DashboardWrapper, SummaryCard, Header, Title, ContentGrid } from "./dashboard-wrapper";

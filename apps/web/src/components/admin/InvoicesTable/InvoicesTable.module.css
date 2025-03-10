@@ -1,5 +1,5 @@
 @media (max-width: 768px) {
-    .hideOnSmallScreen {
+    .hideOnXM {
       display: none;
     }
     .tableContainer{
@@ -7,3 +7,9 @@
     }
   }
   
+  
+@media (max-width: 440px) {
+  .hideOnXS {
+    display: none;
+  }
+  }
