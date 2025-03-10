@@ -28,6 +28,7 @@ const CardContainer = styled.div<{ color?: string }>`
   background: #fff;
   padding: 16px;
   border-radius: 8px;
+  max-width: 300px;
 `;
 
 const Header = styled.div`

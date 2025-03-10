@@ -1,3 +1,4 @@
+import styles from "./dashboard.module.css";
 import {
   StickerCard,
   EaringIcon,
@@ -10,11 +11,10 @@ import {
   Title,
   ContentGrid,
 } from "@ecommerce-smrtln/ui/index";
-
-import { useInvoiceStore } from "@/store/useInvoiceStore"; 
+import { useInvoiceStore } from "@/store/useInvoiceStore";
+import InvoicesTable from "@components/admin/InvoicesTable/InvoicesTable";
 
 const Dashboard = () => {
-  
   const { invoices } = useInvoiceStore();
   const uniqueUsers = new Set(invoices.map((invoice) => invoice.username)).size;
   const totalProductsSold = invoices.reduce(
@@ -34,7 +34,10 @@ const Dashboard = () => {
               titleTransKey="Los ingresos totales"
               icon={<EaringIcon style={{ width: "32px", height: "32px" }} />}
               color="#1EAE98"
-              price={invoices.reduce((total, invoice) => total + (invoice.total ?? 0), 0)}
+              price={invoices.reduce(
+                (total, invoice) => total + (invoice.total ?? 0),
+                0
+              )}
             />
             <StickerCard
               titleTransKey="Facturas totales"
@@ -56,6 +59,17 @@ const Dashboard = () => {
               color="#EA9453"
               price={totalProductsSold}
             />
+          </ContentGrid>
+        </SummaryCard>
+      </DashboardWrapper>
+
+      <DashboardWrapper>
+        <SummaryCard>
+          <Header>
+            <Title>Facturas</Title>
+          </Header>
+          <ContentGrid className={styles.tableContainer}>
+            <InvoicesTable invoices={invoices} />
           </ContentGrid>
         </SummaryCard>
       </DashboardWrapper>
