@@ -90,7 +90,7 @@ const Link = styled.a`
   margin-top: 8px;
 `;
 
-const StickerCard = ({
+export const StickerCard = ({
   titleTransKey,
   icon,
   color,
