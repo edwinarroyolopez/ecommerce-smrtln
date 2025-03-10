@@ -1,9 +1,8 @@
 
 .customerDataContainer {
-    background: #f9f9f9;
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
     margin-bottom: 1rem;
   }
   
@@ -35,5 +34,9 @@
   .value {
     color: #222;
     font-weight: normal;
+  }
+
+  @media (max-width: 480px){
+    .label{ display: none;}
   }
   

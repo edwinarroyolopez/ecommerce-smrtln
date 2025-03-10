@@ -23,7 +23,6 @@ const App = () => {
   const { isAuthenticated } = useAuthStore();
 
   return (
-    <div className="app">
       <Sentry.ErrorBoundary fallback={<h1>Something went wrong</h1>}>
         <Router>
           <Suspense fallback={<Loading />}>
@@ -40,7 +39,6 @@ const App = () => {
         </Router>
         <ToastContainer />
       </Sentry.ErrorBoundary>
-    </div>
   );
 };
 

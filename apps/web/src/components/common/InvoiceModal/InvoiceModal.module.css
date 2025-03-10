@@ -1,0 +1,76 @@
+.invoiceModal {
+  border: solid 4px #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 500px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.invoiceTitle {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #333;
+  text-align: center;
+}
+
+.invoiceDetail {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.invoiceProducts {
+  border: solid 4px #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.invoiceItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.invoiceThumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.invoiceItemDetails {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.invoicePrice {
+  font-weight: bold;
+  color: var(--primary-color);
+  padding-left: 5px;
+}
+
+.invoiceTotal {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 15px;
+}
+
+.closeButton {
+  margin-top: 20px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.closeButton:hover {
+  background-color: #c9302c;
+}
