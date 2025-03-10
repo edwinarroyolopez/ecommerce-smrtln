@@ -16,6 +16,7 @@ import { useInvoiceStore } from "@/store/useInvoiceStore";
 import InvoicesTable from "@components/admin/InvoicesTable/InvoicesTable";
 import InvoiceModal from "@components/common/InvoiceModal/InvoiceModal";
 import { Invoice } from "@src/types/invoice";
+import ProductsSoldTable from "@components/admin/ProductsSoldTable/ProductsSoldTable";
 
 const Dashboard = () => {
   const [selectedInvoice, setSelectedInvoice] = useState<Invoice | null>(null);
@@ -27,6 +28,30 @@ const Dashboard = () => {
     (total, invoice) => total + invoice.items.length,
     0
   );
+
+  // Calcular los productos más vendidos
+  const productSalesMap = new Map<
+    string,
+    { name: string; quantity: number; thumbnail?: string }
+  >();
+
+  invoices.forEach((invoice) => {
+    invoice.items.forEach((item) => {
+      if (productSalesMap.has(item.id.toString())) {
+        productSalesMap.get(item.id.toString())!.quantity += item.quantity;
+      } else {
+        productSalesMap.set(item.id.toString(), {
+          name: item.name,
+          quantity: item.quantity,
+          thumbnail: item.thumbnail,
+        });
+      }
+    });
+  });
+
+  const topSellingProducts = Array.from(productSalesMap.values())
+    .sort((a, b) => b.quantity - a.quantity)
+    .slice(0, 5); // Tomamos los 5 más vendidos
 
   return (
     <div>
@@ -85,6 +110,16 @@ const Dashboard = () => {
           </ContentGrid>
         </SummaryCard>
       </DashboardWrapper>
+
+      <DashboardWrapper>
+        <SummaryCard>
+          <Header>
+            <Title>Productos más vendidos</Title>
+          </Header>
+          <ProductsSoldTable products={topSellingProducts} />
+        </SummaryCard>
+      </DashboardWrapper>
+
       <InvoiceModal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
