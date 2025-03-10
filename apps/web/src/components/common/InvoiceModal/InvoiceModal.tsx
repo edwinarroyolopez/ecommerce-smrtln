@@ -21,7 +21,7 @@ const InvoiceModal: React.FC<InvoiceModalProps> = ({ invoice, isOpen, onClose })
         <section className={styles.invoiceDetails}>
           <dl>
             <div className={styles.detailRow}>
-              <dt>ID:</dt>
+              <dt>N°:</dt>
               <dd>{invoice.id}</dd>
             </div>
             <div className={styles.detailRow}>
