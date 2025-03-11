@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext .js,.ts,.tsx --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "calculate": "calculate ./data/invoices.json"
   },
   "dependencies": {
+    "@repo/calculations": "^1.0.0",
     "@sentry/react": "^9.5.0",
     "@sentry/tracing": "^7.120.3",
     "ecommerce-smrtln-ui": "^1.0.2",
