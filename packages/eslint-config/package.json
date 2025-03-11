@@ -2,5 +2,8 @@
   "name": "@repo/eslint-config",
   "version": "1.0.0",
   "type": "module",
-  "main": "eslint.config.mjs"
+  "main": "eslint.config.mjs",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.26.1"
+  }
 }
