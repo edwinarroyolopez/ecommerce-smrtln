@@ -63,3 +63,10 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 # Features
 - ` auth
 
+# UI Library
+[Ecommerce UI Library](https://ecommerce-smrtln-ui-library.netlify.app)
+
+[Npm:  Ecommerce UI Library](https://www.npmjs.com/package/ecommerce-smrtln-ui)
+
+# UI Calculations
+[Npm:  Ecommerce UI Library](https://www.npmjs.com/package/calculations-ecommerce-smrtln)
