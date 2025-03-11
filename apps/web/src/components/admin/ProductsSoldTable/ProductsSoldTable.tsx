@@ -14,39 +14,43 @@ interface ProductsSoldTableProps {
 const ProductsSoldTable: React.FC<ProductsSoldTableProps> = ({ products }) => {
   return (
     <TableContainer>
-      <Table>
-        <thead>
-          <tr>
-            <Th align="left"></Th>
-            <Th>Producto</Th>
-            <Th align="center">N° Vendidos</Th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.length > 0 ? products.map((product, index) => (
-            <tr key={index}>
-              <Td align="left">
-                {product.thumbnail ? (
-                  <img
-                    src={product.thumbnail}
-                    alt={product.name}
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      objectFit: "cover",
-                      borderRadius: "8px",
-                    }}
-                  />
-                ) : (
-                  "Sin imagen"
-                )}
-              </Td>
-              <Td>{product.name}</Td>
-              <Td align="center">{product.quantity}</Td>
+      {products.length > 0 ? (
+        <Table>
+          <thead>
+            <tr>
+              <Th align="left"></Th>
+              <Th>Producto</Th>
+              <Th align="center">N° Vendidos</Th>
             </tr>
-          )) : ("No se han vendido productos aún")}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {products.map((product, index) => (
+              <tr key={index}>
+                <Td align="left">
+                  {product.thumbnail ? (
+                    <img
+                      src={product.thumbnail}
+                      alt={product.name}
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                      }}
+                    />
+                  ) : (
+                    "Sin imagen"
+                  )}
+                </Td>
+                <Td>{product.name}</Td>
+                <Td align="center">{product.quantity}</Td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+        "No se han vendido productos aún"
+      )}
     </TableContainer>
   );
 };
