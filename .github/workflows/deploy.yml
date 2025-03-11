@@ -24,9 +24,6 @@ jobs:
       - name: Build project
         run: yarn build
 
-      - name: Debug build output
-        run: ls -la web/dist || echo "ERROR: No se encontró web/dist"
-
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
