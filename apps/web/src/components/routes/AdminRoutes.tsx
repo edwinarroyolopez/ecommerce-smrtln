@@ -15,8 +15,8 @@ const AdminRoutes = () => {
   return (
     <Routes>
       <Route element={<RoleProtectedRoute allowedRole="admin" redirectTo="/" />}>
-      <Route index element={<Dashboard />} />
         <Route path="/" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
           {adminRoutes.map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
           ))}
