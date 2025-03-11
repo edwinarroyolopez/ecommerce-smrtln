@@ -1,0 +1,48 @@
+[
+    {
+      "id": 1,
+      "customer": {
+        "name": "Juan Pérez",
+        "email": "juan.perez@example.com",
+        "username": "juanp"
+      },
+      "date": "2025-03-10",
+      "total": 150.75,
+      "items": [
+        {
+          "id": 101,
+          "name": "Laptop ASUS",
+          "quantity": 1,
+          "price": 150.75,
+          "thumbnail": "https://example.com/laptop-asus.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "customer": {
+        "name": "María Gómez",
+        "email": "maria.gomez@example.com",
+        "username": "mariag"
+      },
+      "date": "2025-03-09",
+      "total": 230.50,
+      "items": [
+        {
+          "id": 102,
+          "name": "Mouse Logitech",
+          "quantity": 2,
+          "price": 30.50,
+          "thumbnail": "https://example.com/mouse-logitech.jpg"
+        },
+        {
+          "id": 103,
+          "name": "Teclado Mecánico",
+          "quantity": 1,
+          "price": 169.50,
+          "thumbnail": "https://example.com/teclado-mecanico.jpg"
+        }
+      ]
+    }
+  ]
+  

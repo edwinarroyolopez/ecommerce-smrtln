@@ -1,6 +1,6 @@
 {
   "name": "ecommerce-smrtln-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -25,7 +25,8 @@
     "build-storybook": "storybook build",
     "deploy-storybook": "storybook build && gh-pages -d storybook-static",
     "build": "tsc && cp ./src/styles.css ./dist/styles.css",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",

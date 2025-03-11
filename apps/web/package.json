@@ -13,8 +13,8 @@
   "dependencies": {
     "@sentry/react": "^9.5.0",
     "@sentry/tracing": "^7.120.3",
-    "calculations-ecommerce-smrtln": "^1.0.5",
-    "ecommerce-smrtln-ui": "^1.0.2",
+    "calculations-ecommerce-smrtln": "^1.0.6",
+    "ecommerce-smrtln-ui": "^1.0.3",
     "loglevel": "^1.9.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,6 +1,6 @@
 {
     "name": "calculations-ecommerce-smrtln",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "main": "index.ts",
     "bin": {
         "calculate": "bin/calculate.js"
@@ -14,7 +14,7 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "tsc",
-        "prepare": "chmod +x bin/calculate.js"
+        "prepare": "npm run build && chmod +x bin/calculate.js"
     },
     
     "devDependencies": {
