@@ -45,7 +45,9 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 
 # Publics Links
-    Puedes acceder al link público aqui [Ecommerce Smrtln](http://ecommerce-smrtln.s3-website.us-east-2.amazonaws.com/) 
+Puedes acceder al link público aqui [Ecommerce Smrtln - AWS](http://ecommerce-smrtln.s3-website.us-east-2.amazonaws.com/) 
+Puedes acceder al link público aqui [Ecommerce Smrtln - Netlify](https://ecommerce-smrtln.netlify.app/) 
+
 
 # Usuarios
 ``` role: ADMIN
