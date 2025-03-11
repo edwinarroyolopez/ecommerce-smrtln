@@ -23,7 +23,7 @@ const ProductsSoldTable: React.FC<ProductsSoldTableProps> = ({ products }) => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product, index) => (
+          {products.length > 0 ? products.map((product, index) => (
             <tr key={index}>
               <Td align="left">
                 {product.thumbnail ? (
@@ -44,7 +44,7 @@ const ProductsSoldTable: React.FC<ProductsSoldTableProps> = ({ products }) => {
               <Td>{product.name}</Td>
               <Td align="center">{product.quantity}</Td>
             </tr>
-          ))}
+          )) : ("No se han vendido productos aún")}
         </tbody>
       </Table>
     </TableContainer>

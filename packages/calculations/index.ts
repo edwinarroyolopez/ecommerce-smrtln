@@ -1,4 +1,15 @@
 export function getInvoiceSummary(invoices: any[]) {
+
+    if (invoices.length === 0) {
+        return {
+            totalIncome: 0,
+            totalInvoices: 0,
+            uniqueUsers: 0,
+            totalProductsSold: 0,
+            topSellingProducts: []
+        };
+    }
+
     const totalIncome = invoices.reduce((sum, invoice) => sum + (invoice.total ?? 0), 0);
     const totalInvoices = invoices.length;
     const uniqueUsers = new Set(invoices.map((invoice) => invoice.username)).size;
