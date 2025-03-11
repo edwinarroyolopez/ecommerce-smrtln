@@ -3,7 +3,7 @@ import eslintParserTs from "@typescript-eslint/parser";
 
 export default [
   {
-    ignores: ["node_modules", "dist", "packages/ui/storybook-static"],
+    ignores: ["node_modules", "dist", "packages/ui/storybook-static", "**/*.test.ts", "**/*.test.tsx", "tests/**"],
   },
   {
     languageOptions: {

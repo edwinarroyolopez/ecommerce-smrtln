@@ -16,7 +16,7 @@ const CustomerLayout = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="customer-layout">
       <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} routes={customerRoutes} title={"Customer Panel"} />
       <Topbar title={`Dashboard: ${user?.username}`} onMenuClick={() => setSidebarOpen(!isSidebarOpen)} />
       <div className={styles.content}>

@@ -13,7 +13,7 @@ const AdminLayout = () => {
     <div className={styles.container}>
       <Topbar title={`Dashboard: ${user?.username}`} onMenuClick={() => setSidebarOpen(!isSidebarOpen)} />
       <div className={styles.content}>
-        <div className={styles.mainContent}>
+        <div className={styles.mainContent}  data-testid="test-outlet">
           <Outlet />
         </div>
       </div>
