@@ -1,6 +1,6 @@
 {
     "name": "calculations-ecommerce-smrtln",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "main": "index.ts",
     "bin": {
         "calculate": "bin/calculate.js"
