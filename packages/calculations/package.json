@@ -1,0 +1,17 @@
+{
+    "name": "@repo/calculations",
+    "version": "1.0.0",
+    "main": "index.ts",
+    "bin": {
+      "calculate": "./bin/calculate.js"
+    },
+    "scripts": {
+      "build": "tsc",
+      "prepare": "chmod +x bin/calculate.js"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "typescript": "^5.0.0"
+    }
+  }
+  
