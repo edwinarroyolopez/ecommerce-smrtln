@@ -1,3 +1,4 @@
+import "ecommerce-smrtln-ui/styles.css";
 import * as Sentry from "@sentry/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
