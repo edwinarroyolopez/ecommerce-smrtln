@@ -1,4 +1,3 @@
-// src/components/CheckoutModal.tsx
 import { Button, Input, Backdrop } from "ecommerce-smrtln-ui";
 import styles from "./CheckoutModal.module.css";
 import { DELIVERY_TIMES } from "@/utils/constants";
