@@ -531,7 +531,7 @@
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.28.tgz"
   integrity sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==
 
-"@repo/calculations@^1.0.0", "@repo/calculations@file:/home/zeroedcode/data-ed/wear-ecommerce/ecommerce-smrtln/packages/calculations":
+"@repo/calculations@^1.0.0":
   version "1.0.0"
   resolved "file:packages/calculations"
 
@@ -1574,6 +1574,10 @@ cac@^6.7.14:
   version "6.7.14"
   resolved "https://registry.npmjs.org/cac/-/cac-6.7.14.tgz"
   integrity sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==
+
+"calculations@file:/home/zeroedcode/data-ed/wear-ecommerce/ecommerce-smrtln/packages/calculations":
+  version "1.0.0"
+  resolved "file:packages/calculations"
 
 call-bind-apply-helpers@^1.0.0, call-bind-apply-helpers@^1.0.1, call-bind-apply-helpers@^1.0.2:
   version "1.0.2"
@@ -4797,6 +4801,7 @@ wcwidth@^1.0.1:
   version "0.0.0"
   resolved "file:apps/web"
   dependencies:
+    "@repo/calculations" "^1.0.0"
     "@sentry/react" "^9.5.0"
     "@sentry/tracing" "^7.120.3"
     ecommerce-smrtln-ui "^1.0.2"
