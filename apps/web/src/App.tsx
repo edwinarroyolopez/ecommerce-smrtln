@@ -1,7 +1,6 @@
 import * as Sentry from "@sentry/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import "ecommerce-smrtln-ui/styles.css";
 import "./App.css";
 
 import { SENTRY_DNS } from "@/utils/constants";

@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "declarationMap": true, 
+    "module": "ESNext", 
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"], 
+    "strict": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "declaration": true,
@@ -14,6 +19,6 @@
       "@*": ["./src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src","./src/styles.css"],
   "exclude": ["node_modules", "dist"]
 }

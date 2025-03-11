@@ -12,6 +12,7 @@
     },
     "./styles.css": "./dist/styles.css"
   },
+  "files": ["dist", "dist/styles.css"],
   "types": "dist/index.d.ts",
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -20,8 +21,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "deploy-storybook": "storybook build && gh-pages -d storybook-static",
-    "build": "tsc",
-    "prepublishOnly": "tsc"
+    "build": "tsc && cp ./src/styles.css ./dist/styles.css",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
