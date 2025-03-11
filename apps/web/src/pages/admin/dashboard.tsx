@@ -18,7 +18,7 @@ import InvoiceModal from "@components/common/InvoiceModal/InvoiceModal";
 import { Invoice } from "@src/types/invoice";
 import ProductsSoldTable from "@components/admin/ProductsSoldTable/ProductsSoldTable";
 import DashboardSkeleton from "@components/admin/DashboardSkeleton/DashboardSkeleton";
-import { getInvoiceSummary } from "@repo/calculations";
+import { getInvoiceSummary } from "calculations-ecommerce-smrtln";
 
 
 const Dashboard = () => {
@@ -41,7 +41,7 @@ const Dashboard = () => {
   }
 
   const { totalIncome, totalInvoices, uniqueUsers, totalProductsSold, topSellingProducts } = getInvoiceSummary(invoices);
-  
+
   return (
     <div>
       <DashboardWrapper>

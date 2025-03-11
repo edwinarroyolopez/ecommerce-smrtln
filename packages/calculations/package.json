@@ -1,17 +1,27 @@
 {
-    "name": "@repo/calculations",
-    "version": "1.0.0",
+    "name": "calculations-ecommerce-smrtln",
+    "version": "1.0.1",
     "main": "index.ts",
     "bin": {
-      "calculate": "./bin/calculate.js"
+        "calculate": "bin/calculate.js"
     },
     "scripts": {
-      "build": "tsc",
-      "prepare": "chmod +x bin/calculate.js"
+        "build": "tsc",
+        "prepare": "chmod +x bin/calculate.js"
     },
-    "dependencies": {},
     "devDependencies": {
-      "typescript": "^5.0.0"
-    }
-  }
-  
+        "typescript": "^5.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/edwinarroyolopez/ecommerce-smrtln.git"
+      },
+    "keywords": [],
+    "author": "Edwin Arroyo López",
+    "license": "MIT",
+    "description": "Librería para realizar cálculos matemáticos",
+    "bugs": {
+        "url": "https://github.com/edwinarroyolopez/ecommerce-smrtln/issues"
+      },
+      "homepage": "https://github.com/edwinarroyolopez/ecommerce-smrtln/packages/calculations#readme"
+}
