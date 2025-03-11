@@ -8,11 +8,31 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext .js,.ts,.tsx --fix",
     "preview": "vite preview",
-    "calculate": "calculate ./data/invoices.json"
+    "calculate": "calculate ./data/invoices.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1",
+      "^@components/(.*)$": "<rootDir>/src/components/$1",
+      "^@store/(.*)$": "<rootDir>/src/store/$1"
+    },
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
   },
   "dependencies": {
     "@sentry/react": "^9.5.0",
     "@sentry/tracing": "^7.120.3",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
     "axios": "^1.8.2",
     "calculations-ecommerce-smrtln": "^1.0.6",
     "ecommerce-smrtln-ui": "^1.0.3",
