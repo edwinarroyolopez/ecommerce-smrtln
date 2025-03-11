@@ -76,10 +76,6 @@ const ContentGrid = styled.div`
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (min-width: 1280px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
 `;
 
 export { DashboardWrapper, SummaryCard, Header, Title, ContentGrid };
