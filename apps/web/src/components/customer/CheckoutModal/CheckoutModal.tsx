@@ -26,8 +26,6 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
 }) => {
   const setCustomerData = useAuthStore((state) => state.setCustomerData);
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
-  console.log("CheckoutModal");
-  console.log("isOpen", isOpen);
 
   const getError = (field: string) =>
     attemptedSubmit && form.errors[field] ? form.errors[field] : undefined;

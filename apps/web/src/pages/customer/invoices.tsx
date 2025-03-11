@@ -18,9 +18,7 @@ const Invoices = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (invoices.length > 0) {
         setIsLoading(false);
-      }
     }, 2000); // Simula carga de 2 segundos
   }, [invoices]);
 
