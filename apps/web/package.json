@@ -11,9 +11,9 @@
     "calculate": "calculate ./data/invoices.json"
   },
   "dependencies": {
-    "calculations-ecommerce-smrtln": "^1.0.5",
     "@sentry/react": "^9.5.0",
     "@sentry/tracing": "^7.120.3",
+    "calculations-ecommerce-smrtln": "^1.0.5",
     "ecommerce-smrtln-ui": "^1.0.2",
     "loglevel": "^1.9.2",
     "react": "^19.0.0",
