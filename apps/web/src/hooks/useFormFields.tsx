@@ -18,7 +18,7 @@ const useFormFields = (fieldsConfig: Record<string, FieldConfig>) => {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setValues((prev) => ({ ...prev, [name]: value }));
     if (fieldsConfig[name]?.required && !value.trim()) {

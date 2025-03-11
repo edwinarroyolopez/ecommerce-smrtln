@@ -13,11 +13,13 @@
   "dependencies": {
     "@sentry/react": "^9.5.0",
     "@sentry/tracing": "^7.120.3",
+    "axios": "^1.8.2",
     "calculations-ecommerce-smrtln": "^1.0.6",
     "ecommerce-smrtln-ui": "^1.0.3",
     "loglevel": "^1.9.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^7.3.0",
     "zustand": "^5.0.3"
   },
