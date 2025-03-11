@@ -96,7 +96,7 @@ const Checkout = () => {
       },
     };
 
-    addInvoice(newInvoicse);
+    addInvoice(newInvoice);
     clearCart();
     navigate("/confirmation");
   }, [
