@@ -65,3 +65,14 @@
     background: var(--primary-color-hover);
     color: #fff;
   }
+
+  @media (max-width: 440px) {
+    .section{
+      max-width: 300px;
+    }
+
+    .deliveryTimes{
+      gap: 4px;
+    }
+  }
+  

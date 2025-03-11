@@ -2,6 +2,7 @@ import "ecommerce-smrtln-ui/styles.css";
 import * as Sentry from "@sentry/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import { QueryClient, QueryClientProvider } from 'react-query';
 import "./App.css";
 
 import { SENTRY_DNS } from "@/utils/constants";
@@ -19,10 +20,13 @@ Sentry.init({
   dsn: SENTRY_DNS,
 });
 
+const queryClient = new QueryClient();
+
 const App = () => {
   const { isAuthenticated } = useAuthStore();
 
   return (
+    <QueryClientProvider client={queryClient}>
       <Sentry.ErrorBoundary fallback={<h1>Something went wrong</h1>}>
         <Router>
           <Suspense fallback={<Loading />}>
@@ -39,6 +43,7 @@ const App = () => {
         </Router>
         <ToastContainer />
       </Sentry.ErrorBoundary>
+    </QueryClientProvider> 
   );
 };
 

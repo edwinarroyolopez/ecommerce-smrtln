@@ -42,3 +42,24 @@ This repo includes the following packages/apps:
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+
+# Publics Links
+    Puedes acceder al link público aqui [Ecommerce Smrtln](http://ecommerce-smrtln.s3-website.us-east-2.amazonaws.com/) 
+
+# Usuarios
+``` role: ADMIN
+    username: admin
+    pass: anywords
+    admin -> con este usuario puedes acceder al dashboard: todas las métricas
+```
+
+``` role: CUSTOMER 
+    username: anyword -> puedes colocar cualquier nombre de usuario ej: leonel.messi
+    pass: anywords
+    customer -> con este usuario puedes hacer compras y ver facturas
+```
+
+# Features
+- ` auth
+
