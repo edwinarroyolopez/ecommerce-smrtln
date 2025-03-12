@@ -528,9 +528,6 @@ Para mantener la seguridad y evitar exponer credenciales, las siguientes variabl
 Con este flujo de trabajo, la aplicación se despliega automáticamente en S3 y se garantiza que los usuarios siempre accedan a la última versión del sitio.
 
 
-Aquí tienes el archivo en formato Markdown para que puedas copiarlo y pegarlo en tu documentación:  
-
-```md
 # Observabilidad con Sentry en la Aplicación
 
 ## Sentry APM
