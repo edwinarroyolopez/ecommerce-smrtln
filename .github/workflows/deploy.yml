@@ -27,14 +27,19 @@ jobs:
       - name: Unit test
         run: npm run test:coverage
 
-      - name: Configure AWS CLI
-        run: |
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws configure set region ${{ secrets.AWS_REGION }}
-          
-      - name: Sync files to S3
-        run: aws s3 sync ./app/web/dist s3://ecommerce-smrtln --acl public-read
+      - name: List files (debugging)
+        run: ls -R ./
+
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          source_dir: "./app/web/dist"
 
       - name: Invalidate CloudFront cache
         run: |
