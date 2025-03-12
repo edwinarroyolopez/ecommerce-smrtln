@@ -37,7 +37,7 @@
     - [Sistema de Notificaciones (Toasts)](#sistema-de-notificaciones-toasts)
 16. [CI/CD: Deploy en AWS S3](#cicd-deploy-en-aws-s3)
 17. [Sentry APM](#sentry-apm)
-
+18. [Pruebas Unitarias y Cobertura](#pruebas-unitarias-y-cobertura)
 ---
 
 # Ecommerce Smrtln
@@ -597,3 +597,45 @@ Puedes consultar los errores capturados en Sentry en el siguiente enlace:
 ---
 
 Con esta implementación, la aplicación tiene un monitoreo continuo que ayuda a mejorar su estabilidad y experiencia de usuario. 
+
+## Pruebas unitarias y Cobertura
+
+### Librerías utilizadas
+Este proyecto utiliza las siguientes librerías para pruebas, calidad del código y ejecución:
+
+| Librería                          | Descripción |
+|-----------------------------------|-------------|
+| `vitest`                          | Framework de pruebas unitarias basado en Jest. |
+| `@testing-library/react`          | Utilidades para probar componentes de React. |
+| `@testing-library/jest-dom`       | Extensiones para aserciones con Jest en el DOM. |
+| `@testing-library/user-event`     | Simulación de interacciones del usuario en pruebas. |
+| `jsdom`                           | Entorno de ejecución simulado para pruebas en Node.js. |
+| `eslint`                          | Linter para mantener buenas prácticas en el código. |
+| `typescript-eslint`               | Integración de ESLint con TypeScript. |
+| `@repo/eslint-config`             | Configuración personalizada de ESLint para el repositorio. |
+
+### Comandos para ejecutar las pruebas
+
+| Comando              | Descripción |
+|----------------------|-------------|
+| `npm run test`      | Ejecuta todas las pruebas del proyecto. |
+| `npm run test:watch` | Ejecuta las pruebas en modo de observación (watch mode). |
+| `npm run test:coverage` | Genera un reporte de cobertura de código. |
+
+### Reporte de Cobertura
+A continuación, se muestra un resumen de la cobertura de pruebas en el proyecto:
+
+| Archivo / Carpeta                           | % Stmts | % Branch | % Funcs | % Lines |
+|---------------------------------------------|--------|---------|--------|--------|
+| `src/`                                      | 0%     | 0%      | 0%     | 0%     |
+| `src/components/admin/DashboardSkeleton/`   | 0%     | 0%      | 0%     | 0%     |
+| `src/components/admin/InvoicesTable/`       | 0%     | 0%      | 0%     | 0%     |
+| `src/components/common/Sidebar.tsx`        | 100%   | 66.66%  | 100%   | 100%   |
+| `src/components/common/Topbar.tsx`         | 100%   | 100%    | 100%   | 100%   |
+| `src/hooks/`                                | 0%     | 0%      | 0%     | 0%     |
+| `src/store/useAuthStore.ts`                 | 100%   | 100%    | 100%   | 100%   |
+| `src/store/useInvoiceStore.ts`              | 100%   | 100%    | 100%   | 100%   |
+| `src/utils/`                                | 81.13% | 50%     | 66.66% | 81.13% |
+
+> **Nota:** La cobertura general es del **22.6% de declaraciones, 43.28% de branches, 35.08% de funciones y 22.6% de líneas de código**. Se recomienda aumentar la cobertura de pruebas en los archivos con 0% de cobertura.
+
