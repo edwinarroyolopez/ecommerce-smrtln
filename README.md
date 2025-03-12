@@ -527,6 +527,8 @@ Para mantener la seguridad y evitar exponer credenciales, las siguientes variabl
 
 Con este flujo de trabajo, la aplicación se despliega automáticamente en S3 y se garantiza que los usuarios siempre accedan a la última versión del sitio.
 
+[`Histórico de pipelines`](https://github.com/edwinarroyolopez/ecommerce-smrtln/actions)
+
 
 # Observabilidad con Sentry en la Aplicación
 
@@ -625,17 +627,89 @@ Este proyecto utiliza las siguientes librerías para pruebas, calidad del códig
 ### Reporte de Cobertura
 A continuación, se muestra un resumen de la cobertura de pruebas en el proyecto:
 
-| Archivo / Carpeta                           | % Stmts | % Branch | % Funcs | % Lines |
-|---------------------------------------------|--------|---------|--------|--------|
-| `src/`                                      | 0%     | 0%      | 0%     | 0%     |
-| `src/components/admin/DashboardSkeleton/`   | 0%     | 0%      | 0%     | 0%     |
-| `src/components/admin/InvoicesTable/`       | 0%     | 0%      | 0%     | 0%     |
-| `src/components/common/Sidebar.tsx`        | 100%   | 66.66%  | 100%   | 100%   |
-| `src/components/common/Topbar.tsx`         | 100%   | 100%    | 100%   | 100%   |
-| `src/hooks/`                                | 0%     | 0%      | 0%     | 0%     |
-| `src/store/useAuthStore.ts`                 | 100%   | 100%    | 100%   | 100%   |
-| `src/store/useInvoiceStore.ts`              | 100%   | 100%    | 100%   | 100%   |
-| `src/utils/`                                | 81.13% | 50%     | 66.66% | 81.13% |
+File                                            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------------------------------|---------|----------|---------|---------|-------------------
+All files                                       |   42.14 |    73.87 |   59.09 |   42.14 |                   
+ src                                            |       0 |        0 |       0 |       0 |                   
+  App.tsx                                       |       0 |        0 |       0 |       0 | 1-50              
+  main.tsx                                      |       0 |        0 |       0 |       0 | 1-10              
+ src/components/admin/DashboardSkeleton         |     100 |      100 |     100 |     100 |                   
+  DashboardSkeleton.tsx                         |     100 |      100 |     100 |     100 |                   
+ src/components/admin/InvoicesTable             |       0 |        0 |       0 |       0 |                   
+  InvoicesTable.tsx                             |       0 |        0 |       0 |       0 | 1-86              
+ src/components/admin/ProductsSoldTable         |       0 |      100 |     100 |       0 |                   
+  ProductsSoldTable.tsx                         |       0 |      100 |     100 |       0 | 2-58              
+ src/components/admin/layouts/AdminLayout       |     100 |      100 |      50 |     100 |                   
+  AdminLayout.tsx                               |     100 |      100 |      50 |     100 |                   
+ src/components/common                          |     100 |      100 |     100 |     100 |                   
+  ToastContainer.tsx                            |     100 |      100 |     100 |     100 |                   
+ src/components/common/InvoiceModal             |       0 |        0 |       0 |       0 |                   
+  InvoiceModal.tsx                              |       0 |        0 |       0 |       0 | 1-82              
+ src/components/common/SelectCountry            |     100 |      100 |     100 |     100 |                   
+  SelectCountry.tsx                             |     100 |      100 |     100 |     100 |                   
+ src/components/common/Sidebar                  |     100 |    66.66 |     100 |     100 |                   
+  Sidebar.tsx                                   |     100 |    66.66 |     100 |     100 | 16                
+ src/components/common/Topbar                   |     100 |      100 |     100 |     100 |                   
+  Topbar.tsx                                    |     100 |      100 |     100 |     100 |                   
+ src/components/customer/CartSummary            |     100 |      100 |     100 |     100 |                   
+  CartSummary.tsx                               |     100 |      100 |     100 |     100 |                   
+ src/components/customer/CheckoutModal          |       0 |        0 |       0 |       0 |                   
+  CheckoutModal.tsx                             |       0 |        0 |       0 |       0 | 1-113             
+ src/components/customer/CheckoutSkeleton       |     100 |      100 |     100 |     100 |                   
+  CheckoutSkeleton.tsx                          |     100 |      100 |     100 |     100 |                   
+ src/components/customer/CustomerData           |       0 |        0 |       0 |       0 |                   
+  CustomerData.tsx                              |       0 |        0 |       0 |       0 | 1-24              
+ src/components/customer/FloatCart              |       0 |        0 |       0 |       0 |                   
+  FloatCart.tsx                                 |       0 |        0 |       0 |       0 | 1-87              
+ src/components/customer/InvoicesSkeleton       |     100 |      100 |     100 |     100 |                   
+  InvoicesSkeleton.tsx                          |     100 |      100 |     100 |     100 |                   
+ src/components/customer/ProductCard            |       0 |        0 |       0 |       0 |                   
+  ProductCard.tsx                               |       0 |        0 |       0 |       0 | 1-55              
+ src/components/customer/ProductSkeleton        |     100 |      100 |     100 |     100 |                   
+  ProductSkeleton.tsx                           |     100 |      100 |     100 |     100 |                   
+ src/components/customer/layouts/CustomerLayout |     100 |    66.66 |   33.33 |     100 |                   
+  CustomerLayout.tsx                            |     100 |    66.66 |   33.33 |     100 | 21                
+ src/components/routes                          |       0 |        0 |       0 |       0 |                   
+  AdminRoutes.tsx                               |       0 |        0 |       0 |       0 | 1-29              
+  CustomerRoutes.tsx                            |       0 |        0 |       0 |       0 | 1-35              
+  ProtectedRoute.tsx                            |       0 |        0 |       0 |       0 | 1-10              
+  RoleProtectedRoute.tsx                        |       0 |        0 |       0 |       0 | 1-19              
+ src/data                                       |     100 |      100 |     100 |     100 |                   
+  products.ts                                   |     100 |      100 |     100 |     100 |                   
+ src/hooks                                      |   76.81 |    93.75 |    62.5 |   76.81 |                   
+  useCountries.ts                               |       0 |        0 |       0 |       0 | 1-6               
+  useField.tsx                                  |   57.69 |      100 |   33.33 |   57.69 | 21-25,28-33       
+  useFormFields.tsx                             |     100 |      100 |     100 |     100 |                   
+ src/lib                                        |       0 |        0 |       0 |       0 |                   
+  http-client.ts                                |       0 |        0 |       0 |       0 | 1-15              
+ src/pages                                      |   84.21 |      100 |      50 |   84.21 |                   
+  Login.tsx                                     |   84.21 |      100 |      50 |   84.21 | 14-21             
+ src/pages/admin                                |       0 |        0 |       0 |       0 |                   
+  dashboard.tsx                                 |       0 |        0 |       0 |       0 | 1-116             
+ src/pages/customer                             |       0 |        0 |       0 |       0 |                   
+  checkout.tsx                                  |       0 |        0 |       0 |       0 | 1-155             
+  confirmation.tsx                              |       0 |        0 |       0 |       0 | 1-19              
+  invoices.tsx                                  |       0 |        0 |       0 |       0 | 1-83              
+  products.tsx                                  |       0 |        0 |       0 |       0 | 1-40              
+ src/store                                      |   96.15 |    89.65 |     100 |   96.15 |                   
+  useAuthStore.ts                               |     100 |      100 |     100 |     100 |                   
+  useCartStore.ts                               |      92 |    83.33 |     100 |      92 | 32-34,46          
+  useInvoiceStore.ts                            |     100 |      100 |     100 |     100 |                   
+  useToastStore.tsx                             |     100 |      100 |     100 |     100 |                   
+ src/test                                       |       0 |        0 |       0 |       0 |                   
+  matchers.ts                                   |       0 |        0 |       0 |       0 | 1-16              
+ src/types                                      |       0 |        0 |       0 |       0 |                   
+  auth.ts                                       |       0 |        0 |       0 |       0 |                   
+  cart.ts                                       |       0 |        0 |       0 |       0 |                   
+  invoice.ts                                    |       0 |        0 |       0 |       0 |                   
+  product.ts                                    |       0 |        0 |       0 |       0 |                   
+  routes.ts                                     |       0 |        0 |       0 |       0 |                   
+  toast.ts                                      |       0 |        0 |       0 |       0 |                   
+ src/utils                                      |   81.13 |    55.55 |   83.33 |   81.13 |                   
+  constants.ts                                  |     100 |      100 |     100 |     100 |                   
+  localStorageUtil.ts                           |   69.56 |    42.85 |     100 |   69.56 | 6-8,15-16,23-24   
+  logger.ts                                     |   84.21 |      100 |   66.66 |   84.21 | 26-28             
+------------------------------------------------|---------|----------|---------|---------|-------------------
 
-> **Nota:** La cobertura general es del **22.6% de declaraciones, 43.28% de branches, 35.08% de funciones y 22.6% de líneas de código**. Se recomienda aumentar la cobertura de pruebas en los archivos con 0% de cobertura.
+> **Nota:** La cobertura general es del **42.14% de declaraciones, 73.87% de branches, 59.09% de funciones y 42.14% de líneas de código**. Se recomienda aumentar la cobertura de pruebas en los archivos con 0% de cobertura.
 
