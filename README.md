@@ -1,45 +1,42 @@
 # Tabla de Contenidos
-
 1. [Introducción](#introducción)
 2. [Instalación](#instalación)
-3. [Construcción](#construcción)
-4. [Desarrollo](#desarrollo)
-5. [Estructura del Proyecto](#estructura-del-proyecto)
+3. [Estructura del Proyecto](#estructura-del-proyecto)
    - [Aplicaciones y Paquetes](#aplicaciones-y-paquetes)
+4. [Desarrollo](#desarrollo)
+5. [Construcción](#construcción)
 6. [Enlaces Públicos](#enlaces-públicos)
 7. [Usuarios](#usuarios)
-8. [Características](#características)
-9. [Librería de UI](#librería-de-ui)
-10. [Librería de Cálculos](#librería-de-cálculos)
-11. [Funcionalidades del Ecommerce](#funcionalidades-del-ecommerce)
-    - [Gestión de Productos](#gestión-de-productos)
-    - [Carrito de Compras y Facturación](#carrito-de-compras-y-facturación)
-    - [Validación del Envío](#validación-del-envío)
-    - [Roles y Autenticación](#roles-y-autenticación)
-12. [Monorepo y Librerías](#monorepo-y-librerías)
-    - [Estructura del Monorepo](#estructura-del-monorepo)
-    - [Componentes en la Librería](#componentes-en-la-librería)
-    - [Storybook](#storybook)
-    - [Publicación en NPM](#publicación-en-npm)
-13. [Segunda Librería con Binario](#segunda-librería-con-binario)
+8. [Funcionalidades del Ecommerce](#funcionalidades-del-ecommerce)
+   - [Gestión de Productos](#gestión-de-productos)
+   - [Carrito de Compras y Facturación](#carrito-de-compras-y-facturación)
+   - [Validación del Envío](#validación-del-envío)
+   - [Roles y Autenticación](#roles-y-autenticación)
+9. [Monorepo y Librerías](#monorepo-y-librerías)
+   - [Estructura del Monorepo](#estructura-del-monorepo)
+   - [Componentes en la Librería](#componentes-en-la-librería)
+   - [Storybook](#storybook)
+   - [Publicación en NPM](#publicación-en-npm)
+10. [Segunda Librería con Binario](#segunda-librería-con-binario)
     - [Descripción](#descripción)
     - [Implementación](#implementación)
-14. [Librería de Configuración de ESLint](#librería-de-configuración-de-eslint)
-15. [Referencias de Archivos](#referencias-de-archivos)
-16. [Uso de HTML y CSS](#uso-de-html-y-css)
+11. [Librería de Configuración de ESLint](#librería-de-configuración-de-eslint)
+12. [Configuración de Lefthook y ESLint](#configuración-de-lefthook-y-eslint)
+    - [Lefthook: Validación antes del Push](#lefthook-validación-antes-del-push)
+    - [Creación de un paquete para la configuración de ESLint](#creación-de-un-paquete-para-la-configuración-de-eslint)
+13. [Uso de HTML y CSS](#uso-de-html-y-css)
     - [Container Queries](#container-queries)
     - [Styled Components](#styled-components)
     - [CSS Modules](#css-modules)
     - [Media Queries](#media-queries)
-17. [Manejo de Hooks](#manejo-de-hooks)
-18. [Manejo de Estado con Zustand](#manejo-de-estado-con-zustand)
+14. [Manejo de Hooks](#manejo-de-hooks)
+15. [Manejo de Estado con Zustand](#manejo-de-estado-con-zustand)
     - [Autenticación y Roles](#autenticación-y-roles)
     - [Gestión del Carrito de Compras](#gestión-del-carrito-de-compras)
     - [Gestión de Facturación](#gestión-de-facturación)
     - [Sistema de Notificaciones (Toasts)](#sistema-de-notificaciones-toasts)
-19. [Configuración de Lefthook y ESLint](#configuración-de-lefthook-y-eslint)
-    - [Lefthook: Validación antes del Push](#lefthook-validación-antes-del-push)
-    - [Creación de un paquete para la configuración de ESLint](#creación-de-un-paquete-para-la-configuración-de-eslint)
+16. [CI/CD: Deploy en AWS S3](#cicd-deploy-en-aws-s3)
+17. [Sentry APM](#sentry-apm)
 
 ---
 
@@ -104,20 +101,6 @@ Puedes acceder al enlace público aquí [Ecommerce Smrtln - Netlify](https://eco
     pass: anywords
     customer -> con este usuario puedes hacer compras y ver facturas
 ```
-
-## Características
-
-- `auth`
-
-## Librería de UI
-
-[Ecommerce UI Library](https://ecommerce-smrtln-ui-library.netlify.app)
-
-[Npm: Ecommerce UI Library](https://www.npmjs.com/package/ecommerce-smrtln-ui)
-
-## Librería de Cálculos
-
-[Npm: Ecommerce UI Library](https://www.npmjs.com/package/calculations-ecommerce-smrtln)
 
 ## Funcionalidades del Ecommerce
 
@@ -330,11 +313,6 @@ Esta librería no está publicada en NPM, pero es utilizada en los siguientes pr
 
 Se importa en los proyectos para garantizar una configuración consistente de ESLint en el monorepo.
 
-## Referencias de Archivos
-
-- [`checkout.module.css`](https://github.com/edwinarroyolopez/ecommerce-smrtln/blob/main/apps/web/src/pages/customer/checkout.module.css)  
-- [`button.tsx`](https://github.com/edwinarroyolopez/ecommerce-smrtln/blob/main/packages/ui/src/components/button.tsx)  
-- [`dashboard-wrapper.tsx`](https://github.com/edwinarroyolopez/ecommerce-smrtln/blob/main/packages/ui/src/components/dashboard-wrapper.tsx)  
 
 ## Uso de HTML y CSS
 
@@ -510,3 +488,96 @@ Se ha creado un paquete de configuración de ESLint para mantener reglas consist
 - Mejora la mantenibilidad del proyecto.  
 
 ---
+
+## CI/CD - Deploy React App to AWS S3
+
+Este flujo de trabajo ([`deploy.yml`](https://github.com/edwinarroyolopez/ecommerce-smrtln/blob/main/.github/workflows/deploy.yml)) automatiza el despliegue de nuestra aplicación React en un bucket de Amazon S3 cada vez que se realiza un push en la rama `release/production`. A continuación, se explican las etapas principales:
+
+### Stages del proceso de CI/CD
+
+1. **Checkout del repositorio**
+   - Usa la acción `actions/checkout@v3` para clonar el código del repositorio en la máquina donde se ejecutará el flujo de trabajo.
+
+2. **Configuración de Node.js**
+   - Se usa `actions/setup-node@v3` para instalar la versión 22 de Node.js en el entorno de ejecución.
+
+3. **Instalación de dependencias**
+   - Se ejecuta `yarn install --frozen-lockfile` para asegurar que todas las dependencias se instalen según el archivo `yarn.lock`, garantizando consistencia en los paquetes.
+
+4. **Construcción del proyecto**
+   - Ejecuta `npm run build` para generar la versión optimizada de la aplicación en la carpeta de salida (`dist`).
+
+5. **Ejecución de pruebas unitarias**
+   - Corre `npm run test` para ejecutar las pruebas unitarias y asegurar que el código es funcional antes del despliegue.
+
+6. **Despliegue a S3**
+   - Se usa la acción `jakejarvis/s3-sync-action@master` para sincronizar los archivos de la carpeta `./app/web/dist` con el bucket S3, eliminando archivos antiguos que ya no existen en la nueva versión.
+   - Se configuran las credenciales de AWS a través de `secrets` para garantizar la autenticación segura.
+
+7. **Invalidación de la caché de CloudFront**
+   - Después de actualizar el contenido en S3, se ejecuta un comando de AWS CLI para invalidar la caché de CloudFront y asegurar que los usuarios vean la última versión de la aplicación.
+
+### Variables y Secretos de AWS
+Para mantener la seguridad y evitar exponer credenciales, las siguientes variables se configuran en los secretos de GitHub (`Settings > Secrets and Variables > Actions`):
+- `AWS_BUCKET_NAME`: Nombre del bucket S3.
+- `AWS_ACCESS_KEY_ID`: Clave de acceso de AWS.
+- `AWS_SECRET_ACCESS_KEY`: Clave secreta de AWS.
+- `AWS_REGION`: Región de AWS donde está alojado el bucket.
+- `CLOUDFRONT_DISTRIBUTION_ID`: ID de la distribución de CloudFront para la invalidación de caché.
+
+Con este flujo de trabajo, la aplicación se despliega automáticamente en S3 y se garantiza que los usuarios siempre accedan a la última versión del sitio.
+
+
+Aquí tienes el archivo en formato Markdown para que puedas copiarlo y pegarlo en tu documentación:  
+
+```md
+# Observabilidad con Sentry en la Aplicación
+
+## Sentry APM
+
+[Sentry](https://sentry.io) es una herramienta de monitoreo de aplicaciones (APM - *Application Performance Monitoring*) que permite detectar, diagnosticar y resolver errores en tiempo real. Se usa para rastrear excepciones, analizar tiempos de respuesta y mejorar la experiencia del usuario.
+
+## Implementación en la Aplicación
+
+En este proyecto, Sentry se ha integrado para capturar errores de la aplicación de React y proporcionar reportes detallados sobre fallos y problemas de rendimiento.
+
+### 1. Instalación y Configuración
+
+En el archivo `App.tsx`, Sentry se inicializa con el `DSN` (*Data Source Name*), que es la clave de conexión con el servicio de Sentry.
+
+```tsx
+import * as Sentry from "@sentry/react";
+import { SENTRY_DNS } from "@/utils/constants";
+
+Sentry.init({
+  dsn: SENTRY_DNS,
+});
+```
+
+El `SENTRY_DNS` se obtiene de las variables de entorno y permite que los errores sean enviados al proyecto correspondiente en Sentry.
+
+### 2. Manejo de Errores con `Sentry.ErrorBoundary`
+
+Sentry proporciona el componente `Sentry.ErrorBoundary`, el cual envuelve la aplicación y captura cualquier error que ocurra dentro de ella. Esto garantiza que la aplicación no se rompa completamente si se presenta un fallo inesperado.
+
+```tsx
+<Sentry.ErrorBoundary fallback={<h1>Something went wrong</h1>}>
+  <Router>
+    {/* Contenido de la aplicación */}
+  </Router>
+</Sentry.ErrorBoundary>
+```
+
+### 3. Beneficios de Usar Sentry
+
+- **Detección temprana de errores:** Identifica problemas en la aplicación antes de que afecten a los usuarios finales.
+- **Información detallada:** Captura el *stack trace* completo, el entorno y la versión en la que ocurrió el error.
+- **Monitoreo de rendimiento:** Permite analizar tiempos de carga y problemas de latencia en la aplicación.
+- **Integración con React:** Facilita la captura automática de errores en los componentes de la UI.
+
+---
+
+Con esta implementación, la aplicación tiene un monitoreo continuo que ayuda a mejorar su estabilidad y experiencia de usuario. 🚀
+```
+
+Este documento explica claramente la implementación de Sentry y su importancia dentro de la aplicación. ¿Quieres agregar algo más? 😊
