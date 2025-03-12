@@ -627,18 +627,19 @@ Este proyecto utiliza las siguientes librerías para pruebas, calidad del códig
 ### Reporte de Cobertura
 A continuación, se muestra un resumen de la cobertura de pruebas en el proyecto:
 
+------------------------------------------------|---------|----------|---------|---------|-------------------
 File                                            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------------------------------|---------|----------|---------|---------|-------------------
-All files                                       |   42.14 |    73.87 |   59.09 |   42.14 |                   
+All files                                       |   52.91 |    79.67 |   64.28 |   52.91 |                   
  src                                            |       0 |        0 |       0 |       0 |                   
   App.tsx                                       |       0 |        0 |       0 |       0 | 1-50              
   main.tsx                                      |       0 |        0 |       0 |       0 | 1-10              
  src/components/admin/DashboardSkeleton         |     100 |      100 |     100 |     100 |                   
   DashboardSkeleton.tsx                         |     100 |      100 |     100 |     100 |                   
- src/components/admin/InvoicesTable             |       0 |        0 |       0 |       0 |                   
-  InvoicesTable.tsx                             |       0 |        0 |       0 |       0 | 1-86              
- src/components/admin/ProductsSoldTable         |       0 |      100 |     100 |       0 |                   
-  ProductsSoldTable.tsx                         |       0 |      100 |     100 |       0 | 2-58              
+ src/components/admin/InvoicesTable             |   96.92 |      100 |      50 |   96.92 |                   
+  InvoicesTable.tsx                             |   96.92 |      100 |      50 |   96.92 | 67,70             
+ src/components/admin/ProductsSoldTable         |     100 |      100 |     100 |     100 |                   
+  ProductsSoldTable.tsx                         |     100 |      100 |     100 |     100 |                   
  src/components/admin/layouts/AdminLayout       |     100 |      100 |      50 |     100 |                   
   AdminLayout.tsx                               |     100 |      100 |      50 |     100 |                   
  src/components/common                          |     100 |      100 |     100 |     100 |                   
@@ -669,9 +670,9 @@ All files                                       |   42.14 |    73.87 |   59.09 |
   ProductSkeleton.tsx                           |     100 |      100 |     100 |     100 |                   
  src/components/customer/layouts/CustomerLayout |     100 |    66.66 |   33.33 |     100 |                   
   CustomerLayout.tsx                            |     100 |    66.66 |   33.33 |     100 | 21                
- src/components/routes                          |       0 |        0 |       0 |       0 |                   
-  AdminRoutes.tsx                               |       0 |        0 |       0 |       0 | 1-29              
-  CustomerRoutes.tsx                            |       0 |        0 |       0 |       0 | 1-35              
+ src/components/routes                          |   73.52 |    66.66 |      50 |   73.52 |                   
+  AdminRoutes.tsx                               |     100 |      100 |     100 |     100 |                   
+  CustomerRoutes.tsx                            |     100 |      100 |     100 |     100 |                   
   ProtectedRoute.tsx                            |       0 |        0 |       0 |       0 | 1-10              
   RoleProtectedRoute.tsx                        |       0 |        0 |       0 |       0 | 1-19              
  src/data                                       |     100 |      100 |     100 |     100 |                   
@@ -686,9 +687,9 @@ All files                                       |   42.14 |    73.87 |   59.09 |
   Login.tsx                                     |   84.21 |      100 |      50 |   84.21 | 14-21             
  src/pages/admin                                |       0 |        0 |       0 |       0 |                   
   dashboard.tsx                                 |       0 |        0 |       0 |       0 | 1-116             
- src/pages/customer                             |       0 |        0 |       0 |       0 |                   
+ src/pages/customer                             |    6.22 |       40 |      40 |    6.22 |                   
   checkout.tsx                                  |       0 |        0 |       0 |       0 | 1-155             
-  confirmation.tsx                              |       0 |        0 |       0 |       0 | 1-19              
+  confirmation.tsx                              |     100 |      100 |     100 |     100 |                   
   invoices.tsx                                  |       0 |        0 |       0 |       0 | 1-83              
   products.tsx                                  |       0 |        0 |       0 |       0 | 1-40              
  src/store                                      |   96.15 |    89.65 |     100 |   96.15 |                   
@@ -711,5 +712,4 @@ All files                                       |   42.14 |    73.87 |   59.09 |
   logger.ts                                     |   84.21 |      100 |   66.66 |   84.21 | 26-28             
 ------------------------------------------------|---------|----------|---------|---------|-------------------
 
-> **Nota:** La cobertura general es del **42.14% de declaraciones, 73.87% de branches, 59.09% de funciones y 42.14% de líneas de código**. Se recomienda aumentar la cobertura de pruebas en los archivos con 0% de cobertura.
-
+> **Nota:** La cobertura general es del **52.91% de declaraciones, 79.67% de branches, 64.28% de funciones y 52.91% de líneas de código**. Se recomienda aumentar la cobertura de pruebas en los archivos con 0% de cobertura.
