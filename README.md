@@ -565,6 +565,28 @@ Sentry proporciona el componente `Sentry.ErrorBoundary`, el cual envuelve la apl
 </Sentry.ErrorBoundary>
 ```
 
+
+Aquí tienes el fragmento de documentación actualizado en formato Markdown:  
+
+```md
+### 2. Manejo de Errores con `Sentry.ErrorBoundary`
+
+Sentry proporciona el componente `Sentry.ErrorBoundary`, el cual envuelve la aplicación y captura cualquier error que ocurra dentro de ella. Esto garantiza que la aplicación no se rompa completamente si se presenta un fallo inesperado.
+
+```tsx
+<Sentry.ErrorBoundary fallback={<h1>Something went wrong</h1>}>
+  <Router>
+    {/* Contenido de la aplicación */}
+  </Router>
+</Sentry.ErrorBoundary>
+```
+
+Puedes consultar los errores capturados en Sentry en el siguiente enlace:  
+🔗 [Ver errores en Sentry](https://coder-developer.sentry.io/issues/)
+
+![Captura de errores en Sentry](https://github.com/edwinarroyolopez/ecommerce-smrtln/blob/main/apps/web/src/assets/sentry-capture.png)
+
+
 ### 3. Beneficios de Usar Sentry
 
 - **Detección temprana de errores:** Identifica problemas en la aplicación antes de que afecten a los usuarios finales.
