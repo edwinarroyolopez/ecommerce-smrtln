@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { useCartStore } from "@/store/useCartStore";
-import { ToastType } from "@src/types/toast";
 
 vi.mock("@/utils/localStorageUtil", () => ({
   getLocalStorageItem: vi.fn(() => []),

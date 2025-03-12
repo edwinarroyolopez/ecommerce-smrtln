@@ -32,7 +32,7 @@ const FloatCart = () => {
   };
 
   return (
-    <>
+    <div  data-testid="float-cart">
       <div className={styles.container} onClick={() => setIsOpen(true)}>
         <div className={styles.cart}>
           <span className={styles.icon}>🛍️</span>
@@ -80,7 +80,7 @@ const FloatCart = () => {
           <span className={styles.total}>${totalPrice}</span>
         </div>
       </Drawer>
-    </>
+    </div>
   );
 };
 
