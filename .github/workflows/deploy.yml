@@ -28,7 +28,7 @@ jobs:
         run: npm run test:coverage
 
       - name: List files (debugging)
-        run: ls -R ./app/web
+        run: ls -R ./apps/web
 
       - name: Configure AWS CLI
         run: |
@@ -38,7 +38,7 @@ jobs:
 
       - name: Sync files to S3
         run: |
-          cd ./app/web
+          cd ./apps/web
           aws s3 sync ./dist s3://ecommerce-smrtln --acl public-read
 
       - name: Invalidate CloudFront cache
