@@ -8,16 +8,19 @@ const ToastContainer = () => {
   if (!toast) return null;
 
   return createPortal(
-    <div style={{
-      position: "fixed",
-      bottom: "20px",
-      right: "20px",
-      zIndex: 1000,
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      maxWidth: "380px",
-    }}>
+    <div
+      data-testid="toast-container"
+      style={{
+        position: "fixed",
+        bottom: "20px",
+        right: "20px",
+        zIndex: 1000,
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+        maxWidth: "380px",
+      }}
+    >
       <Toast message={toast.message} type={toast.type} />
     </div>,
     document.body
