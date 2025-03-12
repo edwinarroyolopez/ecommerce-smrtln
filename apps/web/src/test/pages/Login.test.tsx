@@ -1,8 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { useAuthStore } from "@/store/useAuthStore";
 import { BrowserRouter } from "react-router-dom";
-import { UserCredentials } from "@src/types/auth";
 import Login from "@/pages/Login";
 
 
