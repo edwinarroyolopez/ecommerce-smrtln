@@ -574,7 +574,4 @@ Sentry proporciona el componente `Sentry.ErrorBoundary`, el cual envuelve la apl
 
 ---
 
-Con esta implementación, la aplicación tiene un monitoreo continuo que ayuda a mejorar su estabilidad y experiencia de usuario. 🚀
-```
-
-Este documento explica claramente la implementación de Sentry y su importancia dentro de la aplicación. ¿Quieres agregar algo más? 😊
+Con esta implementación, la aplicación tiene un monitoreo continuo que ayuda a mejorar su estabilidad y experiencia de usuario. 
