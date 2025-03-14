@@ -4,10 +4,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { HelmetProvider } from "react-helmet-async";
+import { Loading } from "ecommerce-smrtln-ui";
 import "./App.css";
 
 import { SENTRY_DNS } from "@/utils/constants";
-import { Loading } from "ecommerce-smrtln-ui";
+import { Product } from "@/types/product";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+} from "@/utils/localStorageUtil";
+import { mockData } from "@/data/products";
+
 import ToastContainer from "@components/common/ToastContainer";
 import ProtectedRoute from "@components/routes/ProtectedRoute";
 
@@ -23,6 +30,11 @@ Sentry.init({
 });
 
 const queryClient = new QueryClient();
+
+const storedProducts = getLocalStorageItem<Product[]>("products", []);
+if (storedProducts.length === 0 || !storedProducts) {
+  setLocalStorageItem("products", mockData);
+}
 
 const App = () => {
   const { isAuthenticated } = useAuthStore();
