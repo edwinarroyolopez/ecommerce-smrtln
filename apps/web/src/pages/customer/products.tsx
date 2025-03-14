@@ -5,13 +5,14 @@ import {
   useDeferredValue,
   useMemo,
 } from "react";
-import { getLocalStorageItem } from "@/utils/localStorageUtil";
+import { getLocalStorageItem, setLocalStorageItem } from "@/utils/localStorageUtil";
 import { Product } from "@/types/product";
 import ProductCard from "@/components/customer/ProductCard/ProductCard";
 import ProductSkeleton from "@/components/customer/ProductSkeleton/ProductSkeleton";
 import FloatCart from "@components/customer/FloatCart/FloatCart";
 import SearchBar from "@/components/customer/SearchBar/SearchBar";
 import styles from "./products.module.css";
+import { mockData } from "@/data/products";
 
 const Products = () => {
   const [products, setProducts] = useState<Product[] | null>(null);
@@ -21,6 +22,12 @@ const Products = () => {
   useEffect(() => {
     setTimeout(() => {
       const storedProducts = getLocalStorageItem<Product[]>("products", []);
+
+      if(storedProducts.length === 0 || !storedProducts){
+        setLocalStorageItem("products", mockData);
+        setProducts(storedProducts); 
+      }
+
       setProducts(storedProducts);
     }, 2000); // Simula carga de 2 segundos
   }, []);

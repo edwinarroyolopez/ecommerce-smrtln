@@ -13,6 +13,7 @@ import ProtectedRoute from "@components/routes/ProtectedRoute";
 import { useAuthStore } from "./store/useAuthStore";
 import AdminRoutes from "@/components/routes/AdminRoutes";
 import CustomerRoutes from "@/components/routes/CustomerRoutes";
+import PublicRoutes from "@/components/routes/PublicRoutes";
 
 const Login = lazy(() => import("./pages/Login"));
 
@@ -24,6 +25,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const { isAuthenticated } = useAuthStore();
+  console.log('App');
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -31,7 +33,9 @@ const App = () => {
         <Router>
           <Suspense fallback={<Loading />}>
             <Routes>
+              {/* Public routes */}
               <Route path="/login" element={<Login />} />
+              <Route path="/products" element={<PublicRoutes />} />
               <Route element={<ProtectedRoute isAllowed={isAuthenticated} />}>
                 {/* Admin routes */}
                 <Route path="/admin/*" element={<AdminRoutes />} />

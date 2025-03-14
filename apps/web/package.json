@@ -25,7 +25,7 @@
     "@testing-library/user-event": "^14.6.1",
     "axios": "^1.8.2",
     "calculations-ecommerce-smrtln": "^1.0.6",
-    "ecommerce-smrtln-ui": "^1.0.4",
+    "ecommerce-smrtln-ui": "^1.0.6",
     "loglevel": "^1.9.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
