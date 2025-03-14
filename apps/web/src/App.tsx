@@ -25,8 +25,6 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const { isAuthenticated } = useAuthStore();
-  console.log('App');
-
   return (
     <QueryClientProvider client={queryClient}>
       <Sentry.ErrorBoundary fallback={<h1>Something went wrong</h1>}>
