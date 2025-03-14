@@ -6,8 +6,7 @@ import {
   useMemo,
 } from "react";
 import {
-  getLocalStorageItem,
-  setLocalStorageItem,
+  getLocalStorageItem
 } from "@/utils/localStorageUtil";
 import { Product } from "@/types/product";
 import ProductCard from "@/components/customer/ProductCard/ProductCard";
@@ -16,7 +15,6 @@ import FloatCart from "@components/customer/FloatCart/FloatCart";
 import SearchBar from "@/components/customer/SearchBar/SearchBar";
 import styles from "./products.module.css";
 import SEO from "@/components/common/SEO/SEO";
-import { mockData } from "@/data/products";
 
 const Products = () => {
   const [products, setProducts] = useState<Product[] | null>(null);
@@ -26,12 +24,6 @@ const Products = () => {
   useEffect(() => {
     setTimeout(() => {
       const storedProducts = getLocalStorageItem<Product[]>("products", []);
-
-      if (storedProducts.length === 0 || !storedProducts) {
-        setLocalStorageItem("products", mockData);
-        setProducts(mockData);
-      }
-
       setProducts(storedProducts);
     }, 2000); // Simula carga de 2 segundos
   }, []);
