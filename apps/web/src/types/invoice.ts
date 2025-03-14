@@ -28,3 +28,12 @@ export type InvoiceItem = {
     addInvoice: (invoice: Invoice) => void;
   };
   
+  export interface FormState {
+    name: string;
+    email: string;
+    country: string;
+    contact: string;
+    shippingAddress: string;
+    deliveryTime: string;
+    [key: string]: string;
+  }

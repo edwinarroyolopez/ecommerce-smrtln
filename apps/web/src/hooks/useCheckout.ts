@@ -1,13 +1,15 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useInvoiceStore } from "@/store/useInvoiceStore";
-import { Invoice } from "@src/types/invoice";
+import { Invoice, FormState } from "@src/types/invoice";
+import { CartItem } from '@/types/cart'
+import { User } from '@/types/auth'
 
 export const useCheckout = (
-  formState: any,
-  cart: any,
+  formState: FormState,
+  cart: CartItem[],
   totalAmount: number,
-  user: any,
+  user: User | null,
   updateProductStock: () => void,
   clearCart: () => void
 ) => {

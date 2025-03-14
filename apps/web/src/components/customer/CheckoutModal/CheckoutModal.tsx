@@ -3,17 +3,8 @@ import styles from "./CheckoutModal.module.css";
 import { DELIVERY_TIMES } from "@/utils/constants";
 import { useAuthStore } from "@/store/useAuthStore";
 import SelectCountry from "@components/common/SelectCountry/SelectCountry";
+import { FormState } from "@src/types/invoice";
 
-
-interface FormState {
-  name: string;
-  email: string;
-  country: string;
-  contact: string;
-  shippingAddress: string;
-  deliveryTime: string;
-  [key: string]: string;
-}
 
 interface CheckoutModalProps {
   isOpen: boolean;
