@@ -1,60 +1,56 @@
 import { Button, Input, Backdrop } from "ecommerce-smrtln-ui";
 import styles from "./CheckoutModal.module.css";
 import { DELIVERY_TIMES } from "@/utils/constants";
-import { useState } from "react";
 import { useAuthStore } from "@/store/useAuthStore";
 import SelectCountry from "@components/common/SelectCountry/SelectCountry";
+
+
+interface FormState {
+  name: string;
+  email: string;
+  country: string;
+  contact: string;
+  shippingAddress: string;
+  deliveryTime: string;
+  [key: string]: string;
+}
 
 interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
-  form: {
-    values: Record<string, string>;
-    onChange: (
-      event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-    ) => void;
-    errors: Record<string, string>;
-    validate: () => boolean;
-  };
+  formState: FormState;
+  dispatch: (action: { type: string; payload?: any }) => void;
 }
+
 
 const CheckoutModal: React.FC<CheckoutModalProps> = ({
   isOpen,
   onClose,
-  form,
+  formState,
+  dispatch,
 }) => {
   const setCustomerData = useAuthStore((state) => state.setCustomerData);
-  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
-
-  const getError = (field: string) =>
-    attemptedSubmit && form.errors[field] ? form.errors[field] : undefined;
 
   const handleClose = () => {
-    console.log("handleClose");
+    const requiredFields = ["name", "email", "contact", "country", "shippingAddress"];
+    const isValid = requiredFields.every((field) => formState[field as keyof typeof formState]);
 
-    setAttemptedSubmit(true);
-    if (!form.validate()) return;
+    if (!isValid) return;
 
-    setAttemptedSubmit(false);
-    const customerData = {
-      name: form.values.name,
-      email: form.values.email,
-      contact: form.values.contact,
-      country: form.values.country,
-      shippingAddress: form.values.shippingAddress,
-      deliveryTime: form.values.deliveryTime,
-    };
-    setCustomerData(customerData);
+    setCustomerData(formState);
     onClose();
+  };
+
+  const handleChange = (field: string, value: string) => {
+    dispatch({ type: "UPDATE_FIELD", payload: { field, value } });
   };
 
   const renderInput = (label: string, name: string) => (
     <Input
       label={label}
       name={name}
-      value={form.values[name]}
-      onChange={form.onChange}
-      error={getError(name)}
+      value={formState[name]}
+      onChange={(e) => handleChange(name, e.target.value)}
     />
   );
 
@@ -71,9 +67,8 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
             {renderInput("Correo electrónico", "email")}
             {renderInput("Número de Contacto", "contact")}
             <SelectCountry
-              value={form.values.country}
-              onChange={form.onChange}
-              error={getError("country")}
+              value={formState.country}
+              onChange={(e) => handleChange("country", e.target.value)}
             />
           </div>
 
@@ -88,12 +83,8 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({
               {DELIVERY_TIMES.map((time) => (
                 <Button
                   key={time}
-                  className={`${styles.deliveryButton} ${form.values.deliveryTime === time ? styles.active : ""}`}
-                  onClick={() =>
-                    form.onChange({
-                      target: { name: "deliveryTime", value: time },
-                    } as any)
-                  }
+                  className={`${styles.deliveryButton} ${formState.deliveryTime === time ? styles.active : ""}`}
+                  onClick={() => handleChange("deliveryTime", time)}
                 >
                   {time}
                 </Button>
