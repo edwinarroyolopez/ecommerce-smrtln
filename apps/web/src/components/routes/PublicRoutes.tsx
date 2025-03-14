@@ -10,7 +10,6 @@ const publicRoutes: RouteConfig[] = [
 ];
 
 const PublicRoutes = () => {
-    console.log("PublicLayout")
   return (
     <Routes>
         <Route path="/" element={<PublicLayout />}>

@@ -3,6 +3,7 @@ import * as Sentry from "@sentry/react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { HelmetProvider } from "react-helmet-async";
 import "./App.css";
 
 import { SENTRY_DNS } from "@/utils/constants";
@@ -25,11 +26,10 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const { isAuthenticated } = useAuthStore();
-  console.log('App');
-
   return (
     <QueryClientProvider client={queryClient}>
       <Sentry.ErrorBoundary fallback={<h1>Something went wrong</h1>}>
+      <HelmetProvider>
         <Router>
           <Suspense fallback={<Loading />}>
             <Routes>
@@ -45,6 +45,7 @@ const App = () => {
             </Routes>
           </Suspense>
         </Router>
+        </HelmetProvider>
         <ToastContainer />
       </Sentry.ErrorBoundary>
     </QueryClientProvider> 
