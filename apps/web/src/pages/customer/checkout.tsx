@@ -14,14 +14,14 @@ import { useLoading } from "@/hooks/useLoading";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { customerData } = useAuthStore();
+  const { user, customerData } = useAuthStore();
   const { formState, dispatch } = useCheckoutForm(customerData);
   const { cart, clearCart, totalAmount, updateProductStock } = useCart();
   const { handleCheckout } = useCheckout(
     formState,
     cart,
     totalAmount,
-    customerData,
+    user,
     updateProductStock,
     clearCart
   );
