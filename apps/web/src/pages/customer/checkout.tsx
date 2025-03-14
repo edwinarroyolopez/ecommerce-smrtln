@@ -1,118 +1,60 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Input } from "ecommerce-smrtln-ui";
-import useFormFields from "@/hooks/useFormFields";
 import CheckoutModal from "@components/customer/CheckoutModal/CheckoutModal";
-import { useCartStore } from "@/store/useCartStore";
 import CartSummary from "@components/customer/CartSummary/CartSummary";
 import styles from "./checkout.module.css";
 import CustomerData from "@components/customer/CustomerData/CustomerData";
 import { useAuthStore } from "@/store/useAuthStore";
-import { useInvoiceStore } from "@/store/useInvoiceStore";
-import { Invoice } from "@src/types/invoice";
-import {
-  getLocalStorageItem,
-  setLocalStorageItem,
-} from "@/utils/localStorageUtil";
-import { Product } from "@/types/product";
 import CheckoutSkeleton from "@components/customer/CheckoutSkeleton/CheckoutSkeleton";
+import { useCheckoutForm } from "@/hooks/useCheckoutForm";
+import { useCart } from "@/hooks/useCart";
+import { useCheckout } from "@/hooks/useCheckout";
+import { useLoading } from "@/hooks/useLoading";
 
 const Checkout = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const { cart, clearCart } = useCartStore();
-  const { addInvoice } = useInvoiceStore();
-  const { user, customerData } = useAuthStore();
-
-  const form = useFormFields({
-    name: { type: "text", required: true },
-    email: { type: "email", required: true },
-    country: { type: "text", required: true },
-    contact: { type: "text", required: true },
-    shippingAddress: { type: "text", required: true },
-    orderNote: { type: "text" },
-    deliveryTime: { type: "text", defaultValue: "Mañana" },
-  });
-
-  useEffect(() => {
-    if (customerData && Object.keys(customerData).length > 0) {
-      form.setValues(customerData);
-    }
-  }, [customerData]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
-
-  useEffect(() => {
-    if (cart.length === 0) {
-      navigate("/");
-    }
-  }, [cart.length, navigate]);
-
-  const totalAmount = useMemo(
-    () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-    [cart]
-  );
-
-  const allFieldsFilled = useMemo(() => {
-    const { orderNote, ...requiredFields } = form.values;
-    return Object.values(requiredFields).every((value) => value);
-  }, [form.values]);
-
-  const updateProductStock = useCallback(() => {
-    const products = getLocalStorageItem<Product[]>("products", []);
-    const updatedProducts = products.map((product) => {
-      const itemInCart = cart.find((cartItem) => cartItem.id === product.id);
-      return itemInCart
-        ? { ...product, stock: Math.max(product.stock - itemInCart.quantity, 0) }
-        : product;
-    });
-    setLocalStorageItem("products", updatedProducts);
-  }, [cart]);
-
-  const handleCheckout = useCallback(() => {
-    if (!form.validate() || cart.length === 0) return;
-
-    updateProductStock();
-
-    const newInvoice: Invoice = {
-      id: Date.now(),
-      date: new Date().toISOString(),
-      items: cart,
-      total: totalAmount,
-      username: user?.username || "",
-      orderNote: form.values.orderNote || undefined,
-      customer: {
-        name: form.values.name,
-        email: form.values.email,
-        country: form.values.country,
-        contact: form.values.contact,
-        shippingAddress: form.values.shippingAddress,
-        deliveryTime: form.values.deliveryTime,
-      },
-    };
-
-    addInvoice(newInvoice);
-    clearCart();
-    navigate("/confirmation");
-  }, [
-    form,
+  const { customerData } = useAuthStore();
+  const { formState, dispatch } = useCheckoutForm(customerData);
+  const { cart, clearCart, totalAmount, updateProductStock } = useCart();
+  const { handleCheckout } = useCheckout(
+    formState,
     cart,
     totalAmount,
-    user,
+    customerData,
     updateProductStock,
-    addInvoice,
-    clearCart,
-    navigate,
-  ]);
+    clearCart
+  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCheckingOut, setIsCheckingOut] = useState(false)
+  const isLoading = useLoading();
+
+  useEffect(() => {
+    if (cart.length === 0 && !isCheckingOut) {
+      navigate("/");
+    }
+  }, [cart.length, navigate, isCheckingOut]);
+
 
   if (isLoading) {
     return <CheckoutSkeleton />;
   }
+
+  const onCheckout = () => {
+    setIsCheckingOut(true);
+    handleCheckout();
+  };
+
+  const requiredFields = Object.keys(formState).reduce(
+    (acc, key) => {
+      if (key !== "orderNote") {
+        acc[key as keyof typeof formState] =
+          formState[key as keyof typeof formState];
+      }
+      return acc;
+    },
+    {} as Partial<typeof formState>
+  );
 
   return (
     <div className={styles.checkoutContainer}>
@@ -120,7 +62,9 @@ const Checkout = () => {
 
       <div className={styles.topCheckout}>
         <CartSummary cart={cart} totalAmount={totalAmount} />
-        {allFieldsFilled && <CustomerData formValues={form.values} />}
+        {Object.values(requiredFields).every((value) => value) && (
+          <CustomerData formValues={formState} />
+        )}
       </div>
 
       <div className={styles.bottonCheckout}>
@@ -128,7 +72,9 @@ const Checkout = () => {
           className={styles.checkoutButton}
           onClick={() => setIsModalOpen(true)}
         >
-          {allFieldsFilled ? "Editar datos" : "Cargar datos del cliente"}
+          {Object.values(requiredFields).every((value) => value)
+            ? "Editar datos"
+            : "Cargar datos del cliente"}
         </Button>
 
         <div className={styles.section}>
@@ -136,18 +82,27 @@ const Checkout = () => {
           <Input
             label="Nota de Pedido"
             name="orderNote"
-            value={form.values.orderNote}
-            onChange={form.onChange}
+            value={formState.orderNote}
+            onChange={(e) =>
+              dispatch({
+                type: "UPDATE_FIELD",
+                payload: { field: "orderNote", value: e.target.value },
+              })
+            }
           />
         </div>
 
-        <Button className={styles.checkoutButton} onClick={handleCheckout}>
+        <Button className={styles.checkoutButton} onClick={onCheckout}>
           Proceder al Pago (${totalAmount.toFixed(0)})
         </Button>
       </div>
 
-      <CheckoutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} form={form} />
-
+      <CheckoutModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        formState={formState}
+        dispatch={dispatch}
+      />
     </div>
   );
 };
