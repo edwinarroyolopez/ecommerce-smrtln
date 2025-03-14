@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { AuthState, User, UserCredentials, CustomerData } from "@src/types/auth";
-import { mockData } from "@/data/products";
 import { getLocalStorageItem, setLocalStorageItem, removeLocalStorageItem } from "@/utils/localStorageUtil";
 import logger from "@/utils/logger";
 
@@ -17,11 +16,6 @@ export const useAuthStore = create<AuthState>((set) => ({
         };
 
         setLocalStorageItem("user", user);
-
-        if (!getLocalStorageItem("products", null)) {
-            setLocalStorageItem("products", mockData);
-        }
-
         set({ user, isAuthenticated: true });
 
         logger.log(`User logged in: ${username}, Role: ${user.role}`);

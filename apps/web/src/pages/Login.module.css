@@ -36,6 +36,22 @@
     width: 100%;
   }
   
+  .iconButtonsContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .iconButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+
 @media (max-width: 480px) {
     .container {
         max-width: 90%;
