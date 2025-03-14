@@ -50,12 +50,12 @@ const Products = () => {
   return (
     <>
       <SEO
-        title="Fresh Fruits - Explore Our Premium Selection | Ecommerce Smrtln"
+        title="Fresh Fruits - Explore Our Premium | Ecommerce Smrtln"
         description="Discover a wide variety of fresh, high-quality fruits delivered straight to your doorstep. From tropical mangoes to juicy apples, find your favorites and enjoy the best nature has to offer."
         keywords={[
-          "fresh fruits",
-          "premium fruits",
-          "online fruit store",
+          "ecommerce",
+          "items",
+          "website",
           "buy fruits online",
           "healthy fruits",
         ]}
