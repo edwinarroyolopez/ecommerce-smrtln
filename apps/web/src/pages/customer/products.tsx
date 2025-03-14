@@ -29,7 +29,7 @@ const Products = () => {
 
       if (storedProducts.length === 0 || !storedProducts) {
         setLocalStorageItem("products", mockData);
-        setProducts(storedProducts);
+        setProducts(mockData);
       }
 
       setProducts(storedProducts);
