@@ -1,0 +1,201 @@
+/* src/components/ProductModal.module.css */
+.modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .productHeader {
+    margin-bottom: 20px;
+  }
+  
+  .productHeader h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .priceLocation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .price {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  .location {
+    color: #666;
+  }
+  
+  .imageSection {
+    margin-bottom: 20px;
+  }
+  
+  .mainImageContainer {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .mainImage {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+  
+  .navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .prevButton {
+    left: 10px;
+  }
+  
+  .nextButton {
+    right: 10px;
+  }
+  
+  .thumbnailContainer {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  
+  .thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .thumbnail:hover {
+    border-color: var(--primary-color);
+  }
+  
+  .activeThumbnail {
+    border-color: var(--primary-color);
+  }
+  
+  .moreThumbnails {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    border-radius: 4px;
+    color: #666;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    white-space: pre-line;
+    line-height: 1.5;
+  }
+  
+  .sellerInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .sellerImage {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .sellerName {
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .sellerName:hover {
+    text-decoration: underline;
+  }
+  
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .contactButton {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contactButton:hover {
+    background: var(--primary-color-hover);
+  }
+  
+  .closeButton {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: var(--primary-color);
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .closeButton:hover {
+    background: #f0f0f0;
+  }
+  
+  @media (max-width: 440px) {
+    .modalContent {
+      padding: 15px;
+    }
+    
+    .mainImage {
+      max-height: 300px;
+    }
+    
+    .thumbnail {
+      width: 50px;
+      height: 50px;
+    }
+  }
