@@ -18,7 +18,7 @@ interface Product {
     image: string;
     thumbnail: string;
     name: string;
-    price: string;
+    price: number;
     category: string;
     location: string;
     stock: number;
@@ -30,6 +30,23 @@ interface ProductModalProps {
   onClose: () => void;
   product: Product;
 }
+
+// Función para formatear el precio en COP
+const formatPrice = (price: string | number): string => {
+  // Convertir a número si es string (eliminar caracteres no numéricos primero)
+  const numericPrice = typeof price === 'string' 
+    ? Number(price.replace(/[^\d]/g, '')) 
+    : Number(price);
+  
+  // Formatear como COP (sin decimales, con separadores de miles)
+  return new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(numericPrice);
+};
+
 
 const ProductModal: React.FC<ProductModalProps> = ({
   isOpen,
@@ -50,6 +67,8 @@ const ProductModal: React.FC<ProductModalProps> = ({
     );
   };
 
+  const formattedPrice = formatPrice(product.price);
+
   return (
     <div style={{ display: isOpen ? "flex" : "none" }}>
       <Backdrop visible={isOpen} onClick={onClose}>
@@ -60,7 +79,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
           <div className={styles.productHeader}>
             <h2>{product.name}</h2>
             <div className={styles.priceLocation}>
-              <span className={styles.price}>{product.price}</span>
+              <span className={styles.price}>{formattedPrice}</span>
               <span className={styles.location}>{product.location}</span>
             </div>
           </div>

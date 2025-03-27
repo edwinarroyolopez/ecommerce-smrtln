@@ -570,7 +570,7 @@
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.28.tgz"
   integrity sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==
 
-"@repo/eslint-config@^1.0.0", "@repo/eslint-config@file:/home/zeroedcode/Desktop/ecommerce-smrtln/packages/eslint-config":
+"@repo/eslint-config@^1.0.0", "@repo/eslint-config@file:/home/zeroedcode/data-ed/wear-ecommerce/ecommerce-smrtln/packages/eslint-config":
   version "1.0.0"
   resolved "file:packages/eslint-config"
   dependencies:
@@ -1746,7 +1746,7 @@ cac@^6.7.14:
   resolved "https://registry.npmjs.org/cac/-/cac-6.7.14.tgz"
   integrity sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==
 
-calculations-ecommerce-smrtln@^1.0.6, "calculations-ecommerce-smrtln@file:/home/zeroedcode/Desktop/ecommerce-smrtln/packages/calculations":
+calculations-ecommerce-smrtln@^1.0.6, "calculations-ecommerce-smrtln@file:/home/zeroedcode/data-ed/wear-ecommerce/ecommerce-smrtln/packages/calculations":
   version "1.0.6"
   resolved "file:packages/calculations"
 
@@ -2208,7 +2208,7 @@ eastasianwidth@^0.2.0:
   resolved "https://registry.npmjs.org/eastasianwidth/-/eastasianwidth-0.2.0.tgz"
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
-ecommerce-smrtln-ui@^1.0.6, "ecommerce-smrtln-ui@file:/home/zeroedcode/Desktop/ecommerce-smrtln/packages/ui":
+ecommerce-smrtln-ui@^1.0.6, "ecommerce-smrtln-ui@file:/home/zeroedcode/data-ed/wear-ecommerce/ecommerce-smrtln/packages/ui":
   version "1.0.6"
   resolved "file:packages/ui"
   dependencies:
@@ -5241,7 +5241,7 @@ wcwidth@^1.0.1:
   dependencies:
     defaults "^1.0.3"
 
-"web@file:/home/zeroedcode/Desktop/ecommerce-smrtln/apps/web":
+"web@file:/home/zeroedcode/data-ed/wear-ecommerce/ecommerce-smrtln/apps/web":
   version "0.0.0"
   resolved "file:apps/web"
   dependencies:
@@ -5256,6 +5256,7 @@ wcwidth@^1.0.1:
     loglevel "^1.9.2"
     react "^19.0.0"
     react-dom "^19.0.0"
+    react-helmet-async "^2.0.5"
     react-query "^3.39.3"
     react-router-dom "^7.3.0"
     zustand "^5.0.3"

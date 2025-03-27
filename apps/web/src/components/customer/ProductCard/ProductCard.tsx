@@ -10,6 +10,22 @@ type ProductCardProps = {
   product: Product;
 };
 
+// Función para formatear el precio en COP
+const formatPrice = (price: string | number): string => {
+  // Convertir a número si es string (eliminar caracteres no numéricos primero)
+  const numericPrice = typeof price === 'string' 
+    ? Number(price.replace(/[^\d]/g, '')) 
+    : Number(price);
+  
+  // Formatear como COP (sin decimales, con separadores de miles)
+  return new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(numericPrice);
+};
+
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const addToCart = useCartStore((state) => state.addToCart);
@@ -28,6 +44,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     setIsModalOpen(false);
   };
 
+  // Precio formateado
+  const formattedPrice = formatPrice(product.price);
+
   return (
     <>
       <div className={styles.card} onClick={openModal}>
@@ -38,7 +57,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <h3 className={styles.title}>{product.name}</h3>
           <p className={styles.category}>{product.category}</p>
           <div className={styles.bottomContainer}>
-            <span className={styles.price}>${product.price}</span>
+            <span className={styles.price}>{formattedPrice}</span>
             {quantity > 0 ? (
               <div 
                 className={styles.cartControls} 

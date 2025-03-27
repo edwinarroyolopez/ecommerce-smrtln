@@ -4,7 +4,7 @@ export type Product = {
   image: string;
   thumbnail: string;
   name: string;
-  price: string;
+  price: number;
   category: string;
   location: string;
   stock: number;
@@ -27,11 +27,9 @@ export interface MarketplaceItem {
   image: string;
   thumbnail: string;
   name: string;
-  price: string;
+  price: number;
   category: string;
   location: string;
   stock: number;
   details: ProductDetails;
 }
-
-type MarketplaceItemsArray = MarketplaceItem[];
