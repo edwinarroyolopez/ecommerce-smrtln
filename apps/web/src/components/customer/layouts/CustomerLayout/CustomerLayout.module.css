@@ -26,3 +26,10 @@
   }
 }
 
+
+/* Añadir esto a CustomerLayout.module.css */
+@media (max-width: 768px) {
+  .content {
+    padding-bottom: 70px; /* Espacio para la barra inferior */
+  }
+}
