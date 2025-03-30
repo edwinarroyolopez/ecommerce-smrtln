@@ -8,12 +8,12 @@ interface UseProductsOptions {
   onError?: (error: Error) => void;
 }
 
-export const useProducts = (query: string, options?: UseProductsOptions) => {
+export const useProducts = (options?: UseProductsOptions) => {
+  console.log('useProducts');
   return useQuery<Product[], Error>({
-    queryKey: ['products', query],
-    queryFn: () => getProducts(query),
-    enabled: !!query && (options?.enabled !== false),
-    staleTime: 5 * 60 * 1000, // 5 minutos
+    queryKey: ['products'], // Eliminamos la dependencia de `query`
+    queryFn: () => getProducts(), // Cargamos todos los productos
+    staleTime: 5 * 60 * 1000, // Datos frescos durante 5 minutos
     refetchOnWindowFocus: false,
     ...options,
   });

@@ -1,7 +1,6 @@
 import {
   useState,
   useCallback,
-  useDeferredValue,
   useMemo,
 } from "react";
 import { useProducts } from "@/hooks/useProducts";
@@ -14,47 +13,43 @@ import styles from "./products.module.css";
 import SEO from "@/components/common/SEO/SEO";
 
 const Products = () => {
-  // const [products, setProducts] = useState<Product[] | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const deferredSearchTerm = useDeferredValue(searchTerm);
 
+  // Traemos todos los productos desde la API (solo una vez)
+  const { 
+    data: marketplaceProducts, 
+    isLoading, 
+    error 
+  } = useProducts(); // No pasamos ningún argumento
 
+  // Transformamos los productos de Marketplace al formato de Product que espera la aplicación
+  const products = useMemo(() => {
+    if (!marketplaceProducts) return null;
 
-    // Utilizamos el hook useProducts para obtener los productos de Facebook Marketplace
-    const { 
-      data: marketplaceProducts, 
-      isLoading, 
-      error 
-    }= useProducts(deferredSearchTerm);
-    console.log({marketplaceProducts, isLoading})
-  
-    // Transformamos los productos de Marketplace al formato de Product que espera la aplicación
-    const products = useMemo(() => {
-      if (!marketplaceProducts) return null;
-      
-      return marketplaceProducts.map((item, index) => ({
-        id: index.toString(),
-        name: item.title,
-        price: item.price,
-        description: item.description,
-        image: item.image,
-        category: item.category,
-        stock: item.stock,
-        images: item.images,
-        sellerName: item.sellerName,
-        sellerProfile: item.sellerProfile,
-        joinedDate: item.joinedDate
-      }));
-    }, [marketplaceProducts]);
-
-  
+    return marketplaceProducts.map((item, index) => ({
+      id: index.toString(),
+      name: item.title,
+      price: item.price,
+      description: item.description,
+      image: item.image,
+      category: item.category,
+      stock: item.stock,
+      images: item.images,
+      sellerName: item.sellerName,
+      sellerProfile: item.sellerProfile,
+      joinedDate: item.joinedDate,
+    }));
+  }, [marketplaceProducts]);
 
   // Filtramos los productos según el término de búsqueda
   const filteredProducts = useMemo(() => {
     if (!products) return null;
-    return products;
-    // No necesitamos filtrar aquí ya que la API ya filtra por el término de búsqueda
-  }, [products]);
+
+    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+    return products.filter((product:any) =>
+      product.name.toLowerCase().includes(lowerCaseSearchTerm)
+    );
+  }, [products, searchTerm]);
 
   const handleSearch = useCallback((term: string) => {
     setSearchTerm(term);

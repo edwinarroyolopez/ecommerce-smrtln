@@ -11,8 +11,8 @@ const httpClient = axios.create({
 });
 
 // Función para obtener los productos
-export const getProducts = async (query: string): Promise<Product[]> => {
-  console.log('getProducts')
-  const response = await httpClient.get(`/scrap-facebook-marketplace/products?query=${query}`);
+export const getProducts = async (): Promise<Product[]> => {
+  console.log('getProducts');
+  const response = await httpClient.get(`/scrap-facebook-marketplace/products`);
   return response.data;
 };
