@@ -3,12 +3,18 @@ export type Product = {
   link: string;
   image: string;
   thumbnail: string;
-  name: string;
+  name?: string;
+  title?: string;
   price: number;
   category: string;
   location: string;
   stock: number;
-  details: ProductDetails;
+  images: string[];
+  description: string;
+  sellerName: string;
+  sellerProfile: string;
+  joinedDate: string;
+  activePosts?: string;
 };
 
 

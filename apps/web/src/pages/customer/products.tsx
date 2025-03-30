@@ -1,14 +1,11 @@
 import {
-  useEffect,
   useState,
   useCallback,
   useDeferredValue,
   useMemo,
 } from "react";
-import {
-  getLocalStorageItem
-} from "@/utils/localStorageUtil";
-import { Product } from "@/types/product";
+import { useProducts } from "@/hooks/useProducts";
+
 import ProductCard from "@/components/customer/ProductCard/ProductCard";
 import ProductSkeleton from "@/components/customer/ProductSkeleton/ProductSkeleton";
 import FloatCart from "@components/customer/FloatCart/FloatCart";
@@ -17,23 +14,47 @@ import styles from "./products.module.css";
 import SEO from "@/components/common/SEO/SEO";
 
 const Products = () => {
-  const [products, setProducts] = useState<Product[] | null>(null);
+  // const [products, setProducts] = useState<Product[] | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const deferredSearchTerm = useDeferredValue(searchTerm);
 
-  useEffect(() => {
-    setTimeout(() => {
-      const storedProducts = getLocalStorageItem<Product[]>("products", []);
-      setProducts(storedProducts);
-    }, 2000); // Simula carga de 2 segundos
-  }, []);
 
+
+    // Utilizamos el hook useProducts para obtener los productos de Facebook Marketplace
+    const { 
+      data: marketplaceProducts, 
+      isLoading, 
+      error 
+    }= useProducts(deferredSearchTerm);
+    console.log({marketplaceProducts, isLoading})
+  
+    // Transformamos los productos de Marketplace al formato de Product que espera la aplicación
+    const products = useMemo(() => {
+      if (!marketplaceProducts) return null;
+      
+      return marketplaceProducts.map((item, index) => ({
+        id: index.toString(),
+        name: item.title,
+        price: item.price,
+        description: item.description,
+        image: item.image,
+        category: item.category,
+        stock: item.stock,
+        images: item.images,
+        sellerName: item.sellerName,
+        sellerProfile: item.sellerProfile,
+        joinedDate: item.joinedDate
+      }));
+    }, [marketplaceProducts]);
+
+  
+
+  // Filtramos los productos según el término de búsqueda
   const filteredProducts = useMemo(() => {
     if (!products) return null;
-    return products.filter((product) =>
-      product.name.toLowerCase().includes(deferredSearchTerm.toLowerCase())
-    );
-  }, [products, deferredSearchTerm]);
+    return products;
+    // No necesitamos filtrar aquí ya que la API ya filtra por el término de búsqueda
+  }, [products]);
 
   const handleSearch = useCallback((term: string) => {
     setSearchTerm(term);
@@ -42,14 +63,13 @@ const Products = () => {
   return (
     <>
       <SEO
-        title="Fresh Fruits - Explore Our Premium | Ecommerce Smrtln"
-        description="Discover a wide variety of fresh, high-quality fruits delivered straight to your doorstep. From tropical mangoes to juicy apples, find your favorites and enjoy the best nature has to offer."
+        title="Facebook Marketplace Products | Ecommerce Smrtln"
+        description="Discover a wide variety of products from Facebook Marketplace. Find great deals on vehicles, electronics, and more."
         keywords={[
-          "ecommerce",
-          "items",
-          "website",
-          "buy fruits online",
-          "healthy fruits",
+          "facebook marketplace",
+          "used cars",
+          "optra",
+          "marketplace products",
         ]}
         author="Edwin Arroyo"
         image="https://res.cloudinary.com/db3x4vzj0/image/upload/v1741957612/fruits_h1w8ev.jpg"
@@ -59,20 +79,22 @@ const Products = () => {
       <div className={styles.container}>
         <FloatCart />
         <header className={styles.header}>
-          <h1>Productos</h1>
+          <h1>Productos de Facebook Marketplace</h1>
           <SearchBar onSearch={handleSearch} />
         </header>
         <div className={styles.productsGrid}>
-          {filteredProducts === null ? (
+          {isLoading ? (
             Array.from({ length: 6 }).map((_, index) => (
               <ProductSkeleton key={index} />
             ))
-          ) : filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
+          ) : error ? (
+            <p>Error al cargar productos: {(error as Error).message}</p>
+          ) : filteredProducts && filteredProducts.length > 0 ? (
+            filteredProducts.map((product:any) => (
               <ProductCard key={product.id} product={product} />
             ))
           ) : (
-            <p>No hay productos disponibles</p>
+            <p>No hay productos disponibles para esta búsqueda</p>
           )}
         </div>
       </div>

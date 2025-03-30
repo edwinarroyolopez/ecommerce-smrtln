@@ -1,29 +1,9 @@
 // src/components/ProductModal.tsx
 import { Button, Backdrop } from "ecommerce-smrtln-ui";
 import styles from "./ProductModal.module.css";
+import { Product } from "@src/types/product";
 import { useState } from "react";
 
-interface ProductDetails {
-    images: string[];
-    description: string;
-    sellerName: string;
-    sellerProfile: string;
-    joinedDate: string;
-    activePosts?: string;
-}
-
-interface Product {
-    id: number;
-    link: string;
-    image: string;
-    thumbnail: string;
-    name: string;
-    price: number;
-    category: string;
-    location: string;
-    stock: number;
-    details: ProductDetails;
-}
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -57,18 +37,18 @@ const ProductModal: React.FC<ProductModalProps> = ({
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) => 
-      (prevIndex + 1) % product.details.images.length
+      (prevIndex + 1) % product.images.length
     );
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) => 
-      (prevIndex - 1 + product.details.images.length) % product.details.images.length
+      (prevIndex - 1 + product.images.length) % product.images.length
     );
   };
 
   const formattedPrice = formatPrice(product.price);
-
+  console.log({ product })
   return (
     <div style={{ display: isOpen ? "flex" : "none" }}>
       <Backdrop visible={isOpen} onClick={onClose}>
@@ -77,7 +57,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
           onClick={(e) => e.stopPropagation()}
         >
           <div className={styles.productHeader}>
-            <h2>{product.name}</h2>
+            <h2>{product.title}</h2>
             <div className={styles.priceLocation}>
               <span className={styles.price}>{formattedPrice}</span>
               <span className={styles.location}>{product.location}</span>
@@ -87,11 +67,11 @@ const ProductModal: React.FC<ProductModalProps> = ({
           <div className={styles.imageSection}>
             <div className={styles.mainImageContainer}>
               <img 
-                src={product.details.images[currentImageIndex]} 
-                alt={product.name}
+                src={product.images[currentImageIndex]} 
+                alt={product.title}
                 className={styles.mainImage}
               />
-              {product.details.images.length > 1 && (
+              {product.images.length > 1 && (
                 <>
                   <button 
                     className={`${styles.navButton} ${styles.prevButton}`}
@@ -109,7 +89,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
               )}
             </div>
             <div className={styles.thumbnailContainer}>
-              {product.details.images.slice(0, 5).map((img, index) => (
+              {product.images.slice(0, 5).map((img, index) => (
                 <img
                   key={index}
                   src={img}
@@ -118,9 +98,9 @@ const ProductModal: React.FC<ProductModalProps> = ({
                   onClick={() => setCurrentImageIndex(index)}
                 />
               ))}
-              {product.details.images.length > 5 && (
+              {product.images.length > 5 && (
                 <div className={styles.moreThumbnails}>
-                  +{product.details.images.length - 5}
+                  +{product.images.length - 5}
                 </div>
               )}
             </div>
@@ -128,7 +108,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
 
           <div className={styles.section}>
             <h3>Descripción</h3>
-            <p className={styles.description}>{product.details.description}</p>
+            <p className={styles.description}>{product.description}</p>
           </div>
 
           <div className={styles.section}>
@@ -136,19 +116,19 @@ const ProductModal: React.FC<ProductModalProps> = ({
             <div className={styles.sellerInfo}>
               <img 
                 src={product.image} 
-                alt={product.details.sellerName}
+                alt={product.sellerName}
                 className={styles.sellerImage}
               />
               <div>
                 <a 
-                  href={product.details.sellerProfile} 
+                  href={product.sellerProfile} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className={styles.sellerName}
                 >
-                  {product.details.sellerName}
+                  {product.sellerName}
                 </a>
-                <p>Miembro desde {product.details.joinedDate}</p>
+                <p>Miembro desde {product.joinedDate}</p>
               </div>
             </div>
           </div>
