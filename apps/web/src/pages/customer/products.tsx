@@ -37,7 +37,7 @@ const Products = () => {
       category: item.category,
       stock: item.stock,
       images: item.images,
-      sellerName: item.sellerName,
+      seller: item.seller,
       sellerProfile: item.sellerProfile,
       joinedDate: item.joinedDate,
     }));

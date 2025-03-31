@@ -11,7 +11,7 @@ export type Product = {
   stock: number;
   images: string[];
   description: string;
-  sellerName: string;
+  seller: string;
   sellerProfile: string;
   joinedDate: string;
   activePosts?: string;

@@ -115,7 +115,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
             <div className={styles.sellerInfo}>
               <img 
                 src={product.image} 
-                alt={product.sellerName}
+                alt={product.seller}
                 className={styles.sellerImage}
               />
               <div>
@@ -125,7 +125,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
                   rel="noopener noreferrer"
                   className={styles.sellerName}
                 >
-                  {product.sellerName}
+                  {product.seller}
                 </a>
                 <p>Miembro desde {product.joinedDate}</p>
               </div>
