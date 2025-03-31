@@ -35,6 +35,7 @@ export const useCartStore = create<CartState>()((set, get) => {
                 : [...cart, { id: product.id, name: product.name, price: product.price, thumbnail: product.thumbnail, quantity: 1 }];
 
             setLocalStorageItem("cart", updatedCart);
+            //@ts-ignore
             set({ cart: updatedCart });
         },
 
