@@ -48,7 +48,6 @@ const ProductModal: React.FC<ProductModalProps> = ({
   };
 
   const formattedPrice = formatPrice(product.price);
-  console.log({ product })
   return (
     <div style={{ display: isOpen ? "flex" : "none" }}>
       <Backdrop visible={isOpen} onClick={onClose}>

@@ -28,7 +28,9 @@ const Products = () => {
 
     return marketplaceProducts.map((item, index) => ({
       id: index.toString(),
+      title: item.title,
       name: item.title,
+      link: item.link,
       price: item.price,
       description: item.description,
       image: item.image,
