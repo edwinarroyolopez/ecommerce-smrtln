@@ -54,7 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <img src={product.image} alt={product.title} className={styles.image} />
         </div>
         <div className={styles.content}>
-          <h3 className={styles.title}>{product.title}</h3>
+          <h3 className={styles.title}>{product.name}</h3>
           <p className={styles.category}>{product.category}</p>
           <div className={styles.bottomContainer}>
             <span className={styles.price}>{formattedPrice}</span>
